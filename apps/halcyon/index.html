@@ -918,7 +918,9 @@ html, body {
 /* The wrapper scales the whole device via JS-set transform */
 
 @media (max-width: 480px) {
-  #ipod-wrapper { transform-origin: top center; }
+  /* Embedded in a ~360px iframe: keep the device centered (not top-anchored)
+     so the full body — including the bottom edge — stays visible. */
+  #ipod-wrapper { transform-origin: center center; }
 }
 
 /* Audio visualizer canvas — fixed at top of page, centered above the iPod.

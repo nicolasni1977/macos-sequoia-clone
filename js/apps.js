@@ -298,19 +298,53 @@ function settingsContent(win, api) {
 }
 
 function calendarContent() {
-  const root = el('cal');
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const pad = (n) => String(n).padStart(2, '0');
+  const ymd = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
   const now = new Date();
   let y = now.getFullYear(), m = now.getMonth();
-  const head = el('cal-head');
-  const grid = el('cal-grid');
-  root.append(head, grid);
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const events = { 8: 'Standup', 14: 'Design Review', 22: 'Launch 🚀', [now.getDate()]: 'Today’s Plan' };
+  const todayKey = ymd(now);
+  let selKey = todayKey;
 
-  function render() {
-    head.innerHTML = `<h2>${monthNames[m]} ${y}</h2><div><span class="cal-nav">‹</span> &nbsp; <span class="cal-nav">›</span></div>`;
-    head.querySelectorAll('.cal-nav')[0].addEventListener('click', () => { m--; if (m < 0) { m = 11; y--; } render(); });
-    head.querySelectorAll('.cal-nav')[1].addEventListener('click', () => { m++; if (m > 11) { m = 0; y++; } render(); });
+  // Per-day events, persisted across reloads: { 'YYYY-MM-DD': [{title,location,start,end}] }
+  const LS = 'cal:events';
+  let events = (() => { try { return JSON.parse(localStorage.getItem(LS)) || {}; } catch { return {}; } })();
+  const save = () => localStorage.setItem(LS, JSON.stringify(events));
+  if (localStorage.getItem(LS) === null) {
+    events[todayKey] = [{ title: 'Standup', location: 'Zoom', start: '09:30', end: '09:45' }];
+    const mid = `${y}-${pad(m + 1)}-15`;
+    events[mid] = [{ title: 'Design Review', location: 'Conf Room 2', start: '14:00', end: '15:00' }];
+    save();
+  }
+
+  const root = el('cal2');
+  const mainCol = el('cal2-main');
+  const head = el('cal2-head');
+  const grid = el('cal-grid');
+  mainCol.append(head, grid);
+  const side = el('cal2-side');
+  root.append(mainCol, side);
+
+  const toMin = (t) => { const [h, mn] = t.split(':').map(Number); return h * 60 + mn; };
+  const durText = (s, e) => {
+    if (!s || !e) return '—';
+    let mins = toMin(e) - toMin(s); if (mins < 0) mins += 1440;
+    const h = Math.floor(mins / 60), mm = mins % 60;
+    return (h ? `${h}h ` : '') + (mm ? `${mm}m` : (h ? '' : '0m'));
+  };
+  const fmt12 = (t) => { if (!t) return ''; let [h, mn] = t.split(':').map(Number); const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return `${h}:${pad(mn)} ${ap}`; };
+  const prettyDate = (key) => { const [yy, mm, dd] = key.split('-').map(Number); const d = new Date(yy, mm - 1, dd); return `${weekdays[d.getDay()]}, ${monthNames[mm - 1]} ${dd}`; };
+
+  function renderGrid() {
+    head.innerHTML = `<div class="cal2-title">${monthNames[m]} ${y}</div>
+      <div class="cal2-nav"><span data-nav="prev">‹</span><span data-nav="today">Today</span><span data-nav="next">›</span></div>`;
+    head.querySelector('[data-nav="prev"]').addEventListener('click', () => { m--; if (m < 0) { m = 11; y--; } renderGrid(); });
+    head.querySelector('[data-nav="next"]').addEventListener('click', () => { m++; if (m > 11) { m = 0; y++; } renderGrid(); });
+    head.querySelector('[data-nav="today"]').addEventListener('click', () => { y = now.getFullYear(); m = now.getMonth(); selKey = todayKey; renderGrid(); renderSide(); });
+
     grid.innerHTML = '';
     ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach((d) => grid.append(setHTML('cal-dow', d)));
     const first = new Date(y, m, 1).getDay();
@@ -318,21 +352,82 @@ function calendarContent() {
     const prevDays = new Date(y, m, 0).getDate();
     for (let i = 0; i < 42; i++) {
       const cell = el('cal-cell');
-      let num;
+      let num, key = null;
       if (i < first) { cell.classList.add('out'); num = prevDays - first + i + 1; }
       else if (i >= first + days) { cell.classList.add('out'); num = i - first - days + 1; }
-      else {
-        num = i - first + 1;
-        const isToday = (y === now.getFullYear() && m === now.getMonth() && num === now.getDate());
-        if (isToday) cell.classList.add('today');
-        cell.innerHTML = `<span class="cal-num">${num}</span>`;
-        if (events[num] && !cell.classList.contains('out')) cell.innerHTML += `<div class="cal-event">${events[num]}</div>`;
+      else { num = i - first + 1; key = `${y}-${pad(m + 1)}-${pad(num)}`; }
+      cell.innerHTML = `<span class="cal-num">${num}</span>`;
+      if (key) {
+        if (key === todayKey) cell.classList.add('today');
+        if (key === selKey) cell.classList.add('sel');
+        const evs = (events[key] || []).slice().sort((a, b) => (a.start || '').localeCompare(b.start || ''));
+        evs.slice(0, 3).forEach((ev) => {
+          const chip = el('cal-event'); chip.textContent = `${ev.start ? fmt12(ev.start).replace(':00', '') + ' ' : ''}${ev.title}`;
+          cell.append(chip);
+        });
+        if (evs.length > 3) { const more = el('cal-more'); more.textContent = `+${evs.length - 3} more`; cell.append(more); }
+        cell.style.cursor = 'pointer';
+        cell.addEventListener('click', () => { selKey = key; renderGrid(); renderSide(); });
       }
-      if (cell.innerHTML === '') cell.innerHTML = `<span class="cal-num">${num}</span>`;
       grid.append(cell);
     }
   }
-  render();
+
+  function renderSide() {
+    side.innerHTML = '';
+    side.append(setHTML('cal2-side-head', prettyDate(selKey)));
+
+    const list = el('cal2-events');
+    const evs = (events[selKey] || []).slice().sort((a, b) => (a.start || '').localeCompare(b.start || ''));
+    if (!evs.length) {
+      list.append(setHTML('cal2-empty', 'No events yet. Add one below.'));
+    } else {
+      evs.forEach((ev) => {
+        const realIdx = events[selKey].indexOf(ev);
+        const item = el('cal2-ev');
+        item.innerHTML = `
+          <div class="cal2-ev-title">${esc(ev.title)}</div>
+          <div class="cal2-ev-meta">🕐 ${fmt12(ev.start)} – ${fmt12(ev.end)} · ${durText(ev.start, ev.end)}</div>
+          ${ev.location ? `<div class="cal2-ev-meta">📍 ${esc(ev.location)}</div>` : ''}
+          <button class="cal2-ev-del" title="Delete event">×</button>`;
+        item.querySelector('.cal2-ev-del').addEventListener('click', () => {
+          events[selKey].splice(realIdx, 1);
+          if (!events[selKey].length) delete events[selKey];
+          save(); renderGrid(); renderSide();
+        });
+        list.append(item);
+      });
+    }
+    side.append(list);
+
+    const form = el('cal2-form');
+    form.innerHTML = `
+      <div class="cal2-form-title">New Event</div>
+      <input class="cal2-in" data-f="title" placeholder="Task / title" maxlength="60" />
+      <input class="cal2-in" data-f="location" placeholder="Location" maxlength="60" />
+      <div class="cal2-row">
+        <label>Start<input class="cal2-in" type="time" data-f="start" value="09:00" /></label>
+        <label>End<input class="cal2-in" type="time" data-f="end" value="10:00" /></label>
+      </div>
+      <div class="cal2-dur">Duration: <span data-dur>1h</span></div>
+      <button class="cal2-save">Add Event</button>`;
+    const getv = (f) => form.querySelector(`[data-f="${f}"]`).value;
+    const updateDur = () => { form.querySelector('[data-dur]').textContent = durText(getv('start'), getv('end')); };
+    form.querySelector('[data-f="start"]').addEventListener('input', updateDur);
+    form.querySelector('[data-f="end"]').addEventListener('input', updateDur);
+    const addEvent = () => {
+      const title = getv('title').trim();
+      if (!title) { form.querySelector('[data-f="title"]').focus(); return; }
+      (events[selKey] = events[selKey] || []).push({ title, location: getv('location').trim(), start: getv('start'), end: getv('end') });
+      save(); renderGrid(); renderSide();
+    };
+    form.querySelector('.cal2-save').addEventListener('click', addEvent);
+    form.querySelector('[data-f="title"]').addEventListener('keydown', (e) => { if (e.key === 'Enter') addEvent(); });
+    side.append(form);
+  }
+
+  renderGrid();
+  renderSide();
   return root;
 }
 
@@ -480,7 +575,7 @@ export const APPS = [
   { id: 'maps', name: 'Maps', icon: 'ic-maps', glyph: '🗺️', cat: 'internet', size: [800, 560], content: mapsContent },
   { id: 'photos', name: 'Photos', icon: 'ic-photos', glyph: '🌸', cat: 'media', size: [820, 560], content: photosContent },
   { id: 'facetime', name: 'FaceTime', icon: 'ic-facetime', glyph: '📹', cat: 'internet', size: [560, 600], content: facetimeContent },
-  { id: 'calendar', name: 'Calendar', icon: 'ic-calendar', glyph: '📅', cat: 'productivity', size: [820, 560], content: calendarContent },  { id: 'reminders', name: 'Reminders', icon: 'ic-reminders', glyph: '☑️', cat: 'productivity', size: [560, 480], content: remindersContent },
+  { id: 'calendar', name: 'Calendar', icon: 'ic-calendar', glyph: '📅', cat: 'productivity', size: [900, 600], content: calendarContent },  { id: 'reminders', name: 'Reminders', icon: 'ic-reminders', glyph: '☑️', cat: 'productivity', size: [560, 480], content: remindersContent },
   { id: 'notes', name: 'Notes', icon: 'ic-notes', glyph: '📝', cat: 'productivity', size: [720, 500], content: notesContent },  { id: 'music', name: 'Music', icon: 'ic-music', glyph: '🎵', cat: 'media', size: [760, 580], content: musicAppContent },
   { id: 'podcasts', name: 'Podcasts', icon: 'ic-podcasts', glyph: '🎙️', cat: 'media', size: [760, 540], content: podcastsContent },
   { id: 'news', name: 'News', icon: 'ic-news', glyph: '📰', cat: 'internet', size: [760, 560], content: newsContent },
@@ -507,7 +602,7 @@ export const APPS = [
   { id: 'colorsync', name: 'ColorSync Utility', icon: 'ic-creative', glyph: '🎨', cat: 'dev', size: [640, 480], content: placeholder({ name: 'ColorSync Utility', glyph: '🎨', blurb: 'Inspect and repair color profiles.' }) },
   { id: 'grapher', name: 'Grapher', icon: 'ic-teal', glyph: 'ƒx', cat: 'dev', size: [720, 520], content: grapherContent },
   { id: 'chess', name: 'Chess', icon: 'ic-graphite', glyph: '♞', cat: 'media', size: [520, 560], content: chessAppContent },
-  { id: 'halcyon', name: 'iPod', icon: 'ic-graphite', glyph: '🎧', cat: 'media', size: [360, 640], content: halcyonContent },
+  { id: 'halcyon', name: 'iPod', icon: 'ic-graphite', glyph: '🎧', cat: 'media', size: [360, 680], content: halcyonContent },
   { id: 'missioncontrol', name: 'Mission Control', icon: 'ic-graphite', glyph: '🪟', cat: 'system', size: [720, 480], content: missionControlLauncher },
   { id: 'siri', name: 'Siri', icon: 'ic-creative', glyph: '🌀', cat: 'system', size: [460, 440], content: siriContent },
   { id: 'timemachine', name: 'Time Machine', icon: 'ic-graphite', glyph: '🕰️', cat: 'system', size: [720, 500], content: timemachineContent },

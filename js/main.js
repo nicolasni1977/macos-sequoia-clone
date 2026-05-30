@@ -13,6 +13,7 @@ import { initMissionControl, close as closeMissionControl, isMissionControlOpen 
 import { initStageManager } from './stageManager.js';
 import { initAppSwitcher } from './appSwitcher.js';
 import { initControlCenter, applyPersistedBrightness } from './controlCenter.js';
+import { initStatusMenus } from './statusMenus.js';
 import { initNotificationCenter } from './notificationCenter.js';
 import { initQuickLook, close as closeQuickLook } from './quickLook.js';
 import { playStartupChime } from './sound.js';
@@ -144,6 +145,7 @@ function boot() {
   initStageManager();
   initAppSwitcher();
   initControlCenter();
+  initStatusMenus();
   initNotificationCenter();
   initQuickLook();
   applyPersistedBrightness();

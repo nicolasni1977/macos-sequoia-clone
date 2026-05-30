@@ -237,6 +237,42 @@
 .cal-cell.today .cal-num { background: #ff3b30; color: #fff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; }
 .cal-event { margin-top: 4px; font-size: 10.5px; padding: 2px 5px; border-radius: 4px; background: #e8f0ff; color: #1c64f2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+/* ---------- Calendar v2 (interactive, with per-day events) ---------- */
+.cal2 { display: flex; height: 100%; background: #fff; color: #1c1c1e; }
+.cal2-main { flex: 1; min-width: 0; padding: 14px 16px; display: flex; flex-direction: column; }
+.cal2-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.cal2-title { font-size: 20px; font-weight: 700; }
+.cal2-nav { display: flex; align-items: center; gap: 6px; }
+.cal2-nav span { padding: 4px 10px; border-radius: 7px; font-size: 14px; cursor: pointer; background: #f0f0f2; color: #1c1c1e; user-select: none; }
+.cal2-nav span:hover { background: #e3e3e6; }
+.cal2-nav span[data-nav="today"] { font-size: 12px; font-weight: 600; }
+.cal2 .cal-grid { flex: 1; }
+.cal2 .cal-cell { min-height: 0; }
+.cal2 .cal-cell.sel { box-shadow: inset 0 0 0 2px #0a84ff; }
+.cal2 .cal-cell.today .cal-num { background: #ff3b30; }
+.cal-more { margin-top: 2px; font-size: 10px; color: #888; }
+
+.cal2-side { width: 286px; flex: 0 0 286px; border-left: 0.5px solid rgba(0,0,0,0.1); padding: 14px 16px; overflow-y: auto; background: #f7f7f8; }
+.cal2-side-head { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.cal2-events { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.cal2-empty { font-size: 13px; color: #999; padding: 8px 0; }
+.cal2-ev { position: relative; background: #fff; border: 0.5px solid rgba(0,0,0,0.1); border-left: 3px solid #0a84ff; border-radius: 8px; padding: 9px 30px 9px 11px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.cal2-ev-title { font-size: 13.5px; font-weight: 600; }
+.cal2-ev-meta { font-size: 11.5px; color: #666; margin-top: 3px; }
+.cal2-ev-del { position: absolute; top: 6px; right: 6px; width: 20px; height: 20px; border-radius: 50%; background: transparent; color: #b0b0b4; font-size: 17px; line-height: 1; cursor: pointer; }
+.cal2-ev-del:hover { background: #ff3b30; color: #fff; }
+
+.cal2-form { border-top: 0.5px solid rgba(0,0,0,0.1); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.cal2-form-title { font-size: 13px; font-weight: 700; color: #555; }
+.cal2-in { width: 100%; padding: 7px 9px; border: 0.5px solid rgba(0,0,0,0.18); border-radius: 7px; font-size: 13px; background: #fff; color: #1c1c1e; font-family: inherit; }
+.cal2-in:focus { outline: none; border-color: #0a84ff; box-shadow: 0 0 0 3px rgba(10,132,255,0.18); }
+.cal2-row { display: flex; gap: 8px; }
+.cal2-row label { flex: 1; display: flex; flex-direction: column; gap: 3px; font-size: 11px; color: #888; }
+.cal2-dur { font-size: 12px; color: #666; }
+.cal2-dur span { font-weight: 600; color: #1c1c1e; }
+.cal2-save { padding: 8px; border-radius: 8px; background: #0a84ff; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
+.cal2-save:hover { background: #0a6fd6; }
+
 /* ---------- Photos ---------- */
 .photos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 4px; padding: 12px; }
 .photo-cell { aspect-ratio: 1; border-radius: 4px; }

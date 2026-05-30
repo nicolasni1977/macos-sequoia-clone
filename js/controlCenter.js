@@ -21,17 +21,11 @@ const TOGGLES = [
 
 export function initControlCenter() {
   btn.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
-  // The Wi-Fi and Battery menu-bar icons also open Control Center (as in macOS).
-  ['status-wifi', 'status-battery'].forEach((id) => {
-    const b = document.getElementById(id);
-    if (b) b.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
-  });
   on('os:toggle-control-center', toggle);
 
   // Outside-click / Escape close.
   document.addEventListener('mousedown', (e) => {
-    if (isOpen && !e.target.closest('#control-center') && !e.target.closest('#status-control')
-      && !e.target.closest('#status-wifi') && !e.target.closest('#status-battery')) close();
+    if (isOpen && !e.target.closest('#control-center') && !e.target.closest('#status-control')) close();
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen) close(); });
 
