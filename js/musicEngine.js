@@ -3,13 +3,14 @@
 
 let actx = null, master = null, analyser = null;
 let currentStop = null, currentId = null;
+let desiredVol = 0.6; // 0..1, driven by the Control Center Sound slider
 
 function ensure() {
   if (actx) return;
   const AC = window.AudioContext || window.webkitAudioContext;
   actx = new AC();
   master = actx.createGain();
-  master.gain.value = 0.5;
+  master.gain.value = desiredVol * 0.7;
   analyser = actx.createAnalyser();
   analyser.fftSize = 256;
   master.connect(analyser);
@@ -155,3 +156,25 @@ export function stopTrack() {
 export function currentTrack() { return currentId; }
 export function getAnalyser() { ensure(); return analyser; }
 export function resumeAudio() { ensure(); if (actx.state === 'suspended') return actx.resume(); }
+
+// Master output volume (0..1), driven by the Control Center Sound slider.
+export function setVolume(v01) {
+  desiredVol = Math.max(0, Math.min(1, v01));
+  if (master) master.gain.value = desiredVol * 0.7;
+}
+export function getVolume() { return desiredVol; }
+
+// Short blip routed through the master gain — audible feedback at the current
+// volume level when the Sound slider is adjusted.
+export function playVolumeTick() {
+  ensure();
+  if (actx.state === 'suspended') actx.resume();
+  const t = actx.currentTime + 0.005;
+  const o = actx.createOscillator(); o.type = 'sine'; o.frequency.value = 880;
+  const g = actx.createGain();
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(0.6, t + 0.012);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.13);
+  o.connect(g); g.connect(master);
+  o.start(t); o.stop(t + 0.15);
+}

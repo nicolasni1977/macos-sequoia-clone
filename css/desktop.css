@@ -98,7 +98,9 @@
 .mb-item:hover, .mb-item.active { background: rgba(255,255,255,0.22); }
 .mb-appname { font-weight: 600; }
 .mb-apple { padding: 0 8px; }
-.mb-apple svg { display: block; transform: translateY(-0.5px); }
+/* Double the Apple logo (15px -> 30px). The glyph has built-in padding inside
+   its 24x24 viewBox, so it stays vertically centered in the bar without clipping. */
+.mb-apple svg { display: block; width: 30px; height: 30px; transform: translateY(-0.5px); }
 
 .mb-status {
   height: 100%;

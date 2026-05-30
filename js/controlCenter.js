@@ -5,10 +5,12 @@
 import { on, emit } from './state.js';
 import { getSetting, setSetting, getAppearance, setAppearance } from './shell.js';
 import { isStageOn } from './stageManager.js';
+import { setVolume, playVolumeTick } from './musicEngine.js';
 
 const panel = document.getElementById('control-center');
 const btn = document.getElementById('status-control');
 let isOpen = false;
+let lastTick = 0;
 
 const TOGGLES = [
   { key: 'wifi', name: 'Wi-Fi', ic: '📶', on: 'Home Network', off: 'Off', def: true },
@@ -19,11 +21,17 @@ const TOGGLES = [
 
 export function initControlCenter() {
   btn.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
+  // The Wi-Fi and Battery menu-bar icons also open Control Center (as in macOS).
+  ['status-wifi', 'status-battery'].forEach((id) => {
+    const b = document.getElementById(id);
+    if (b) b.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
+  });
   on('os:toggle-control-center', toggle);
 
   // Outside-click / Escape close.
   document.addEventListener('mousedown', (e) => {
-    if (isOpen && !e.target.closest('#control-center') && !e.target.closest('#status-control')) close();
+    if (isOpen && !e.target.closest('#control-center') && !e.target.closest('#status-control')
+      && !e.target.closest('#status-wifi') && !e.target.closest('#status-battery')) close();
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen) close(); });
 
@@ -92,22 +100,6 @@ function build() {
   });
   appearance.append(lbl, seg);
   panel.append(appearance);
-
-  // --- Now Playing stub ---
-  const now = tile('span2');
-  now.innerHTML = `
-    <div class="cc-now">
-      <div class="cc-now-art">🎧</div>
-      <div class="cc-now-meta">
-        <div class="cc-now-title">Neon Skyline</div>
-        <div class="cc-now-artist">The Wavelengths</div>
-      </div>
-      <div class="cc-now-controls"><span data-c="prev">⏮️</span><span data-c="play">⏯️</span><span data-c="next">⏭️</span></div>
-    </div>`;
-  now.querySelectorAll('.cc-now-controls span').forEach((s) => {
-    s.addEventListener('click', () => emit('os:toast', { msg: 'Now Playing: ' + s.dataset.c }));
-  });
-  panel.append(now);
 }
 
 function tile(extra) {
@@ -145,13 +137,21 @@ function sliderTile(key, name, ic, def) {
   lbl.className = 'cc-slider-label';
   lbl.innerHTML = `${ic} ${name}`;
   const val = getSetting('cc:' + key, def);
+  if (key === 'volume') setVolume(val / 100);
   const input = document.createElement('input');
   input.type = 'range';
   input.className = 'cc-slider';
   input.min = '0'; input.max = '100'; input.value = String(val);
   input.addEventListener('input', () => {
-    setSetting('cc:' + key, parseInt(input.value, 10));
-    if (key === 'brightness') applyBrightness(parseInt(input.value, 10));
+    const v = parseInt(input.value, 10);
+    setSetting('cc:' + key, v);
+    if (key === 'brightness') applyBrightness(v);
+    if (key === 'volume') {
+      setVolume(v / 100);
+      // Throttle the audible blip so dragging doesn't machine-gun the engine.
+      const n = Date.now();
+      if (n - lastTick > 120) { lastTick = n; playVolumeTick(); }
+    }
   });
   t.append(lbl, input);
   return t;
