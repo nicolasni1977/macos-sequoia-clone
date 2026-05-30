@@ -29,13 +29,13 @@ const LIGHT = new Set(['calendar']);
 // White symbol markup drawn in a 100×100 viewBox (group provides white stroke).
 const S = {
   finder: '<path d="M37 43v5M63 43v5"/><path d="M36 60q14 11 28 0"/>',
-  safari: '<circle cx="50" cy="50" r="25"/><path d="M50 50 63 37 53 53Z" fill="#ff6b6b" stroke="#ff6b6b"/><path d="M50 50 37 63 47 47Z" fill="#fff" stroke="#fff"/>',
+  safari: '<circle cx="50" cy="50" r="25"/><path d="M50 50 63 37 53 53Z" fill="#fff" stroke="#fff"/><path d="M50 50 37 63 47 47Z" fill="none" stroke="#fff"/>',
   mail: '<rect x="28" y="35" width="44" height="30" rx="6"/><path d="M30 39 50 53 70 39"/>',
   messages: '<path d="M30 35h40a8 8 0 0 1 8 8v11a8 8 0 0 1-8 8H49l-12 9v-9h-3a8 8 0 0 1-8-8V43a8 8 0 0 1 8-8Z" fill="#fff" stroke="none"/>',
   maps: '<path d="M50 28a16 16 0 0 1 16 16c0 13-16 28-16 28S34 57 34 44a16 16 0 0 1 16-16Z"/><circle cx="50" cy="44" r="6"/>',
-  photos: '<g stroke="none" fill="#fff"><circle cx="50" cy="35" r="9"/><circle cx="63" cy="42.5" r="9"/><circle cx="63" cy="57.5" r="9"/><circle cx="50" cy="65" r="9"/><circle cx="37" cy="57.5" r="9"/><circle cx="37" cy="42.5" r="9"/></g><circle cx="50" cy="50" r="7" fill="#ffd23f" stroke="none"/>',
+  photos: '<g stroke="none" fill="#fff"><circle cx="50" cy="35" r="9"/><circle cx="63" cy="42.5" r="9"/><circle cx="63" cy="57.5" r="9"/><circle cx="50" cy="65" r="9"/><circle cx="37" cy="57.5" r="9"/><circle cx="37" cy="42.5" r="9"/></g><circle cx="50" cy="50" r="7" fill="#fff" stroke="none"/>',
   facetime: '<rect x="29" y="38" width="30" height="24" rx="6"/><path d="M61 46 73 40V60L61 54Z" fill="#fff" stroke="#fff"/>',
-  calendar: '<rect x="28" y="30" width="44" height="40" rx="6" fill="#fff" stroke="#e3e3e8" stroke-width="2"/><path d="M28 41h44" stroke="#ff3b30" stroke-width="11"/><text x="50" y="62" font-size="22" font-weight="700" fill="#1c1c1e" text-anchor="middle" stroke="none" font-family="-apple-system,sans-serif">17</text>',
+  calendar: '<rect x="29" y="33" width="42" height="36" rx="6"/><path d="M29 45h42"/><path d="M40 29v8M60 29v8"/><text x="50" y="62" font-size="19" font-weight="600" fill="#fff" stroke="none" text-anchor="middle" font-family="-apple-system,sans-serif">17</text>',
   contacts: '<circle cx="50" cy="43" r="9"/><path d="M33 68a17 15 0 0 1 34 0"/>',
   reminders: '<circle cx="37" cy="43" r="4"/><path d="M48 43h19"/><circle cx="37" cy="57" r="4"/><path d="M48 57h19"/>',
   notes: '<path d="M36 40h28M36 50h28M36 60h18"/>',
@@ -51,7 +51,7 @@ const S = {
   photobooth: '<rect x="30" y="40" width="40" height="24" rx="6"/><circle cx="50" cy="52" r="7"/><rect x="42" y="33" width="11" height="8" rx="2"/>',
   preview: '<rect x="30" y="33" width="40" height="34" rx="5"/><circle cx="42" cy="45" r="4"/><path d="M32 63 46 52 56 60 68 49"/>',
   textedit: '<path d="M38 30h16l12 12v26a3 3 0 0 1-3 3H38a3 3 0 0 1-3-3V33a3 3 0 0 1 3-3z"/><path d="M54 30v12h12"/><path d="M42 50h16M42 58h12"/>',
-  calculator: '<rect x="33" y="29" width="34" height="42" rx="6"/><path d="M40 41h20"/><circle cx="41" cy="54" r="2.5" fill="#fff" stroke="none"/><circle cx="50" cy="54" r="2.5" fill="#fff" stroke="none"/><circle cx="59" cy="54" r="2.5" fill="#ff9f0a" stroke="none"/><circle cx="41" cy="63" r="2.5" fill="#fff" stroke="none"/><circle cx="50" cy="63" r="2.5" fill="#fff" stroke="none"/>',
+  calculator: '<rect x="33" y="29" width="34" height="42" rx="6"/><path d="M40 41h20"/><circle cx="41" cy="54" r="2.5" fill="#fff" stroke="none"/><circle cx="50" cy="54" r="2.5" fill="#fff" stroke="none"/><circle cx="59" cy="54" r="2.5" fill="#fff" stroke="none"/><circle cx="41" cy="63" r="2.5" fill="#fff" stroke="none"/><circle cx="50" cy="63" r="2.5" fill="#fff" stroke="none"/>',
   dictionary: '<rect x="34" y="30" width="32" height="40" rx="4"/><path d="M44 60l6-18 6 18M46 53h8"/>',
   clock: '<circle cx="50" cy="50" r="23"/><path d="M50 50V35M50 50l12 5"/>',
   weather: '<circle cx="44" cy="44" r="9"/><path d="M44 28v5M44 55v5M28 44h5M55 44h5M33 33l3 3M52 52l3 3"/><path d="M41 62a9 9 0 0 1 0-18 11 11 0 0 1 21 3 8 8 0 0 1-2 15Z" fill="#fff" stroke="#fff"/>',
@@ -104,7 +104,7 @@ function shape(inner) {
   return `<svg class="appicon" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" xmlns="${SVGNS}">${inner}</svg>`;
 }
 const SHAPES = {
-  folder: shape('<defs><linearGradient id="icf-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc0ff"/><stop offset="1" stop-color="#3f93ee"/></linearGradient><linearGradient id="icf-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fd2ff"/><stop offset="1" stop-color="#5aa9f6"/></linearGradient></defs><path d="M16 35a7 7 0 0 1 7-7h17l7 7h30a7 7 0 0 1 7 7v4H16Z" fill="url(#icf-a)"/><path d="M16 42a7 7 0 0 1 7-7h54a7 7 0 0 1 7 7v25a7 7 0 0 1-7 7H23a7 7 0 0 1-7-7Z" fill="url(#icf-b)"/>'),
+  folder: shape('<defs><linearGradient id="icf-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a828c"/><stop offset="1" stop-color="#3b424b"/></linearGradient><linearGradient id="icf-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b929c"/><stop offset="1" stop-color="#4a515b"/></linearGradient></defs><path d="M16 35a7 7 0 0 1 7-7h17l7 7h30a7 7 0 0 1 7 7v4H16Z" fill="url(#icf-a)"/><path d="M16 42a7 7 0 0 1 7-7h54a7 7 0 0 1 7 7v25a7 7 0 0 1-7 7H23a7 7 0 0 1-7-7Z" fill="url(#icf-b)"/>'),
   drive: shape('<defs><linearGradient id="icd-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9edf3"/><stop offset="1" stop-color="#b9c2cf"/></linearGradient></defs><rect x="18" y="33" width="64" height="34" rx="7" fill="url(#icd-a)" stroke="#9aa6b5" stroke-width="1.5"/><circle cx="68" cy="50" r="4" fill="#7d8794"/><rect x="27" y="46" width="22" height="8" rx="4" fill="#aab4c2"/>'),
   trash: shape('<g fill="none" stroke="#dfe3ea" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"><path d="M35 39h30l-3 31a5 5 0 0 1-5 5H43a5 5 0 0 1-5-5Z"/><path d="M30 39h40"/><path d="M43 39v-4a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v4"/><path d="M45 48v19M50 48v19M55 48v19" stroke-width="3"/></g>'),
 };
@@ -112,7 +112,7 @@ const SHAPES = {
 export function iconHTML(id, name = '') {
   if (SHAPES[id]) return SHAPES[id];
   if (id === 'machd') return SHAPES.drive;
-  const tile = TILE[id] || 'slate';
+  const tile = 'graphite'; // uniform monochrome set — every app reads like the chess tile
   let sym = id === 'launchpad' ? LAUNCHPAD_SYM : S[id];
   if (!sym) sym = letter((name || id)[0]);
   return `<svg class="appicon" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" xmlns="${SVGNS}">`
