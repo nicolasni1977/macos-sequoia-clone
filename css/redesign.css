@@ -209,3 +209,22 @@ html.dark .notes-editor h1 { color: #fff !important; }
 
 /* Scrollbars in dark */
 html.dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.26); background-clip: padding-box; }
+
+/* Spotlight — high-contrast text entry in dark mode (solid dark panel, light text) */
+html.dark #spotlight {
+  background: rgba(36, 36, 40, 0.82);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html.dark #spotlight-input { color: #f5f5f7; }
+html.dark #spotlight-input::placeholder { color: rgba(255, 255, 255, 0.45); }
+html.dark .spotlight-icon { color: rgba(255, 255, 255, 0.55); }
+html.dark #spotlight-results { border-top-color: rgba(255, 255, 255, 0.12); }
+html.dark .spot-result { color: #f5f5f7; }
+html.dark .spot-result .spot-name { color: #f5f5f7; }
+html.dark .spot-section { color: rgba(255, 255, 255, 0.45); }
+html.dark .spot-meta .spot-kind { color: rgba(255, 255, 255, 0.5); }
+html.dark .launchpad-search { background: rgba(255, 255, 255, 0.16); }
+
+/* Make the field itself read as a clear input while typing (both themes) */
+.spotlight-input-row { transition: background 0.12s ease; }
+#spotlight-input { caret-color: var(--accent); }
