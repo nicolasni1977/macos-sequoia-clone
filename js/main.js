@@ -22,11 +22,7 @@ function buildDesktopIcons() {
   const host = document.getElementById('desktop-icons');
   const openFinderAt = (path) => { openApp('finder'); emit('os:finder-navigate', { path }); };
   const icons = [
-    { icon: 'machd', glyph: '💽', name: 'Macintosh HD', kind: 'Volume', open: () => openFinderAt([]) },
-    { icon: 'folder', glyph: '📁', name: 'Projects', kind: 'Folder', open: () => openFinderAt(['Projects']) },
-    { icon: 'chess', glyph: '♞', name: 'Chess', kind: 'Application', open: () => openApp('chess') },
-    { icon: 'trash', glyph: '🗑️', name: 'Trash', kind: 'Trash', open: () => openApp('trash') },
-  ];
+    { icon: 'machd', glyph: '💽', name: 'Macintosh HD', kind: 'Volume', open: () => openFinderAt([]) },    { icon: 'chess', glyph: '♞', name: 'Chess', kind: 'Application', open: () => openApp('chess') },  ];
   icons.forEach((ic) => {
     const d = document.createElement('div');
     d.className = 'desktop-icon';
