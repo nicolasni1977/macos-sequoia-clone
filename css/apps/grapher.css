@@ -66,3 +66,12 @@
   color: #5a5a5e; background: rgba(255,255,255,0.82);
   padding: 4px 9px; border-radius: 7px; border: 0.5px solid rgba(0,0,0,0.08);
 }
+
+/* Phone: let the toolbar wrap and the input shrink instead of overflowing. */
+@media (max-width: 640px) {
+  .gr-toolbar { flex-wrap: wrap; gap: 8px; }
+  .gr-input-wrap { flex: 1 1 100%; min-width: 0; }
+  .gr-input { min-width: 0; width: 100%; }
+  .gr-tools { flex: 0 0 auto; }
+  .gr-legend { max-width: 72%; }
+}

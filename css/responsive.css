@@ -82,3 +82,41 @@ body { overscroll-behavior: none; }
   .dock-item { width: 44px !important; height: 44px !important; }
   .dock-icon { width: 44px !important; height: 44px !important; font-size: 26px !important; }
 }
+
+/* ---- Phones: split-view apps stack their panes so sidebars don't eat the
+        screen. The sidebar(s) become full-width, capped-height strips on top
+        and the main pane fills the rest. ---- */
+@media (max-width: 640px) {
+  .app-split,
+  .dict-root,
+  .du-body,
+  .app-finder .finder-body,
+  .app-mail .mail-root { flex-direction: column; }
+
+  .app-sidebar,
+  .notes-list,
+  .dict-sidebar,
+  .du-sidebar,
+  .app-finder .finder-sidebar {
+    width: 100%;
+    flex: 0 0 auto;
+    max-height: 36%;
+    overflow-y: auto;
+    border-right: none;
+    border-bottom: 0.5px solid var(--sidebar-border, rgba(0,0,0,0.14));
+  }
+
+  .app-main,
+  .notes-editor,
+  .app-finder .finder-main-wrap { flex: 1 1 auto; min-height: 0; }
+
+  /* Mail's three panes: folders (small) over message list (medium) over reading. */
+  .app-mail .mail-sidebar { width: 100%; flex: 0 0 auto; max-height: 22%; overflow-y: auto; border-right: none; border-bottom: 0.5px solid var(--sidebar-border, rgba(0,0,0,0.14)); }
+  .app-mail .mail-list-pane { width: 100%; flex: 0 0 auto; max-height: 38%; overflow-y: auto; border-right: none; border-bottom: 0.5px solid var(--sidebar-border, rgba(0,0,0,0.14)); }
+  .app-mail .mail-root > :last-child { flex: 1 1 auto; min-height: 0; }
+
+  /* Podcasts grid -> single column, player row pinned at the bottom. */
+  .pod-root { grid-template-columns: 1fr; grid-template-rows: auto 1fr 84px; }
+  .pod-sidebar { grid-column: 1; grid-row: 1; max-height: 30vh; border-right: none; border-bottom: 0.5px solid rgba(0,0,0,0.1); }
+  .pod-center { grid-column: 1; grid-row: 2; }
+}
