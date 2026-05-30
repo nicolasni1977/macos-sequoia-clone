@@ -927,6 +927,9 @@ html, body {
 /* Audio visualizer canvas — fixed at top of page, centered above the iPod.
    Hidden until first audio play (fades in once the Web Audio graph is set up). */
 #audio-viz {
+  /* Hidden in the embedded build — the floating waveform leaked to the top of
+     the app frame and its Web-Audio routing muted cross-origin podcast audio. */
+  display: none;
   position: fixed;
   top: 14px;
   left: 50%;
@@ -3467,14 +3470,12 @@ const AudioViz = (() => {
   }
 
   function start() {
-    init();
-    if (!canvas) return;
-    connectAudio();
-    if (actx && actx.state === 'suspended') actx.resume().catch(() => {});
-    canvas.classList.add('active');
-    if (raf) return;            // already looping
-    const loop = () => { draw(); raf = requestAnimationFrame(loop); };
-    raf = requestAnimationFrame(loop);
+    // Disabled in the embedded (windowed) build. Routing the <audio> element
+    // through createMediaElementSource taints cross-origin podcast streams and
+    // silences them (the same-origin demo track was unaffected, which masked
+    // the bug). Leaving the element un-routed keeps podcast + music audible.
+    // The floating canvas also didn't fit the windowed layout, so it's hidden.
+    return;
   }
 
   function stop() {
