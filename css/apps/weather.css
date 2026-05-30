@@ -398,3 +398,31 @@
   opacity: 0.65;
   margin-top: 3px;
 }
+
+/* ── Landmark banner (city's signature building, from Wikipedia) ─────────────── */
+.app-weather .w-landmark {
+  position: relative;
+  margin: 14px 12px 2px;
+  height: 170px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  animation: wLandmarkIn 0.5s var(--ease-out, ease);
+}
+.app-weather .w-landmark.hidden { display: none; }
+.app-weather .w-landmark img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.app-weather .w-landmark::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, transparent 28%, transparent 58%, rgba(0,0,0,0.5) 100%);
+}
+.app-weather .w-landmark-cap {
+  position: absolute; left: 13px; bottom: 9px; z-index: 1;
+  color: #fff; font-size: 13px; font-weight: 600;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.75);
+}
+@keyframes wLandmarkIn { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: none; } }

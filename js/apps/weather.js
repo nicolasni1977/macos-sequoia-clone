@@ -72,6 +72,40 @@ async function geocode(q) {
   } catch { return []; }
 }
 
+// Curated landmark articles (verified to yield a good photo) for known cities;
+// other cities fall back to the city's own Wikipedia lead image.
+const LANDMARK_ARTICLE = {
+  'Singapore': 'Gardens by the Bay',   // Supertree Grove
+  'Tokyo': 'Tokyo Tower',
+  'London': 'Big Ben',
+  'New York': 'Statue of Liberty',
+  'Sydney': 'Sydney Opera House',
+};
+// Bump a Wikimedia thumb URL to a larger width for a crisp banner.
+const upscale = (url, w = 960) => url ? url.replace(/\/(\d+)px-([^/]+)$/, '/' + w + 'px-$2') : url;
+
+async function fetchLandmark(cityName) {
+  const article = LANDMARK_ARTICLE[cityName];
+  try {
+    if (article) {
+      const u = 'https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=thumbnail'
+        + '&pithumbsize=1000&format=json&origin=*&titles=' + encodeURIComponent(article);
+      const d = await (await fetch(u)).json();
+      for (const p of Object.values((d.query && d.query.pages) || {})) {
+        if (p.thumbnail && p.thumbnail.source) return { url: p.thumbnail.source, caption: article };
+      }
+    }
+    // Fallback: REST summary handles redirects/accents and returns landmark photos.
+    const r = await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(cityName));
+    if (r.ok) {
+      const d = await r.json();
+      const t = d.thumbnail && d.thumbnail.source;
+      if (t) return { url: upscale(t, 960), caption: article || cityName };
+    }
+  } catch { /* offline / not found — banner just stays hidden */ }
+  return null;
+}
+
 export function content(win, api) {
   let city = api.load('city', DEFAULT_CITY);
   if (!city || typeof city.lat !== 'number') city = DEFAULT_CITY;
@@ -123,6 +157,19 @@ export function content(win, api) {
 
   // ── Main scroller ──
   const scroller = el('w-scroller');
+
+  // Landmark banner (Wikipedia image) shown at the top of the page.
+  const landmark = el('w-landmark hidden');
+  const landmarkImg = document.createElement('img');
+  landmarkImg.alt = '';
+  const landmarkCap = el('w-landmark-cap');
+  landmark.append(landmarkImg, landmarkCap);
+  landmarkImg.onerror = () => landmark.classList.add('hidden');
+  function setLandmark(info) {
+    if (info && info.url) { landmarkCap.textContent = info.caption || ''; landmarkImg.src = info.url; landmark.classList.remove('hidden'); }
+    else landmark.classList.add('hidden');
+  }
+
   const hero = el('w-hero');
   const heroCity = el('w-city-name'), heroRegion = el('w-city-region'), heroTemp = el('w-hero-temp'), heroCond = el('w-hero-cond'), heroHiLo = el('w-hero-hilo');
   hero.append(heroCity, heroRegion, heroTemp, heroCond, heroHiLo);
@@ -139,7 +186,7 @@ export function content(win, api) {
   detailsSection.append(setHTML('w-section-hdr', '<span>CONDITIONS</span><span>🌡️</span>'));
   const detailsGrid = el('w-details-grid'); detailsSection.append(detailsGrid);
 
-  scroller.append(hero, hourlySection, forecastSection, detailsSection);
+  scroller.append(landmark, hero, hourlySection, forecastSection, detailsSection);
   root.append(header, cityPanel, scroller);
   scroller.addEventListener('click', () => { if (cityPanel.classList.contains('open')) closeCityPanel(); });
 
@@ -226,6 +273,8 @@ export function content(win, api) {
     api.store('city', c);
     api.setTitle(c.name);
     showLoading();
+    landmark.classList.add('hidden');
+    fetchLandmark(c.name).then((info) => { if (city.name === c.name) setLandmark(info); });
     try { render(await fetchWeather(c.lat, c.lon)); }
     catch (e) { showError(); }
   }
