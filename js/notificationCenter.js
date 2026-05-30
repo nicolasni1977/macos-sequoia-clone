@@ -2,6 +2,7 @@
 // month calendar widget, a weather widget, and a notifications list. Opened by
 // clicking the menu-bar clock; toggles closed on second click / Esc / outside.
 import { on } from './state.js';
+import { openApp } from './windowManager.js';
 
 const panel = document.getElementById('notification-center');
 const clock = document.getElementById('status-clock');
@@ -15,7 +16,8 @@ const NOTIFS = [
 ];
 
 export function initNotificationCenter() {
-  clock.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
+  // Clicking the menu-bar clock/date opens the editable Calendar app.
+  clock.addEventListener('click', (e) => { e.stopPropagation(); openApp('calendar'); });
   on('os:toggle-notification-center', toggle);
 
   document.addEventListener('mousedown', (e) => {
