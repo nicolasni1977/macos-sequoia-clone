@@ -273,6 +273,26 @@
 .cal2-save { padding: 8px; border-radius: 8px; background: #0a84ff; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
 .cal2-save:hover { background: #0a6fd6; }
 
+/* Calendar — phone layout: stack the grid above the day panel and scroll. */
+@media (max-width: 640px) {
+  .cal2 { flex-direction: column; height: auto; min-height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .cal2-main { flex: 0 0 auto; padding: 12px 12px 6px; }
+  .cal2-head { margin-bottom: 10px; }
+  .cal2-title { font-size: 18px; }
+  .cal2-nav span { padding: 7px 13px; font-size: 15px; }
+  .cal2 .cal-grid { flex: 0 0 auto; }
+  .cal2 .cal-cell { min-height: 46px; padding: 4px; }   /* touch-friendly day cells */
+  .cal-event { font-size: 9.5px; }
+  .cal2-side {
+    width: 100%; flex: 0 0 auto;
+    border-left: none;
+    border-top: 7px solid #ececef;
+    padding: 14px 16px 28px;
+  }
+  .cal2-save { padding: 12px; font-size: 15px; }        /* bigger tap target */
+  .cal2-in { padding: 10px 11px; font-size: 15px; }     /* avoids iOS zoom-on-focus */
+}
+
 /* ---------- Photos ---------- */
 .photos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 4px; padding: 12px; }
 .photo-cell { aspect-ratio: 1; border-radius: 4px; }
