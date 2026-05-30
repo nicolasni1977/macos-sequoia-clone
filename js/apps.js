@@ -308,6 +308,7 @@ function calendarContent() {
   let y = now.getFullYear(), m = now.getMonth();
   const todayKey = ymd(now);
   let selKey = todayKey;
+  let editIdx = null;   // index (in events[selKey]) of the event being edited, or null
 
   // Per-day events, persisted across reloads: { 'YYYY-MM-DD': [{title,location,start,end}] }
   const LS = 'cal:events';
@@ -343,7 +344,7 @@ function calendarContent() {
       <div class="cal2-nav"><span data-nav="prev">‹</span><span data-nav="today">Today</span><span data-nav="next">›</span></div>`;
     head.querySelector('[data-nav="prev"]').addEventListener('click', () => { m--; if (m < 0) { m = 11; y--; } renderGrid(); });
     head.querySelector('[data-nav="next"]').addEventListener('click', () => { m++; if (m > 11) { m = 0; y++; } renderGrid(); });
-    head.querySelector('[data-nav="today"]').addEventListener('click', () => { y = now.getFullYear(); m = now.getMonth(); selKey = todayKey; renderGrid(); renderSide(); });
+    head.querySelector('[data-nav="today"]').addEventListener('click', () => { y = now.getFullYear(); m = now.getMonth(); selKey = todayKey; editIdx = null; renderGrid(); renderSide(); });
 
     grid.innerHTML = '';
     ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach((d) => grid.append(setHTML('cal-dow', d)));
@@ -367,7 +368,7 @@ function calendarContent() {
         });
         if (evs.length > 3) { const more = el('cal-more'); more.textContent = `+${evs.length - 3} more`; cell.append(more); }
         cell.style.cursor = 'pointer';
-        cell.addEventListener('click', () => { selKey = key; renderGrid(); renderSide(); });
+        cell.addEventListener('click', () => { selKey = key; editIdx = null; renderGrid(); renderSide(); });
       }
       grid.append(cell);
     }
@@ -384,46 +385,59 @@ function calendarContent() {
     } else {
       evs.forEach((ev) => {
         const realIdx = events[selKey].indexOf(ev);
-        const item = el('cal2-ev');
+        const item = el('cal2-ev' + (realIdx === editIdx ? ' editing' : ''));
         item.innerHTML = `
           <div class="cal2-ev-title">${esc(ev.title)}</div>
           <div class="cal2-ev-meta">🕐 ${fmt12(ev.start)} – ${fmt12(ev.end)} · ${durText(ev.start, ev.end)}</div>
           ${ev.location ? `<div class="cal2-ev-meta">📍 ${esc(ev.location)}</div>` : ''}
           <button class="cal2-ev-del" title="Delete event">×</button>`;
-        item.querySelector('.cal2-ev-del').addEventListener('click', () => {
+        item.querySelector('.cal2-ev-del').addEventListener('click', (e) => {
+          e.stopPropagation();
           events[selKey].splice(realIdx, 1);
           if (!events[selKey].length) delete events[selKey];
+          if (editIdx === realIdx) editIdx = null; else if (editIdx > realIdx) editIdx--;
           save(); renderGrid(); renderSide();
         });
+        // Tap the event to load it into the form and edit it.
+        item.addEventListener('click', () => { editIdx = realIdx; renderSide(); });
         list.append(item);
       });
     }
     side.append(list);
 
+    const editing = editIdx !== null && events[selKey] && events[selKey][editIdx];
+    const ev0 = editing ? events[selKey][editIdx] : null;
     const form = el('cal2-form');
     form.innerHTML = `
-      <div class="cal2-form-title">New Event</div>
-      <input class="cal2-in" data-f="title" placeholder="Task / title" maxlength="60" />
-      <input class="cal2-in" data-f="location" placeholder="Location" maxlength="60" />
+      <div class="cal2-form-title">${editing ? 'Edit Event' : 'New Event'}</div>
+      <input class="cal2-in" data-f="title" placeholder="Task / title" maxlength="60" value="${editing ? esc(ev0.title) : ''}" />
+      <input class="cal2-in" data-f="location" placeholder="Location" maxlength="60" value="${editing ? esc(ev0.location || '') : ''}" />
       <div class="cal2-row">
-        <label>Start<input class="cal2-in" type="time" data-f="start" value="09:00" /></label>
-        <label>End<input class="cal2-in" type="time" data-f="end" value="10:00" /></label>
+        <label>Start<input class="cal2-in" type="time" data-f="start" value="${editing ? (ev0.start || '09:00') : '09:00'}" /></label>
+        <label>End<input class="cal2-in" type="time" data-f="end" value="${editing ? (ev0.end || '10:00') : '10:00'}" /></label>
       </div>
-      <div class="cal2-dur">Duration: <span data-dur>1h</span></div>
-      <button class="cal2-save">Add Event</button>`;
+      <div class="cal2-dur">Duration: <span data-dur>${editing ? durText(ev0.start, ev0.end) : '1h'}</span></div>
+      <div class="cal2-form-actions">
+        <button class="cal2-save">${editing ? 'Save Changes' : 'Add Event'}</button>
+        ${editing ? '<button class="cal2-cancel">Cancel</button>' : ''}
+      </div>`;
     const getv = (f) => form.querySelector(`[data-f="${f}"]`).value;
     const updateDur = () => { form.querySelector('[data-dur]').textContent = durText(getv('start'), getv('end')); };
     form.querySelector('[data-f="start"]').addEventListener('input', updateDur);
     form.querySelector('[data-f="end"]').addEventListener('input', updateDur);
-    const addEvent = () => {
+    const saveEvent = () => {
       const title = getv('title').trim();
       if (!title) { form.querySelector('[data-f="title"]').focus(); return; }
-      (events[selKey] = events[selKey] || []).push({ title, location: getv('location').trim(), start: getv('start'), end: getv('end') });
+      const data = { title, location: getv('location').trim(), start: getv('start'), end: getv('end') };
+      if (editing) { events[selKey][editIdx] = data; editIdx = null; }
+      else { (events[selKey] = events[selKey] || []).push(data); }
       save(); renderGrid(); renderSide();
     };
-    form.querySelector('.cal2-save').addEventListener('click', addEvent);
-    form.querySelector('[data-f="title"]').addEventListener('keydown', (e) => { if (e.key === 'Enter') addEvent(); });
+    form.querySelector('.cal2-save').addEventListener('click', saveEvent);
+    form.querySelector('[data-f="title"]').addEventListener('keydown', (e) => { if (e.key === 'Enter') saveEvent(); });
+    if (editing) form.querySelector('.cal2-cancel').addEventListener('click', () => { editIdx = null; renderSide(); });
     side.append(form);
+    if (editing) { const t = form.querySelector('[data-f="title"]'); t.focus(); t.setSelectionRange(t.value.length, t.value.length); }
   }
 
   renderGrid();

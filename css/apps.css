@@ -256,7 +256,9 @@
 .cal2-side-head { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
 .cal2-events { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
 .cal2-empty { font-size: 13px; color: #999; padding: 8px 0; }
-.cal2-ev { position: relative; background: #fff; border: 0.5px solid rgba(0,0,0,0.1); border-left: 3px solid #0a84ff; border-radius: 8px; padding: 9px 30px 9px 11px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.cal2-ev { position: relative; background: #fff; border: 0.5px solid rgba(0,0,0,0.1); border-left: 3px solid #0a84ff; border-radius: 8px; padding: 9px 30px 9px 11px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); cursor: pointer; transition: background 0.12s, box-shadow 0.12s; }
+.cal2-ev:hover { background: #f4f8ff; }
+.cal2-ev.editing { background: #eaf3ff; box-shadow: 0 0 0 2px rgba(10,132,255,0.5); }
 .cal2-ev-title { font-size: 13.5px; font-weight: 600; }
 .cal2-ev-meta { font-size: 11.5px; color: #666; margin-top: 3px; }
 .cal2-ev-del { position: absolute; top: 6px; right: 6px; width: 20px; height: 20px; border-radius: 50%; background: transparent; color: #b0b0b4; font-size: 17px; line-height: 1; cursor: pointer; }
@@ -270,8 +272,11 @@
 .cal2-row label { flex: 1; display: flex; flex-direction: column; gap: 3px; font-size: 11px; color: #888; }
 .cal2-dur { font-size: 12px; color: #666; }
 .cal2-dur span { font-weight: 600; color: #1c1c1e; }
-.cal2-save { padding: 8px; border-radius: 8px; background: #0a84ff; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
+.cal2-form-actions { display: flex; gap: 8px; }
+.cal2-save { flex: 1; padding: 8px; border-radius: 8px; background: #0a84ff; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
 .cal2-save:hover { background: #0a6fd6; }
+.cal2-cancel { padding: 8px 14px; border-radius: 8px; background: #e7e7ea; color: #1c1c1e; font-size: 13px; font-weight: 600; cursor: pointer; }
+.cal2-cancel:hover { background: #dcdce0; }
 
 /* Calendar — phone layout: stack the grid above the day panel and scroll. */
 @media (max-width: 640px) {
