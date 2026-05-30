@@ -1,0 +1,214 @@
+/* Contextual (right-click) menus, Apple-menu system overlays, and dialogs.
+   Uses the shared theme tokens (see APP_CONTRACT.md) so everything adapts to
+   Dark Mode automatically. */
+
+/* ============ Contextual menu ============ */
+#context-menu {
+  position: fixed;
+  z-index: 100000;
+  min-width: 200px;
+  max-width: 320px;
+  padding: 5px;
+  background: var(--menu-bg, rgba(245, 245, 247, 0.92));
+  color: var(--menu-fg, #1c1c1e);
+  border: 0.5px solid var(--menu-border, rgba(0, 0, 0, 0.12));
+  border-radius: 9px;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.28), 0 1px 2px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  font-size: 13px;
+  user-select: none;
+  animation: ctx-in 0.09s var(--ease-out, ease-out);
+}
+#context-menu.hidden { display: none; }
+
+@keyframes ctx-in {
+  from { opacity: 0; transform: scale(0.97) translateY(-2px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.context-menu .ctx-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 4px 9px;
+  border-radius: 5px;
+  cursor: default;
+  white-space: nowrap;
+}
+.context-menu .ctx-row:hover:not(.disabled) {
+  background: var(--accent, #0a84ff);
+  color: #fff;
+}
+.context-menu .ctx-row:hover:not(.disabled) .ctx-shortcut { color: rgba(255, 255, 255, 0.8); }
+.context-menu .ctx-row.disabled { opacity: 0.38; }
+.context-menu .ctx-row.danger:hover:not(.disabled) { background: #ff3b30; }
+.context-menu .ctx-shortcut {
+  color: var(--win-muted, #888);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.context-menu .ctx-sep {
+  height: 0.5px;
+  margin: 5px 8px;
+  background: var(--menu-sep, rgba(0, 0, 0, 0.12));
+}
+
+/* ============ System overlay host ============ */
+#system-layer { position: fixed; inset: 0; pointer-events: none; z-index: 99000; }
+#system-layer > * { pointer-events: auto; }
+
+/* ---- About This Mac ---- */
+.about-mac-backdrop {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0.28);
+  z-index: 99500;
+  animation: fade-in 0.15s ease-out;
+}
+.about-mac {
+  position: relative;
+  width: 360px;
+  padding: 34px 30px 26px;
+  background: var(--win-bg, #fff);
+  color: var(--win-fg, #1c1c1e);
+  border-radius: 14px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+  text-align: center;
+  animation: sheet-in 0.2s var(--ease-spring, cubic-bezier(0.2, 0.8, 0.2, 1));
+}
+.about-close {
+  position: absolute; top: 12px; left: 12px;
+  width: 18px; height: 18px; line-height: 16px;
+  border-radius: 50%; font-size: 14px;
+  background: var(--control-bg, rgba(0, 0, 0, 0.08));
+  color: var(--win-muted, #888);
+  cursor: default;
+}
+.about-close:hover { background: #ff5f57; color: #6a0b06; }
+.about-logo {
+  width: 66px; height: 66px; margin: 0 auto 14px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #f6f6f8 0%, #c4c8d1 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px;
+}
+.about-logo::before { content: '🍎'; }
+.about-os { font-size: 22px; font-weight: 700; }
+.about-ver { font-size: 12.5px; color: var(--win-muted, #888); margin-bottom: 16px; }
+.about-specs {
+  text-align: left;
+  border-top: 0.5px solid var(--win-border, rgba(0, 0, 0, 0.1));
+  padding-top: 10px;
+}
+.about-row {
+  display: flex; justify-content: space-between; gap: 14px;
+  font-size: 12.5px; padding: 3px 0;
+}
+.about-row span:first-child { color: var(--win-muted, #888); }
+.about-actions { margin-top: 18px; }
+.about-btn {
+  padding: 5px 16px; border-radius: 7px; font-size: 13px;
+  background: var(--control-bg, rgba(0, 0, 0, 0.06));
+  color: var(--win-fg, #1c1c1e);
+  border: 0.5px solid var(--win-border, rgba(0, 0, 0, 0.12));
+  cursor: default;
+}
+.about-btn:hover { background: var(--win-hover, rgba(0, 0, 0, 0.08)); }
+
+/* ---- Sleep ---- */
+.sleep-overlay {
+  position: fixed; inset: 0; z-index: 99800;
+  background: #000; opacity: 0;
+  transition: opacity 0.45s ease;
+  cursor: default;
+}
+.sleep-overlay.on { opacity: 1; }
+
+/* ---- Lock screen ---- */
+.lock-overlay {
+  position: fixed; inset: 0; z-index: 99800;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: space-between;
+  padding: 9vh 0 12vh;
+  color: #fff;
+  background: radial-gradient(120% 120% at 50% 30%, #2b3a67 0%, #11131f 70%, #050608 100%);
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.lock-overlay.on { opacity: 1; transform: none; }
+.lock-clock { text-align: center; cursor: default; }
+.lock-date { font-size: 20px; font-weight: 600; opacity: 0.92; }
+.lock-time { font-size: 92px; font-weight: 700; line-height: 1.05; letter-spacing: -2px; }
+.lock-user { text-align: center; }
+.lock-avatar {
+  width: 78px; height: 78px; margin: 0 auto 10px;
+  border-radius: 50%; font-size: 40px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+.lock-name { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+.lock-input {
+  width: 200px; padding: 7px 14px;
+  border-radius: 16px; text-align: center; font-size: 13px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+}
+.lock-input::placeholder { color: rgba(255, 255, 255, 0.6); }
+.lock-hint { font-size: 11.5px; opacity: 0.6; margin-top: 9px; }
+
+/* ---- Restart / Shut Down confirm + reboot ---- */
+.sys-confirm-backdrop {
+  position: fixed; inset: 0; z-index: 99700;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0.32);
+  animation: fade-in 0.15s ease-out;
+}
+.sys-confirm {
+  width: 280px; padding: 22px 22px 16px;
+  text-align: center;
+  background: var(--menu-bg, rgba(245, 245, 247, 0.96));
+  color: var(--win-fg, #1c1c1e);
+  border-radius: 13px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  animation: sheet-in 0.18s var(--ease-spring, cubic-bezier(0.2, 0.8, 0.2, 1));
+}
+.sys-confirm-logo {
+  width: 52px; height: 52px; margin: 0 auto 12px; font-size: 40px;
+  display: flex; align-items: center; justify-content: center;
+}
+.sys-confirm-logo::before { content: '🍎'; }
+.sys-confirm-msg { font-size: 13px; line-height: 1.4; margin-bottom: 16px; }
+.sys-confirm-actions { display: flex; flex-direction: column; gap: 8px; }
+.sys-btn {
+  padding: 7px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  background: var(--control-bg, rgba(0, 0, 0, 0.08));
+  color: var(--win-fg, #1c1c1e);
+  border: 0.5px solid var(--win-border, rgba(0, 0, 0, 0.14));
+  cursor: default;
+}
+.sys-btn:hover { filter: brightness(0.97); }
+.sys-btn.primary { background: var(--accent, #0a84ff); color: #fff; border-color: transparent; }
+
+.reboot-screen {
+  position: fixed; inset: 0; z-index: 99900;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 26px;
+  background: #000; color: #fff;
+  animation: fade-in 0.3s ease;
+}
+.reboot-label { font-size: 13px; opacity: 0.7; letter-spacing: 0.3px; }
+.reboot-power { font-size: 60px; opacity: 0.85; }
+.reboot-screen.powered-off { cursor: default; }
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sheet-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: none; }
+}

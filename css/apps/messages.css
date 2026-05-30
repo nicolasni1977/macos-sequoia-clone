@@ -1,0 +1,381 @@
+/* =========================================================
+   Messages app — css/apps/messages.css
+   All selectors scoped under .app-messages to prevent leaks.
+   Adapts to light/dark via CSS custom properties from reset.css.
+   ========================================================= */
+
+/* ── Root layout ──────────────────────────────────────────────────────────── */
+.app-messages .msg-root {
+  display: flex;
+  height: 100%;
+  background: var(--win-bg);
+  color: var(--win-fg);
+  font-family: var(--font-system);
+  overflow: hidden;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+.app-messages .msg-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  flex: 0 0 240px;
+  background: var(--sidebar-bg);
+  border-right: 0.5px solid var(--sidebar-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+}
+
+/* Search bar */
+.app-messages .msg-search-wrap {
+  padding: 10px 10px 8px;
+  flex: 0 0 auto;
+  border-bottom: 0.5px solid var(--sidebar-border);
+}
+
+.app-messages .msg-search-input {
+  width: 100%;
+  background: var(--control-bg);
+  border-radius: 8px;
+  padding: 5px 11px;
+  font-size: 13px;
+  color: var(--win-fg);
+  border: none;
+  outline: none;
+  transition: box-shadow 0.15s;
+}
+
+.app-messages .msg-search-input::placeholder {
+  color: var(--win-muted);
+}
+
+.app-messages .msg-search-input:focus {
+  box-shadow: 0 0 0 2.5px rgba(10, 132, 255, 0.35);
+}
+
+/* Conversation list */
+.app-messages .msg-conv-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.app-messages .msg-conv-empty {
+  padding: 22px 16px;
+  font-size: 13px;
+  color: var(--win-muted);
+  text-align: center;
+}
+
+.app-messages .msg-conv-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 1px 6px;
+  cursor: default;
+  transition: background 0.1s;
+  min-width: 0;
+}
+
+.app-messages .msg-conv-row:hover {
+  background: var(--win-hover);
+}
+
+.app-messages .msg-conv-row.active {
+  background: var(--accent);
+}
+
+.app-messages .msg-conv-row.active .msg-conv-name,
+.app-messages .msg-conv-row.active .msg-conv-preview,
+.app-messages .msg-conv-row.active .msg-conv-time {
+  color: #fff;
+}
+
+/* Avatar circle */
+.app-messages .msg-conv-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #30d158);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Body */
+.app-messages .msg-conv-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.app-messages .msg-conv-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.app-messages .msg-conv-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--win-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-messages .msg-conv-time {
+  font-size: 11px;
+  color: var(--win-muted);
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.app-messages .msg-conv-preview {
+  font-size: 12px;
+  color: var(--win-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Chat pane ───────────────────────────────────────────────────────────── */
+.app-messages .msg-chat-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--win-bg);
+}
+
+/* Header */
+.app-messages .msg-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 0.5px solid var(--win-border);
+  background: var(--sidebar-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  flex: 0 0 auto;
+}
+
+.app-messages .msg-header-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #30d158);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex: 0 0 34px;
+}
+
+.app-messages .msg-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.app-messages .msg-header-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--win-fg);
+  line-height: 1.2;
+}
+
+.app-messages .msg-header-status {
+  font-size: 11px;
+  color: var(--win-muted);
+}
+
+/* Thread */
+.app-messages .msg-thread {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Empty state */
+.app-messages .msg-thread-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--win-muted);
+  font-size: 14px;
+  margin: auto;
+}
+
+.app-messages .msg-thread-empty-glyph {
+  font-size: 48px;
+  line-height: 1;
+}
+
+/* Date separator */
+.app-messages .msg-date-sep {
+  text-align: center;
+  font-size: 11px;
+  color: var(--win-muted);
+  margin: 10px 0 4px;
+  font-weight: 500;
+}
+
+/* Bubble wrapper */
+.app-messages .msg-bubble-wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 72%;
+  gap: 2px;
+}
+
+.app-messages .msg-bubble-wrap.sent {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.app-messages .msg-bubble-wrap.received {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+/* Bubbles */
+.app-messages .msg-bubble {
+  padding: 8px 13px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.app-messages .msg-bubble-wrap.sent .msg-bubble {
+  background: linear-gradient(180deg, #25c3ff, #0a84ff);
+  color: #fff;
+  border-bottom-right-radius: 5px;
+}
+
+.app-messages .msg-bubble-wrap.received .msg-bubble {
+  background: var(--control-bg);
+  color: var(--win-fg);
+  border-bottom-left-radius: 5px;
+}
+
+/* Bubble timestamp */
+.app-messages .msg-bubble-time {
+  font-size: 10.5px;
+  color: var(--win-muted);
+  padding: 0 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.app-messages .msg-bubble-wrap:hover .msg-bubble-time {
+  opacity: 1;
+}
+
+/* ── Composer ─────────────────────────────────────────────────────────────── */
+.app-messages .msg-composer-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px 10px;
+  border-top: 0.5px solid var(--win-border);
+  background: var(--sidebar-bg);
+  flex: 0 0 auto;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.app-messages .msg-composer-input {
+  flex: 1;
+  background: var(--field-bg);
+  border: 0.5px solid var(--win-border);
+  border-radius: 18px;
+  padding: 7px 14px;
+  font-size: 14px;
+  color: var(--win-fg);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.app-messages .msg-composer-input::placeholder {
+  color: var(--win-muted);
+}
+
+.app-messages .msg-composer-input:focus {
+  border-color: rgba(10, 132, 255, 0.5);
+  box-shadow: 0 0 0 2.5px rgba(10, 132, 255, 0.18);
+}
+
+/* Send button */
+.app-messages .msg-send-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 30px;
+  background: var(--control-bg);
+  color: var(--win-muted);
+  border: none;
+  cursor: default;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+  font-size: 16px;
+}
+
+.app-messages .msg-send-btn.active {
+  background: var(--accent);
+  color: #fff;
+  cursor: default;
+}
+
+.app-messages .msg-send-btn.active:hover {
+  background: var(--accent-light);
+}
+
+.app-messages .msg-send-btn.active:active {
+  transform: scale(0.92);
+}
+
+.app-messages .msg-send-arrow {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────────────────────── */
+.app-messages .msg-conv-list::-webkit-scrollbar,
+.app-messages .msg-thread::-webkit-scrollbar {
+  width: 5px;
+}
+
+.app-messages .msg-conv-list::-webkit-scrollbar-thumb,
+.app-messages .msg-thread::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+/* ── Dark mode tweaks ─────────────────────────────────────────────────────── */
+/* Received bubble adapts automatically via --control-bg.
+   Sent bubble uses a fixed blue gradient (intentional, same as macOS). */
+
+html.dark .app-messages .msg-conv-row.active {
+  background: var(--accent);
+}

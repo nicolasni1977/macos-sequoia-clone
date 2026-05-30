@@ -1,0 +1,1122 @@
+/* =========================================================
+   Shortcuts app — all selectors scoped under .app-shortcuts
+   Uses CSS custom properties from reset.css for dark-mode
+   ========================================================= */
+
+/* ─── Root layout ─── */
+.app-shortcuts .sc-root {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  background: var(--win-bg);
+  color: var(--win-fg);
+  position: relative;
+}
+
+/* ─── Sidebar ─── */
+.app-shortcuts .sc-sidebar {
+  width: 200px;
+  flex: 0 0 200px;
+  background: var(--sidebar-bg);
+  border-right: 0.5px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  padding: 14px 8px 12px;
+  overflow-y: auto;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.app-shortcuts .sc-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--win-fg);
+  letter-spacing: -0.2px;
+}
+
+.app-shortcuts .sc-sidebar-logo {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.app-shortcuts .sc-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 10px;
+  border-radius: 7px;
+  font-size: 13px;
+  color: var(--sidebar-fg);
+  cursor: default;
+  transition: background 0.12s var(--ease-out);
+}
+
+.app-shortcuts .sc-nav-item:hover {
+  background: var(--win-hover);
+}
+
+.app-shortcuts .sc-nav-item.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.app-shortcuts .sc-nav-glyph {
+  width: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.app-shortcuts .sc-sidebar-divider {
+  height: 0.5px;
+  background: var(--sidebar-border);
+  margin: 10px 8px;
+}
+
+.app-shortcuts .sc-new-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 6px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  justify-content: center;
+  transition: filter 0.12s ease;
+}
+
+.app-shortcuts .sc-new-btn:hover {
+  filter: brightness(1.1);
+}
+
+.app-shortcuts .sc-plus {
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 300;
+}
+
+/* ─── Main area ─── */
+.app-shortcuts .sc-main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--win-bg);
+  padding: 0 0 20px;
+  min-width: 0;
+  position: relative;
+}
+
+.app-shortcuts .sc-content-header {
+  padding: 22px 24px 12px;
+  border-bottom: 0.5px solid var(--win-border);
+  margin-bottom: 16px;
+}
+
+.app-shortcuts .sc-content-header h1 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--win-fg);
+  margin-bottom: 4px;
+  letter-spacing: -0.4px;
+}
+
+.app-shortcuts .sc-content-header p {
+  font-size: 13px;
+  color: var(--win-muted);
+}
+
+/* ─── Category chips ─── */
+.app-shortcuts .sc-chips {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px 16px;
+  flex-wrap: wrap;
+}
+
+.app-shortcuts .sc-chip {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 500;
+  background: var(--control-bg);
+  color: var(--win-fg);
+  border: 0.5px solid var(--win-border);
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.app-shortcuts .sc-chip:hover {
+  background: var(--win-hover);
+}
+
+.app-shortcuts .sc-chip.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ─── Gallery grid ─── */
+.app-shortcuts .sc-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  padding: 0 24px;
+}
+
+.app-shortcuts .sc-gallery-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
+  cursor: default;
+  transition: transform 0.12s var(--ease-out), box-shadow 0.12s ease;
+  position: relative;
+}
+
+.app-shortcuts .sc-gallery-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.app-shortcuts .sc-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex: 0 0 44px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.app-shortcuts .sc-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-shortcuts .sc-card-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--win-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-shortcuts .sc-card-cat {
+  font-size: 11px;
+  color: var(--win-muted);
+  margin-top: 2px;
+}
+
+.app-shortcuts .sc-card-add {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 26px;
+  transition: transform 0.1s ease, filter 0.1s ease;
+  line-height: 1;
+}
+
+.app-shortcuts .sc-card-add:hover {
+  transform: scale(1.12);
+  filter: brightness(1.1);
+}
+
+.app-shortcuts .sc-run-btn-sm {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+  transition: transform 0.1s ease;
+}
+
+.app-shortcuts .sc-run-btn-sm:hover {
+  transform: scale(1.1);
+}
+
+/* ─── My Shortcuts grid ─── */
+.app-shortcuts .sc-mine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.app-shortcuts .sc-mine-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px 14px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
+  cursor: default;
+  text-align: center;
+  position: relative;
+  transition: transform 0.12s var(--ease-out), box-shadow 0.12s ease;
+}
+
+.app-shortcuts .sc-mine-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+
+.app-shortcuts .sc-mine-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+  margin-bottom: 2px;
+}
+
+.app-shortcuts .sc-mine-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--win-fg);
+  line-height: 1.3;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-shortcuts .sc-mine-steps {
+  font-size: 11px;
+  color: var(--win-muted);
+}
+
+.app-shortcuts .sc-mine-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.app-shortcuts .sc-run-btn {
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  transition: filter 0.1s ease;
+}
+
+.app-shortcuts .sc-run-btn:hover {
+  filter: brightness(1.12);
+}
+
+.app-shortcuts .sc-del-btn {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--control-bg);
+  color: var(--win-muted);
+  font-size: 11px;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.app-shortcuts .sc-del-btn:hover {
+  background: #ff3b30;
+  color: #fff;
+}
+
+/* ─── Empty states ─── */
+.app-shortcuts .sc-empty {
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--win-muted);
+  font-size: 13px;
+}
+
+.app-shortcuts .sc-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.app-shortcuts .sc-empty-glyph {
+  font-size: 56px;
+  opacity: 0.35;
+}
+
+.app-shortcuts .sc-empty-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--win-fg);
+}
+
+.app-shortcuts .sc-empty-sub {
+  font-size: 13px;
+  color: var(--win-muted);
+  max-width: 280px;
+}
+
+.app-shortcuts .sc-empty-btn {
+  margin-top: 6px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: filter 0.12s ease;
+}
+
+.app-shortcuts .sc-empty-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* ─── Runner overlay ─── */
+.app-shortcuts .sc-runner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: sc-fade-in 0.18s ease;
+}
+
+.app-shortcuts .sc-runner {
+  background: var(--win-bg);
+  border-radius: 16px;
+  width: 380px;
+  max-height: 70%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-active);
+  overflow: hidden;
+  animation: sc-slide-up 0.22s var(--ease-out);
+}
+
+.app-shortcuts .sc-runner-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 22px 14px;
+  border-bottom: 0.5px solid var(--win-border);
+}
+
+.app-shortcuts .sc-runner-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex: 0 0 48px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+}
+
+.app-shortcuts .sc-runner-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--win-fg);
+}
+
+.app-shortcuts .sc-runner-steps {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 80px;
+}
+
+.app-shortcuts .sc-runner-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-radius: 9px;
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
+  font-size: 13px;
+  color: var(--win-fg);
+  animation: sc-step-in 0.2s var(--ease-out);
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.app-shortcuts .sc-runner-step.done {
+  opacity: 1;
+}
+
+.app-shortcuts .sc-step-spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  border-top-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex: 0 0 18px;
+  animation: sc-spin 0.7s linear infinite;
+  color: var(--accent);
+}
+
+.app-shortcuts .sc-runner-step.done .sc-step-spinner {
+  animation: none;
+  border: none;
+  background: #34c759;
+  color: #fff;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.app-shortcuts .sc-step-label {
+  flex: 1;
+}
+
+.app-shortcuts .sc-runner-progress {
+  height: 4px;
+  background: var(--win-border);
+  margin: 0 22px;
+}
+
+.app-shortcuts .sc-runner-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.35s var(--ease-out);
+}
+
+.app-shortcuts .sc-runner-close {
+  margin: 14px 22px 18px;
+  padding: 9px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: filter 0.1s ease;
+}
+
+.app-shortcuts .sc-runner-close:hover {
+  filter: brightness(1.1);
+}
+
+/* ─── Preview panel ─── */
+.app-shortcuts .sc-preview-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background: var(--win-bg);
+  border-left: 0.5px solid var(--win-border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 18px;
+  overflow-y: auto;
+  box-shadow: -4px 0 18px rgba(0, 0, 0, 0.10);
+  transform: translateX(100%);
+  transition: transform 0.24s var(--ease-out);
+  z-index: 50;
+}
+
+.app-shortcuts .sc-preview-panel.open {
+  transform: translateX(0);
+}
+
+.app-shortcuts .sc-preview-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.app-shortcuts .sc-preview-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex: 0 0 52px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.app-shortcuts .sc-preview-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-shortcuts .sc-preview-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--win-fg);
+  margin-bottom: 3px;
+  word-break: break-word;
+}
+
+.app-shortcuts .sc-preview-cat {
+  font-size: 12px;
+  color: var(--win-muted);
+}
+
+.app-shortcuts .sc-preview-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--control-bg);
+  color: var(--win-muted);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  line-height: 1;
+}
+
+.app-shortcuts .sc-preview-close:hover {
+  background: var(--win-hover);
+  color: var(--win-fg);
+}
+
+.app-shortcuts .sc-preview-steps-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--win-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
+}
+
+.app-shortcuts .sc-preview-steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.app-shortcuts .sc-preview-steps-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
+  font-size: 13px;
+  color: var(--win-fg);
+}
+
+.app-shortcuts .sc-step-num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
+}
+
+.app-shortcuts .sc-preview-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.app-shortcuts .sc-preview-run {
+  padding: 9px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: center;
+  transition: filter 0.12s ease;
+}
+
+.app-shortcuts .sc-preview-run:hover {
+  filter: brightness(1.1);
+}
+
+.app-shortcuts .sc-preview-addmine {
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--control-bg);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  border: 0.5px solid var(--win-border);
+  transition: background 0.12s ease;
+}
+
+.app-shortcuts .sc-preview-addmine:hover {
+  background: var(--win-hover);
+}
+
+/* ─── Builder modal overlay ─── */
+.app-shortcuts .sc-builder-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: sc-fade-in 0.16s ease;
+}
+
+.app-shortcuts .sc-builder {
+  background: var(--win-bg);
+  border-radius: 16px;
+  width: min(660px, 94%);
+  max-height: 86%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-active);
+  overflow: hidden;
+  animation: sc-slide-up 0.22s var(--ease-out);
+}
+
+.app-shortcuts .sc-builder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 0.5px solid var(--win-border);
+}
+
+.app-shortcuts .sc-builder-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--win-fg);
+}
+
+.app-shortcuts .sc-builder-close {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--control-bg);
+  color: var(--win-muted);
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-shortcuts .sc-builder-close:hover {
+  background: var(--win-hover);
+  color: var(--win-fg);
+}
+
+.app-shortcuts .sc-builder-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── Action palette ─── */
+.app-shortcuts .sc-palette {
+  width: 180px;
+  flex: 0 0 180px;
+  background: var(--sidebar-bg);
+  border-right: 0.5px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-shortcuts .sc-palette-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--win-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 12px 14px 8px;
+}
+
+.app-shortcuts .sc-palette-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-shortcuts .sc-palette-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: var(--sidebar-fg);
+  width: 100%;
+  text-align: left;
+  cursor: grab;
+  transition: background 0.1s ease;
+  user-select: none;
+}
+
+.app-shortcuts .sc-palette-item:hover {
+  background: var(--win-hover);
+}
+
+.app-shortcuts .sc-palette-item:active {
+  cursor: grabbing;
+}
+
+.app-shortcuts .sc-pal-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex: 0 0 26px;
+}
+
+.app-shortcuts .sc-pal-label {
+  flex: 1;
+  font-size: 12px;
+}
+
+.app-shortcuts .sc-pal-add {
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.app-shortcuts .sc-palette-item:hover .sc-pal-add {
+  opacity: 1;
+}
+
+/* ─── Editor pane ─── */
+.app-shortcuts .sc-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 16px 18px;
+}
+
+.app-shortcuts .sc-editor-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.app-shortcuts .sc-field-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--win-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.app-shortcuts .sc-name-input {
+  background: var(--field-bg);
+  border: 0.5px solid var(--win-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--win-fg);
+  width: 100%;
+  font-family: var(--font-system);
+  user-select: text;
+  cursor: text;
+}
+
+.app-shortcuts .sc-name-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.18);
+}
+
+.app-shortcuts .sc-icon-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.app-shortcuts .sc-glyph-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--control-bg);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s ease, transform 0.1s ease;
+  border: 1.5px solid transparent;
+}
+
+.app-shortcuts .sc-glyph-btn:hover {
+  background: var(--win-hover);
+  transform: scale(1.08);
+}
+
+.app-shortcuts .sc-glyph-btn.active {
+  border-color: var(--accent);
+  background: rgba(10, 132, 255, 0.1);
+}
+
+.app-shortcuts .sc-color-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.app-shortcuts .sc-color-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
+  transition: transform 0.1s ease, border-color 0.1s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.app-shortcuts .sc-color-btn:hover {
+  transform: scale(1.15);
+}
+
+.app-shortcuts .sc-color-btn.active {
+  border-color: var(--win-fg);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
+.app-shortcuts .sc-editor-steps-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--win-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-shortcuts .sc-steps-count {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.app-shortcuts .sc-editor-steps {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px dashed var(--win-border);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 100px;
+  background: var(--field-bg);
+  transition: border-color 0.15s ease;
+}
+
+.app-shortcuts .sc-editor-steps:focus-within,
+.app-shortcuts .sc-editor-steps.drag-over {
+  border-color: var(--accent);
+  border-style: solid;
+}
+
+.app-shortcuts .sc-steps-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 60px;
+  font-size: 12.5px;
+  color: var(--win-muted);
+  text-align: center;
+  pointer-events: none;
+}
+
+.app-shortcuts .sc-step-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
+  font-size: 12.5px;
+  color: var(--win-fg);
+  cursor: grab;
+  transition: background 0.1s ease, transform 0.1s ease;
+  user-select: none;
+}
+
+.app-shortcuts .sc-step-row:hover {
+  background: var(--win-hover);
+}
+
+.app-shortcuts .sc-step-row:active {
+  cursor: grabbing;
+}
+
+.app-shortcuts .sc-step-row.dragging {
+  opacity: 0.4;
+}
+
+.app-shortcuts .sc-step-row.drag-over {
+  border-color: var(--accent);
+  background: rgba(10, 132, 255, 0.08);
+  transform: scale(1.01);
+}
+
+.app-shortcuts .sc-step-drag {
+  color: var(--win-muted);
+  font-size: 14px;
+  cursor: grab;
+  flex: 0 0 auto;
+}
+
+.app-shortcuts .sc-step-num-badge {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 18px;
+}
+
+.app-shortcuts .sc-step-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-shortcuts .sc-step-remove {
+  color: var(--win-muted);
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 2px;
+  border-radius: 4px;
+  transition: color 0.1s ease, background 0.1s ease;
+  flex: 0 0 auto;
+}
+
+.app-shortcuts .sc-step-remove:hover {
+  color: #ff3b30;
+  background: rgba(255, 59, 48, 0.1);
+}
+
+/* ─── Builder footer ─── */
+.app-shortcuts .sc-builder-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 18px;
+  border-top: 0.5px solid var(--win-border);
+  background: var(--win-bg);
+}
+
+.app-shortcuts .sc-builder-cancel {
+  padding: 7px 16px;
+  border-radius: 8px;
+  background: var(--control-bg);
+  color: var(--win-fg);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.app-shortcuts .sc-builder-cancel:hover {
+  background: var(--win-hover);
+}
+
+.app-shortcuts .sc-builder-save {
+  padding: 7px 18px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: filter 0.12s ease;
+}
+
+.app-shortcuts .sc-builder-save:hover {
+  filter: brightness(1.1);
+}
+
+/* ─── Keyframe animations ─── */
+@keyframes sc-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes sc-slide-up {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+@keyframes sc-step-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 0.6; transform: translateX(0); }
+}
+
+@keyframes sc-spin {
+  to { transform: rotate(360deg); }
+}

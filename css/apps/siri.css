@@ -1,0 +1,494 @@
+/* ============================================================
+   Siri App — css/apps/siri.css
+   All selectors scoped under .app-siri (auto-added to window body).
+   Uses shell CSS custom properties for light/dark mode.
+   ============================================================ */
+
+/* ── Root layout ──────────────────────────────────────────── */
+.app-siri {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--win-bg);
+  color: var(--win-fg);
+  overflow: hidden;
+  font-family: var(--font-system, system-ui, sans-serif);
+}
+
+.app-siri .siri-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Header / orb area ────────────────────────────────────── */
+.app-siri .siri-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 10px;
+  gap: 10px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 8%, var(--win-bg) 92%) 0%,
+    var(--win-bg) 100%
+  );
+}
+
+/* ── Siri Orb ─────────────────────────────────────────────── */
+.app-siri .siri-orb {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.app-siri .siri-orb-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Core circle */
+.app-siri .siri-orb-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #0a84ff 0%,
+    #af52de 25%,
+    #ff2d55 50%,
+    #ff9500 75%,
+    #0a84ff 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(10, 132, 255, 0.45);
+  transition: box-shadow 0.3s var(--ease-out, ease);
+  animation: siri-orb-spin 8s linear infinite;
+}
+
+@keyframes siri-orb-spin {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
+}
+
+.app-siri .siri-orb-glyph {
+  font-size: 32px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+  animation: siri-glyph-pulse 3s ease-in-out infinite;
+}
+
+@keyframes siri-glyph-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.1); }
+}
+
+/* Ripple rings — hidden by default, shown when listening */
+.app-siri .siri-orb-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.app-siri .siri-orb.is-listening .siri-orb-ring--1 {
+  border-color: rgba(10, 132, 255, 0.55);
+  animation: siri-ring-out 1.4s ease-out infinite;
+}
+.app-siri .siri-orb.is-listening .siri-orb-ring--2 {
+  border-color: rgba(175, 82, 222, 0.45);
+  animation: siri-ring-out 1.4s ease-out 0.3s infinite;
+}
+.app-siri .siri-orb.is-listening .siri-orb-ring--3 {
+  border-color: rgba(255, 45, 85, 0.35);
+  animation: siri-ring-out 1.4s ease-out 0.6s infinite;
+}
+
+@keyframes siri-ring-out {
+  0%   { transform: scale(1);    opacity: 0.9; }
+  100% { transform: scale(2.1);  opacity: 0; }
+}
+
+/* Orb pulses its glow when listening */
+.app-siri .siri-orb.is-listening .siri-orb-core {
+  box-shadow:
+    0 4px 24px rgba(10, 132, 255, 0.6),
+    0 0 48px rgba(175, 82, 222, 0.35);
+  animation: siri-orb-spin 8s linear infinite, siri-core-pulse 1s ease-in-out infinite;
+}
+
+@keyframes siri-core-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+/* ── Status text ──────────────────────────────────────────── */
+.app-siri .siri-status {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--win-muted);
+  letter-spacing: 0.01em;
+  min-height: 18px;
+  transition: color 0.2s;
+}
+
+/* ── History / response area ──────────────────────────────── */
+.app-siri .siri-history {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+
+.app-siri .siri-history-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* User bubble */
+.app-siri .siri-bubble--user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 18px 18px 4px 18px;
+  font-size: 13.5px;
+  max-width: 80%;
+  word-break: break-word;
+  box-shadow: 0 2px 8px rgba(10,132,255,0.25);
+}
+
+.app-siri .siri-bubble-wrap {
+  align-self: flex-start;
+  width: 100%;
+}
+
+/* ── Response cards ───────────────────────────────────────── */
+.app-siri .siri-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  animation: siri-card-in 0.28s var(--ease-out, ease) both;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+
+@keyframes siri-card-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.app-siri .siri-card-icon {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.app-siri .siri-card-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.app-siri .siri-card-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--win-fg);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.app-siri .siri-card-label {
+  font-size: 12px;
+  color: var(--win-muted);
+  font-weight: 500;
+}
+
+.app-siri .siri-card-text {
+  font-size: 13.5px;
+  color: var(--win-fg);
+  line-height: 1.5;
+}
+
+.app-siri .siri-card-text em {
+  font-style: italic;
+  color: var(--win-muted);
+}
+
+/* ── Time card accent ─────────────────────────────────────── */
+.app-siri .siri-card--time .siri-card-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Weather card ─────────────────────────────────────────── */
+.app-siri .siri-card--weather {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.app-siri .siri-weather-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-siri .siri-weather-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-siri .siri-weather-glyph {
+  font-size: 44px;
+  line-height: 1;
+}
+
+.app-siri .siri-weather-city {
+  font-size: 12px;
+  color: var(--win-muted);
+  font-weight: 500;
+}
+
+.app-siri .siri-weather-temp {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--win-fg);
+  line-height: 1;
+}
+
+.app-siri .siri-weather-cond {
+  font-size: 12.5px;
+  color: var(--win-muted);
+}
+
+.app-siri .siri-weather-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+}
+
+.app-siri .siri-weather-detail {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--win-muted);
+}
+
+.app-siri .siri-weather-detail strong {
+  color: var(--win-fg);
+  font-weight: 600;
+}
+
+/* 5-day forecast strip */
+.app-siri .siri-forecast {
+  display: flex;
+  gap: 0;
+  border-top: 0.5px solid var(--win-border);
+  padding-top: 10px;
+  justify-content: space-between;
+}
+
+.app-siri .siri-forecast-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+}
+
+.app-siri .siri-forecast-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--win-muted);
+}
+
+.app-siri .siri-forecast-glyph {
+  font-size: 18px;
+}
+
+.app-siri .siri-forecast-temp {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--win-fg);
+}
+
+.app-siri .siri-forecast-lo {
+  font-size: 11px;
+  color: var(--win-muted);
+}
+
+/* ── Joke card ────────────────────────────────────────────── */
+.app-siri .siri-card--joke .siri-card-text {
+  font-size: 14px;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* ── Suggestions ──────────────────────────────────────────── */
+.app-siri .siri-suggestions-wrap {
+  flex-shrink: 0;
+  padding: 6px 16px 4px;
+}
+
+.app-siri .siri-suggestions-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--win-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.app-siri .siri-suggestions-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.app-siri .siri-suggestions-row::-webkit-scrollbar { display: none; }
+
+.app-siri .siri-suggestion-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 6px 11px;
+  background: var(--control-bg);
+  border-radius: 20px;
+  border: 0.5px solid var(--win-border);
+  font-size: 12.5px;
+  color: var(--win-fg);
+  cursor: default;
+  transition: background 0.15s, transform 0.12s var(--ease-spring, ease);
+  white-space: nowrap;
+}
+
+.app-siri .siri-suggestion-chip:hover {
+  background: var(--win-hover);
+  transform: scale(1.03);
+}
+
+.app-siri .siri-suggestion-chip:active {
+  transform: scale(0.97);
+}
+
+.app-siri .siri-chip-icon {
+  font-size: 14px;
+}
+
+.app-siri .siri-chip-label {
+  font-size: 12.5px;
+}
+
+/* ── Input bar ────────────────────────────────────────────── */
+.app-siri .siri-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px 10px;
+  border-top: 0.5px solid var(--win-border);
+  background: var(--win-bg);
+  flex-shrink: 0;
+}
+
+.app-siri .siri-input {
+  flex: 1;
+  height: 34px;
+  background: var(--field-bg);
+  border-radius: 17px;
+  border: 0.5px solid var(--win-border);
+  padding: 0 14px;
+  font-size: 13.5px;
+  color: var(--win-fg);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+
+.app-siri .siri-input::placeholder {
+  color: var(--win-muted);
+}
+
+.app-siri .siri-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.18);
+}
+
+/* Mic button */
+.app-siri .siri-mic-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--control-bg);
+  border: 0.5px solid var(--win-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.1s;
+  font-size: 15px;
+}
+
+.app-siri .siri-mic-btn:hover {
+  background: var(--win-hover);
+}
+
+.app-siri .siri-mic-btn.is-active {
+  background: rgba(255, 45, 85, 0.18);
+  border-color: #ff2d55;
+  animation: siri-mic-pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes siri-mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,45,85,0.45); }
+  50%       { box-shadow: 0 0 0 6px rgba(255,45,85,0); }
+}
+
+/* Send button */
+.app-siri .siri-send-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: default;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.app-siri .siri-send-btn:hover {
+  background: var(--accent-light);
+}
+
+.app-siri .siri-send-btn:active {
+  transform: scale(0.92);
+}
+

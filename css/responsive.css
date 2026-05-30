@@ -1,0 +1,84 @@
+/* ============================================================
+   Mobile / touch responsiveness
+   ============================================================ */
+
+/* Let titlebars & resize handles be dragged with a finger (no scroll hijack). */
+.titlebar, .resize-handle { touch-action: none; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { overscroll-behavior: none; }
+
+/* ---- Tablets ---- */
+@media (max-width: 900px) {
+  #dock { gap: 5px; padding: 5px 7px; max-width: 94vw; overflow-x: auto; overflow-y: visible; }
+  #dock::-webkit-scrollbar { display: none; }
+}
+
+/* ---- Phones ---- */
+@media (max-width: 640px) {
+  :root { --menubar-h: 30px; }
+
+  #menubar { font-size: 13px; padding: 0 6px; }
+  /* trim menus + status items that won't fit a phone width */
+  #menubar .mb-item[data-menu="view"],
+  #menubar .mb-item[data-menu="go"],
+  #menubar .mb-item[data-menu="window"],
+  #menubar .mb-item[data-menu="help"],
+  #status-battery, #status-control { display: none; }
+  .mb-item { padding: 0 7px; }
+
+  /* Windows become full-screen "apps" (override the JS inline geometry). */
+  #windows-layer .window:not(.minimizing):not(.closing) {
+    left: 0 !important;
+    top: var(--menubar-h) !important;
+    width: 100vw !important;
+    height: calc(100dvh - var(--menubar-h) - 80px) !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  .resize-handle { display: none; }
+  .titlebar { height: 44px; flex-basis: 44px; } /* bigger tap target */
+  .tl { width: 14px; height: 14px; }
+
+  /* Dock: compact, fixed size (no magnification on touch), swipeable. */
+  #dock-container { bottom: 5px; }
+  #dock {
+    height: 60px; gap: 4px; padding: 6px 8px; border-radius: 18px;
+    max-width: 98vw; overflow-x: auto; overflow-y: hidden;
+  }
+  #dock::-webkit-scrollbar { display: none; }
+  .dock-item { width: 48px !important; height: 48px !important; }
+  .dock-icon { width: 48px !important; height: 48px !important; font-size: 29px !important; border-radius: 11px !important; }
+  .dock-sep { height: 40px; }
+
+  /* Launchpad: 4 columns, finger-sized icons. */
+  #launchpad-overlay { padding-top: 54px; }
+  #launchpad-grid { grid-template-columns: repeat(4, 1fr); gap: 22px 12px; width: 92vw; }
+  .lp-icon { width: 60px; height: 60px; font-size: 34px; }
+  .lp-label { font-size: 12px; }
+  .launchpad-search { width: 78vw; }
+
+  /* Spotlight full width */
+  #spotlight-overlay { padding-top: 12vh; }
+  #spotlight { width: 94vw; }
+  #spotlight-input { font-size: 20px; }
+
+  /* Desktop icons out of the way */
+  #desktop-icons { top: calc(var(--menubar-h) + 8px); right: 8px; gap: 4px; }
+  .desktop-icon { width: 68px; font-size: 11px; }
+  .desktop-icon .di-glyph { font-size: 34px; }
+
+  /* Menu dropdowns: keep on-screen */
+  .menu-dropdown { max-width: 86vw; }
+
+  /* Control Center / notification panels shouldn't overflow */
+  #control-center, .cc-panel { max-width: 96vw; }
+}
+
+/* ---- Very small phones ---- */
+@media (max-width: 400px) {
+  #launchpad-grid { grid-template-columns: repeat(3, 1fr); }
+  .dock-item { width: 44px !important; height: 44px !important; }
+  .dock-icon { width: 44px !important; height: 44px !important; font-size: 26px !important; }
+}

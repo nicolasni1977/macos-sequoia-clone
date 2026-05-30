@@ -1,0 +1,400 @@
+/* =========================================================
+   Weather App — css/apps/weather.css
+   Every selector scoped under .app-weather.
+   Uses CSS custom properties from reset.css for dark-mode
+   adaptability (though the weather UI is always "dark"
+   because it renders on a gradient background).
+   ========================================================= */
+
+/* ── Root container ──────────────────────────────────────── */
+.app-weather {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-system);
+  color: #fff;
+  /* Background set dynamically in JS per city/condition */
+  background: linear-gradient(180deg, #3a7bd5 0%, #6ba3e0 60%, #c6daf7 100%);
+}
+
+.app-weather .w-root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  /* background also set on w-root by JS */
+  transition: background 0.6s var(--ease-out);
+}
+
+/* ── Header bar ──────────────────────────────────────────── */
+.app-weather .w-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px 8px;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.app-weather .w-header-title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  opacity: 0.92;
+}
+
+.app-weather .w-menu-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transition: background 0.15s;
+  cursor: default;
+}
+
+.app-weather .w-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── City panel (slide-in) ───────────────────────────────── */
+.app-weather .w-city-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(20, 30, 55, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.28s var(--ease-out);
+  overflow: hidden;
+}
+
+.app-weather .w-city-panel.open {
+  transform: translateX(0);
+}
+
+.app-weather .w-city-search-wrap {
+  padding: 12px 14px 10px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
+}
+
+.app-weather .w-city-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 7px 12px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: background 0.15s;
+}
+
+.app-weather .w-city-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.app-weather .w-city-input:focus {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.app-weather .w-city-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.app-weather .w-city-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  cursor: default;
+  transition: background 0.1s;
+  border-radius: 0;
+}
+
+.app-weather .w-city-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.app-weather .w-city-row.active {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.app-weather .wcr-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-weather .wcr-sub {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+.app-weather .wcr-temp {
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+  min-width: 38px;
+  text-align: right;
+}
+
+/* ── Scrollable main content ─────────────────────────────── */
+.app-weather .w-scroller {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 16px;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar inside weather */
+.app-weather .w-scroller::-webkit-scrollbar {
+  width: 5px;
+}
+.app-weather .w-scroller::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+}
+.app-weather .w-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.app-weather .w-hero {
+  padding: 28px 20px 24px;
+  text-align: center;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.app-weather .w-city-name {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.app-weather .w-city-region {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+.app-weather .w-hero-temp {
+  font-size: 80px;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: -4px;
+  margin: 6px 0 8px;
+}
+
+.app-weather .w-hero-cond {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.88;
+  margin-bottom: 4px;
+}
+
+.app-weather .w-hero-hilo {
+  font-size: 14px;
+  opacity: 0.75;
+  letter-spacing: 0.3px;
+}
+
+/* ── Section cards ───────────────────────────────────────── */
+.app-weather .w-section {
+  margin: 0 12px 12px;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.app-weather .w-section-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ── Hourly strip ────────────────────────────────────────── */
+.app-weather .w-hourly-strip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.app-weather .w-hourly-strip::-webkit-scrollbar { display: none; }
+
+.app-weather .w-hourly-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 52px;
+  padding: 6px 4px;
+  border-radius: 12px;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.app-weather .w-hourly-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-weather .whi-label {
+  font-size: 12px;
+  opacity: 0.75;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.app-weather .whi-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.app-weather .whi-temp {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ── 10-day forecast ─────────────────────────────────────── */
+.app-weather .w-forecast-list {
+  padding: 6px 0;
+}
+
+.app-weather .w-forecast-row {
+  display: grid;
+  grid-template-columns: 52px 28px 30px 1fr 30px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+}
+
+.app-weather .w-forecast-row:last-child {
+  border-bottom: none;
+}
+
+.app-weather .wf-day {
+  font-weight: 500;
+  opacity: 0.9;
+  font-size: 13.5px;
+}
+
+.app-weather .wf-icon {
+  font-size: 18px;
+  text-align: center;
+}
+
+.app-weather .wf-lo {
+  text-align: right;
+  opacity: 0.55;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.app-weather .wf-hi {
+  text-align: left;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Temperature range bar */
+.app-weather .wf-bar {
+  position: relative;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.app-weather .wf-bar-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ffe082, #ff7043);
+}
+
+/* ── Detail tiles grid ───────────────────────────────────── */
+.app-weather .w-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.app-weather .w-tile {
+  padding: 14px 16px;
+  border-right: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Remove right border on even tiles (right column) */
+.app-weather .w-tile:nth-child(even) {
+  border-right: none;
+}
+
+/* Remove bottom border on last two tiles */
+.app-weather .w-tile:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.app-weather .wt-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  opacity: 0.6;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.app-weather .wt-value {
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.app-weather .wt-sub {
+  font-size: 12px;
+  opacity: 0.65;
+  margin-top: 3px;
+}

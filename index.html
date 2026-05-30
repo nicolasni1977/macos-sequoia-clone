@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>macOS Sequoia — Web Clone</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/desktop.css" />
+  <link rel="stylesheet" href="css/window.css" />
+  <link rel="stylesheet" href="css/dock.css" />
+  <link rel="stylesheet" href="css/spotlight.css" />
+  <link rel="stylesheet" href="css/launchpad.css" />
+  <link rel="stylesheet" href="css/apps.css" />
+  <link rel="stylesheet" href="css/apps/facetime.css" />
+  <link rel="stylesheet" href="css/apps/finder.css" />
+  <link rel="stylesheet" href="css/apps/findmy.css" />
+  <link rel="stylesheet" href="css/apps/mail.css" />
+  <link rel="stylesheet" href="css/apps/maps.css" />
+  <link rel="stylesheet" href="css/apps/messages.css" />
+  <link rel="stylesheet" href="css/apps/news.css" />
+  <link rel="stylesheet" href="css/apps/photos.css" />
+  <link rel="stylesheet" href="css/apps/preview.css" />
+  <link rel="stylesheet" href="css/apps/reminders.css" />
+  <link rel="stylesheet" href="css/apps/shortcuts.css" />
+  <link rel="stylesheet" href="css/apps/siri.css" />
+  <link rel="stylesheet" href="css/apps/stocks.css" />
+  <link rel="stylesheet" href="css/apps/timemachine.css" />
+  <link rel="stylesheet" href="css/apps/voicememos.css" />
+  <link rel="stylesheet" href="css/apps/weather.css" />
+  <link rel="stylesheet" href="css/apps/grapher.css" />
+  <link rel="stylesheet" href="css/apps/home.css" />
+  <link rel="stylesheet" href="css/apps/podcasts.css" />
+  <link rel="stylesheet" href="css/apps/dictionary.css" />
+  <link rel="stylesheet" href="css/apps/diskutility.css" />
+  <link rel="stylesheet" href="css/apps/trash.css" />
+  <link rel="stylesheet" href="css/apps/chess.css" />
+  <link rel="stylesheet" href="css/apps/books.css" />
+  <link rel="stylesheet" href="css/apps/music.css" />
+  <link rel="stylesheet" href="css/menus.css" />
+  <link rel="stylesheet" href="css/spaces.css" />
+  <link rel="stylesheet" href="css/control-center.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/redesign.css" />
+</head>
+<body>
+  <!-- Boot screen -->
+  <div id="boot-screen">
+    <div class="boot-logo"></div>
+    <div class="boot-progress"><div class="boot-progress-bar"></div></div>
+  </div>
+
+  <!-- Desktop / wallpaper -->
+  <main id="desktop" aria-label="Desktop">
+    <div class="wallpaper">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
+      <span class="blob blob-4"></span>
+    </div>
+
+    <!-- Desktop icons -->
+    <div id="desktop-icons"></div>
+
+    <!-- Top menu bar -->
+    <header id="menubar">
+      <div class="menubar-left">
+        <button class="mb-item mb-apple" data-menu="apple" aria-label="Apple menu">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+            <path d="M17.05 12.04c-.02-2.06 1.68-3.05 1.76-3.1-0.96-1.4-2.45-1.6-2.98-1.62-1.27-.13-2.48.75-3.12.75-.64 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.1 2.58 2.06 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.7.65 1.12-.02 1.83-1.01 2.51-2 .79-1.15 1.12-2.26 1.13-2.32-.02-.01-2.17-.83-2.19-3.29zM15.0 6.21c.57-.69.95-1.65.85-2.61-.82.03-1.81.55-2.4 1.24-.53.61-.99 1.59-.86 2.52.91.07 1.84-.46 2.41-1.15z"/>
+          </svg>
+        </button>
+        <button class="mb-item mb-appname" data-menu="app">Finder</button>
+        <button class="mb-item" data-menu="file">File</button>
+        <button class="mb-item" data-menu="edit">Edit</button>
+        <button class="mb-item" data-menu="view">View</button>
+        <button class="mb-item" data-menu="go">Go</button>
+        <button class="mb-item" data-menu="window">Window</button>
+        <button class="mb-item" data-menu="help">Help</button>
+      </div>
+      <div class="menubar-right">
+        <button class="mb-status" id="status-battery" title="Battery">
+          <svg viewBox="0 0 28 14" width="26" height="13" aria-hidden="true">
+            <rect x="1" y="1" width="22" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            <rect x="3" y="3" width="16" height="8" rx="1.5" fill="currentColor"/>
+            <rect x="24" y="4.5" width="2" height="5" rx="1" fill="currentColor" opacity="0.6"/>
+          </svg>
+        </button>
+        <button class="mb-status" id="status-wifi" title="Wi-Fi">
+          <svg viewBox="0 0 18 14" width="17" height="13" fill="currentColor" aria-hidden="true">
+            <path d="M9 11.5a1.6 1.6 0 100 3.2 1.6 1.6 0 000-3.2zM9 6.5c1.7 0 3.3.66 4.5 1.83l1.6-1.6A9 9 0 009 4a9 9 0 00-6.1 2.73l1.6 1.6A6.4 6.4 0 019 6.5zM9 1a13 13 0 00-8.9 3.5l1.6 1.6A10.7 10.7 0 019 3.2c2.9 0 5.6 1.13 7.3 2.9l1.6-1.6A13 13 0 009 1z"/>
+          </svg>
+        </button>
+        <button class="mb-status" id="status-search" title="Spotlight Search">
+          <svg viewBox="0 0 18 18" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="8" cy="8" r="6"/><line x1="12.5" y1="12.5" x2="16" y2="16" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="mb-status" id="status-control" title="Control Center">
+          <svg viewBox="0 0 22 16" width="20" height="15" aria-hidden="true">
+            <rect x="1" y="1" width="20" height="6.5" rx="3.25" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.8"/>
+            <rect x="1" y="8.5" width="20" height="6.5" rx="3.25" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.8"/>
+            <circle cx="6" cy="4.25" r="2.4" fill="currentColor"/>
+            <circle cx="16" cy="11.75" r="2.4" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="mb-status mb-clock" id="status-clock">Mon 9:41 AM</button>
+      </div>
+    </header>
+
+    <!-- Layer that holds all app windows -->
+    <div id="windows-layer" aria-label="Open windows"></div>
+
+    <!-- Menu dropdown portal -->
+    <div id="menu-dropdown" class="menu-dropdown hidden"></div>
+
+    <!-- Dock -->
+    <nav id="dock-container" aria-label="Dock">
+      <div id="dock"></div>
+    </nav>
+  </main>
+
+  <!-- Spotlight overlay -->
+  <div id="spotlight-overlay" class="overlay hidden">
+    <div id="spotlight">
+      <div class="spotlight-input-row">
+        <svg class="spotlight-icon" viewBox="0 0 18 18" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="8" cy="8" r="6"/><line x1="12.5" y1="12.5" x2="16" y2="16" stroke-linecap="round"/>
+        </svg>
+        <input id="spotlight-input" type="text" placeholder="Spotlight Search" autocomplete="off" spellcheck="false" />
+      </div>
+      <ul id="spotlight-results"></ul>
+    </div>
+  </div>
+
+  <!-- Mission Control: scaled overview of all open windows -->
+  <div id="mission-control" class="hidden">
+    <div class="mc-stage"></div>
+  </div>
+
+  <!-- Stage Manager: recent-app thumbnail strip down the left edge -->
+  <div id="stage-strip" class="hidden"></div>
+
+  <!-- Cmd+Tab application switcher -->
+  <div id="app-switcher" class="hidden"></div>
+
+  <!-- Control Center glass panel (anchored to #status-control) -->
+  <div id="control-center" class="hidden"></div>
+
+  <!-- Notification Center slide-in panel (anchored to #status-clock) -->
+  <div id="notification-center" class="hidden"></div>
+
+  <!-- Quick Look centered preview overlay -->
+  <div id="quicklook" class="hidden">
+    <div class="ql-panel">
+      <div class="ql-bar"><span class="ql-close"></span><span class="ql-title"></span></div>
+      <div class="ql-body"></div>
+    </div>
+  </div>
+
+  <!-- Launchpad overlay -->
+  <div id="launchpad-overlay" class="overlay hidden">
+    <div class="launchpad-search-row">
+      <div class="launchpad-search">
+        <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="8" cy="8" r="6"/><line x1="12.5" y1="12.5" x2="16" y2="16" stroke-linecap="round"/>
+        </svg>
+        <input id="launchpad-input" type="text" placeholder="Search" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+    <div id="launchpad-grid"></div>
+    <div id="launchpad-pager"></div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

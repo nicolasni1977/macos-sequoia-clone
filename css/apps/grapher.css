@@ -1,0 +1,68 @@
+/* Grapher — interactive function plotter */
+.gr-root { display: flex; flex-direction: column; height: 100%; background: #fbfbfd; color: #1c1c1e; }
+
+.gr-toolbar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, #f7f7f9, #ededf0);
+  border-bottom: 0.5px solid rgba(0,0,0,0.12);
+}
+.gr-input-wrap {
+  flex: 1; display: flex; align-items: center; gap: 8px;
+  background: #fff; border: 0.5px solid rgba(0,0,0,0.14);
+  border-radius: 9px; padding: 5px 8px 5px 12px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+}
+.gr-input-wrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(10,132,255,0.18); }
+.gr-fx { font-style: italic; color: #8a8a8e; font-size: 13px; flex: 0 0 auto; }
+.gr-color-dot { width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); }
+.gr-input { flex: 1; font-size: 14px; color: #1c1c1e; font-family: var(--font-mono, monospace); }
+.gr-input.gr-invalid { animation: grShake 0.4s; }
+@keyframes grShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+.gr-plot-btn {
+  flex: 0 0 auto; padding: 5px 14px; border-radius: 7px;
+  background: var(--accent); color: #fff; font-size: 13px; font-weight: 600;
+}
+.gr-plot-btn:hover { filter: brightness(1.07); }
+
+.gr-tools { display: flex; gap: 4px; }
+.gr-tool-btn {
+  width: 30px; height: 30px; border-radius: 7px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 16px; color: #3a3a3c; background: rgba(0,0,0,0.05);
+}
+.gr-tool-btn:hover { background: rgba(0,0,0,0.1); }
+
+.gr-chips { display: flex; gap: 7px; padding: 9px 14px; flex-wrap: wrap; border-bottom: 0.5px solid rgba(0,0,0,0.08); background: #fff; }
+.gr-chip {
+  padding: 4px 11px; border-radius: 13px; font-size: 12.5px;
+  background: rgba(0,0,0,0.05); color: #3a3a3c;
+}
+.gr-chip:hover { background: var(--accent); color: #fff; }
+
+.gr-stage { position: relative; flex: 1; overflow: hidden; background:
+  repeating-linear-gradient(0deg, transparent, transparent), #ffffff; min-height: 0; }
+.gr-canvas { position: absolute; inset: 0; cursor: crosshair; display: block; }
+
+.gr-legend {
+  position: absolute; top: 12px; right: 12px;
+  display: flex; flex-direction: column; gap: 4px;
+  background: rgba(255,255,255,0.82); backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 0.5px solid rgba(0,0,0,0.1); border-radius: 9px;
+  padding: 8px 10px; max-width: 60%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.gr-legend.gr-empty { display: none; }
+.gr-legend-row { display: flex; align-items: center; gap: 8px; font-size: 12.5px; }
+.gr-swatch { width: 14px; height: 3px; border-radius: 2px; flex: 0 0 auto; }
+.gr-leg-expr { font-family: var(--font-mono, monospace); color: #1c1c1e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gr-leg-x { margin-left: auto; cursor: default; color: #999; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; flex: 0 0 auto; }
+.gr-leg-x:hover { background: rgba(255,59,48,0.15); color: #ff3b30; }
+
+.gr-readout {
+  position: absolute; left: 12px; bottom: 12px;
+  font-family: var(--font-mono, monospace); font-size: 12px;
+  color: #5a5a5e; background: rgba(255,255,255,0.82);
+  padding: 4px 9px; border-radius: 7px; border: 0.5px solid rgba(0,0,0,0.08);
+}

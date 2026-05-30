@@ -1,0 +1,579 @@
+/* ==========================================================
+   Preview — css/apps/preview.css
+   All selectors scoped under .app-preview so nothing leaks.
+   Uses shell CSS custom properties for automatic dark-mode.
+   ========================================================== */
+
+/* ---- Root layout ---- */
+.app-preview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--win-bg);
+  color: var(--win-fg);
+  font-family: var(--font-system);
+  font-size: 13px;
+}
+
+.app-preview .pv-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ---- Toolbar ---- */
+.app-preview .pv-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 40px;
+  padding: 0 10px;
+  background: var(--titlebar-bg);
+  border-bottom: 0.5px solid var(--win-border);
+  flex: 0 0 auto;
+  user-select: none;
+}
+
+.app-preview .pv-tl-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 0 0 auto;
+}
+
+.app-preview .pv-tl-right {
+  margin-left: auto;
+}
+
+.app-preview .pv-tl-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.app-preview .pv-doc-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--win-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}
+
+/* Toolbar buttons */
+.app-preview .pv-tb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--win-fg);
+  background: none;
+  border: none;
+  cursor: default;
+  transition: background 0.1s ease;
+  white-space: nowrap;
+}
+
+.app-preview .pv-tb-btn:hover:not(:disabled) {
+  background: var(--win-hover);
+}
+
+.app-preview .pv-tb-btn:active:not(:disabled) {
+  background: rgba(0,0,0,0.10);
+}
+
+.app-preview .pv-tb-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.app-preview .pv-tb-btn.pv-tb-active {
+  background: rgba(10, 132, 255, 0.14);
+  color: var(--accent);
+}
+
+.app-preview .pv-nav-btn {
+  font-size: 18px;
+  font-weight: 300;
+  padding: 0 4px;
+}
+
+/* Zoom label (clickable) */
+.app-preview .pv-zoom-label {
+  min-width: 42px;
+  text-align: center;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--win-muted);
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.app-preview .pv-zoom-label:hover {
+  background: var(--win-hover);
+  color: var(--win-fg);
+}
+
+/* Toolbar separator */
+.app-preview .pv-tb-sep {
+  width: 0.5px;
+  height: 16px;
+  background: var(--win-border);
+  margin: 0 4px;
+  flex: 0 0 auto;
+}
+
+/* ---- Markup toolbar ---- */
+.app-preview .pv-markup-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  background: var(--card-bg);
+  border-bottom: 0.5px solid var(--win-border);
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+}
+
+.app-preview .pv-markup-bar.pv-hidden {
+  display: none;
+}
+
+.app-preview .pv-mu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 7px;
+  font-size: 13px;
+  color: var(--win-fg);
+  background: none;
+  border: none;
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.app-preview .pv-mu-btn:hover {
+  background: var(--win-hover);
+}
+
+.app-preview .pv-mu-btn.pv-mu-active {
+  background: rgba(10, 132, 255, 0.15);
+  color: var(--accent);
+}
+
+.app-preview .pv-mu-btn.pv-mu-done {
+  margin-left: auto;
+  padding: 0 14px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 12.5px;
+}
+
+.app-preview .pv-mu-btn.pv-mu-done:hover {
+  background: var(--accent-light);
+}
+
+.app-preview .pv-mu-sep {
+  width: 0.5px;
+  height: 18px;
+  background: var(--win-border);
+  margin: 0 4px;
+}
+
+.app-preview .pv-mu-label {
+  font-size: 11px;
+  color: var(--win-muted);
+  margin-right: 2px;
+}
+
+/* Colour swatches */
+.app-preview .pv-mu-color {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: default;
+  flex: 0 0 auto;
+}
+
+.app-preview .pv-mu-red   { background: #ff3b30; }
+.app-preview .pv-mu-blue  { background: #0a84ff; }
+.app-preview .pv-mu-green { background: #34c759; }
+.app-preview .pv-mu-yel   { background: #ffd60a; }
+
+.app-preview .pv-mu-color.pv-mu-color-active {
+  border-color: var(--win-fg);
+  box-shadow: 0 0 0 1px var(--win-border);
+}
+
+/* ---- Body (sidebar + viewer) ---- */
+.app-preview .pv-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ---- Sidebar ---- */
+.app-preview .pv-sidebar {
+  width: 148px;
+  flex: 0 0 148px;
+  display: flex;
+  flex-direction: column;
+  background: var(--sidebar-bg);
+  border-right: 0.5px solid var(--sidebar-border);
+  overflow: hidden;
+  transition: width 0.18s var(--ease-out), flex-basis 0.18s var(--ease-out);
+}
+
+.app-preview .pv-sidebar.pv-sidebar-hidden {
+  width: 0;
+  flex-basis: 0;
+  border-right-width: 0;
+}
+
+.app-preview .pv-sb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-bottom: 0.5px solid var(--sidebar-border);
+  flex: 0 0 auto;
+}
+
+.app-preview .pv-sb-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--win-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.app-preview .pv-sb-sort-btn {
+  font-size: 12px;
+  color: var(--win-muted);
+  background: none;
+  border: none;
+  cursor: default;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.app-preview .pv-sb-sort-btn:hover {
+  background: var(--win-hover);
+}
+
+.app-preview .pv-sb-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-preview .pv-sb-list::-webkit-scrollbar { width: 5px; }
+.app-preview .pv-sb-list::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+.app-preview .pv-sb-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 4px;
+  border-radius: 8px;
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.app-preview .pv-sb-item:hover {
+  background: var(--win-hover);
+}
+
+.app-preview .pv-sb-item.pv-sb-active {
+  background: rgba(10, 132, 255, 0.14);
+}
+
+.app-preview .pv-sb-item.pv-sb-active .pv-sb-name {
+  color: var(--accent);
+}
+
+.app-preview .pv-sb-thumb {
+  width: 104px;
+  height: 76px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  overflow: hidden;
+  flex: 0 0 auto;
+  transition: transform 0.12s ease;
+}
+
+.app-preview .pv-sb-item:hover .pv-sb-thumb {
+  transform: scale(1.03);
+}
+
+.app-preview .pv-sb-thumb-pdf {
+  background: linear-gradient(160deg, #e8ecf0, #cfd5db);
+  font-size: 36px;
+}
+
+.app-preview .pv-sb-name {
+  font-size: 10.5px;
+  color: var(--win-fg);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 0 2px;
+}
+
+/* ---- Viewer area ---- */
+.app-preview .pv-viewer-wrap {
+  flex: 1;
+  overflow: auto;
+  background: var(--win-bg);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;   /* anchor for pv-recent-panel absolute overlay */
+  min-width: 0;
+}
+
+.app-preview .pv-viewer-wrap::-webkit-scrollbar { width: 9px; height: 9px; }
+.app-preview .pv-viewer-wrap::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.app-preview .pv-viewer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100%;
+  padding: 30px;
+}
+
+/* The canvas: gets transform applied by JS */
+.app-preview .pv-canvas {
+  transition: transform 0.15s var(--ease-out);
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Image canvas */
+.app-preview .pv-canvas-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-preview .pv-img-display {
+  width: 460px;
+  height: 340px;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.28), 0 4px 12px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-preview .pv-img-emoji {
+  font-size: 88px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
+}
+
+.app-preview .pv-img-meta {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  letter-spacing: 0.2px;
+}
+
+/* PDF canvas */
+.app-preview .pv-canvas-pdf {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.app-preview .pv-pdf-page {
+  width: 500px;
+  min-height: 640px;
+  background: var(--win-bg);
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.14);
+  padding: 56px 54px;
+  color: var(--win-fg);
+  font-size: 13.5px;
+  line-height: 1.7;
+  position: relative;
+  border: 0.5px solid var(--win-border);
+}
+
+.app-preview .pv-pdf-pagestamp {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: var(--win-muted);
+  letter-spacing: 0.3px;
+}
+
+/* PDF navigation bar */
+.app-preview .pv-pdf-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 6px 0;
+  background: var(--titlebar-bg);
+  border-top: 0.5px solid var(--win-border);
+  flex: 0 0 auto;
+}
+
+.app-preview .pv-pdf-nav.pv-hidden {
+  display: none;
+}
+
+.app-preview .pv-pdf-info {
+  font-size: 12px;
+  color: var(--win-muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* ---- Recent panel ---- */
+.app-preview .pv-recent-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 30px;
+  gap: 16px;
+  background: var(--win-bg);
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.app-preview .pv-recent-panel.pv-hidden {
+  display: none;
+}
+
+.app-preview .pv-recent-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--win-fg);
+  align-self: flex-start;
+}
+
+.app-preview .pv-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.app-preview .pv-recent-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.app-preview .pv-recent-item:hover {
+  background: var(--win-hover);
+}
+
+.app-preview .pv-recent-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.app-preview .pv-recent-icon-pdf {
+  background: linear-gradient(135deg, #e8ecf0, #cfd5db);
+}
+
+.app-preview .pv-recent-name {
+  font-size: 13px;
+  color: var(--win-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-preview .pv-recent-hint {
+  font-size: 12px;
+  color: var(--win-muted);
+  align-self: flex-start;
+  max-width: 400px;
+}
+
+/* ---- Utility ---- */
+.app-preview .pv-hidden {
+  display: none !important;
+}
+
+/* Dark-mode refinements */
+html.dark .app-preview .pv-pdf-page {
+  background: #28282a;
+}
+
+html.dark .app-preview .pv-sb-thumb-pdf {
+  background: linear-gradient(160deg, #3a3a3d, #2e2e31);
+}
+
+html.dark .app-preview .pv-recent-icon-pdf {
+  background: linear-gradient(135deg, #3a3a3d, #2e2e31);
+}
+
+/* Vibrancy on sidebar (matches system shell) */
+.app-preview .pv-sidebar {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}

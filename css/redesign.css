@@ -1,0 +1,211 @@
+/* ============================================================
+   Design system overhaul — crafted icons, premium materials,
+   refined chrome, calmer motion. Loaded last; overrides earlier CSS.
+   ============================================================ */
+
+:root {
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.2, 0.9, 0.25, 1);
+  --hairline: rgba(0, 0, 0, 0.12);
+  --shadow-win: 0 28px 70px -12px rgba(0, 0, 0, 0.46), 0 10px 24px -8px rgba(0, 0, 0, 0.30);
+}
+
+/* ---------- Crafted SVG icons fill their containers ---------- */
+.appicon { width: 100%; height: 100%; display: block; }
+
+.dock-icon, .lp-icon, .spot-ic {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  color: transparent;
+}
+.dock-icon::after, .lp-icon::after, .spot-ic::after { display: none !important; }
+.dock-icon { filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.34)); }
+.lp-icon   { filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.34)); }
+.spot-ic   { filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.22)); }
+
+.desktop-icon .di-glyph {
+  width: 54px; height: 54px; font-size: 0;
+  filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.45));
+}
+.desktop-icon span { font-weight: 500; letter-spacing: 0.1px; }
+
+/* ---------- Wallpaper: kill the blurry blobs, add depth + fine grain ---------- */
+.wallpaper .blob { display: none !important; }
+.wallpaper::after {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(130% 80% at 50% -10%, rgba(255, 255, 255, 0.16), transparent 46%),
+    radial-gradient(120% 90% at 50% 120%, rgba(0, 0, 0, 0.30), transparent 58%);
+}
+.wallpaper::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+/* ---------- Menu bar: tighter, cleaner vibrancy ---------- */
+#menubar {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(36px) saturate(180%);
+  -webkit-backdrop-filter: blur(36px) saturate(180%);
+  box-shadow: inset 0 -0.5px 0 rgba(255, 255, 255, 0.08);
+  font-weight: 400;
+}
+.mb-appname { font-weight: 600; }
+.mb-item, .mb-status { border-radius: 6px; }
+
+/* ---------- Windows: softer shadow, hairline border, refined title ---------- */
+.window {
+  border-radius: 12px;
+  border: 0.5px solid rgba(0, 0, 0, 0.14);
+  box-shadow: var(--shadow-win);
+}
+.window.active { box-shadow: 0 36px 90px -14px rgba(0, 0, 0, 0.52), 0 12px 28px -8px rgba(0, 0, 0, 0.34); }
+.titlebar {
+  height: 40px; flex-basis: 40px;
+  background: linear-gradient(180deg, rgba(252, 252, 254, 0.92), rgba(238, 240, 244, 0.92));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.10);
+}
+.titlebar-title { font-weight: 600; font-size: 13px; letter-spacing: 0.1px; }
+
+/* Traffic lights — crisper, with a soft inner sheen */
+.traffic-lights { gap: 8px; }
+.tl { width: 12px; height: 12px; border: 0.5px solid rgba(0, 0, 0, 0.14); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45); }
+.window.active .tl-close { background: radial-gradient(circle at 50% 35%, #ff7b72, #ff5f57); }
+.window.active .tl-min   { background: radial-gradient(circle at 50% 35%, #ffd34e, #febc2e); }
+.window.active .tl-max   { background: radial-gradient(circle at 50% 35%, #4fdf6a, #28c840); }
+.tl-glyph { font-size: 8.5px; color: rgba(0, 0, 0, 0.5); }
+
+/* Calmer open / close motion */
+.window.opening { animation: winOpenR 0.32s var(--ease-spring); transform-origin: center 70%; }
+@keyframes winOpenR { 0% { opacity: 0; transform: scale(0.9) translateY(8px); } 100% { opacity: 1; transform: none; } }
+.window.closing { animation: winCloseR 0.18s ease forwards; transform-origin: center 70%; }
+@keyframes winCloseR { to { opacity: 0; transform: scale(0.93) translateY(4px); } }
+
+/* ---------- Dock: premium frosted material ---------- */
+#dock {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(44px) saturate(190%);
+  -webkit-backdrop-filter: blur(44px) saturate(190%);
+  border: 0.5px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38), inset 0 0.5px 0 rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  padding: 6px 10px;
+}
+.dock-sep { background: rgba(255, 255, 255, 0.28); width: 1px; }
+.dock-indicator { width: 4px; height: 4px; background: rgba(0, 0, 0, 0.62); bottom: -3px; }
+.dock-tooltip {
+  background: rgba(30, 30, 34, 0.78);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  font-weight: 500; padding: 5px 12px; border-radius: 8px;
+}
+.dock-tooltip::after { border-top-color: rgba(30, 30, 34, 0.78); }
+
+/* ---------- Sidebars: true vibrancy, pill selection ---------- */
+.app-sidebar, .finder-sidebar, .pod-sidebar, .dict-sidebar, .du-sidebar, .notes-list {
+  background: rgba(246, 246, 248, 0.72) !important;
+  backdrop-filter: blur(34px) saturate(180%);
+  -webkit-backdrop-filter: blur(34px) saturate(180%);
+  border-right: 0.5px solid rgba(0, 0, 0, 0.08);
+}
+.sb-row, .finder-sb-row {
+  border-radius: 7px;
+  transition: background 0.12s ease;
+}
+.sb-row.active, .finder-sb-row.active {
+  background: rgba(0, 0, 0, 0.07) !important;
+  color: #1c1c1e !important;
+  font-weight: 500;
+}
+.sb-section { font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: rgba(0, 0, 0, 0.38); }
+
+/* App windows get a hairline-crisp body top */
+.window-body { box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.5); }
+
+/* ---------- Spotlight & Launchpad icon containers keep their box sizes ---------- */
+.spot-ic { width: 38px; height: 38px; }
+
+/* Finder app icons (icon view) render the crafted SVG */
+.finder-icon-glyph.is-svg {
+  width: 52px; height: 52px; font-size: 0; display: inline-flex;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
+}
+
+/* ---------- Phones: clean, focused ---------- */
+@media (max-width: 640px) {
+  .desktop-icon .di-glyph { width: 50px; height: 50px; }
+  #dock { border-radius: 22px; }
+  .window { box-shadow: none; border: none; }
+}
+
+/* ============================================================
+   Dark theme — apps inherit the wallpaper's theme (html.dark).
+   ============================================================ */
+html.dark .window { background: #2a2a2c; border-color: rgba(255, 255, 255, 0.12); }
+html.dark .titlebar {
+  background: linear-gradient(180deg, #3a3a3d, #2c2c2f);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+html.dark .titlebar-title { color: rgba(255, 255, 255, 0.86); }
+html.dark .tb-btn { color: rgba(255, 255, 255, 0.7); }
+html.dark .tb-btn:hover { background: rgba(255, 255, 255, 0.1); }
+html.dark .window-body { background: #1f1f22; color: #e9e9ec; box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.06); }
+
+/* Sidebars */
+html.dark .app-sidebar, html.dark .finder-sidebar, html.dark .dict-sidebar,
+html.dark .du-sidebar, html.dark .notes-list {
+  background: rgba(32, 32, 36, 0.74) !important;
+  color: #e9e9ec;
+  border-right-color: rgba(255, 255, 255, 0.08) !important;
+}
+html.dark .sb-row, html.dark .finder-sb-row { color: #d8d8db; }
+html.dark .sb-row:hover, html.dark .finder-sb-row:hover { background: rgba(255, 255, 255, 0.07) !important; }
+html.dark .sb-row.active, html.dark .finder-sb-row.active { background: rgba(255, 255, 255, 0.14) !important; color: #fff !important; }
+html.dark .sb-section, html.dark .finder-sb-section { color: rgba(255, 255, 255, 0.42) !important; }
+
+/* Main panes */
+html.dark .app-main, html.dark .finder-main, html.dark .finder-main-wrap { background: #232327 !important; color: #e9e9ec; }
+html.dark .finder-toolbar, html.dark .finder-status-bar {
+  background: rgba(40, 40, 44, 0.92) !important; color: #c9c9cc !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+html.dark .finder-toolbar strong, html.dark .finder-path-bar, html.dark .ft-crumb { color: #e2e2e5 !important; }
+html.dark .finder-icon-label, html.dark .finder-list-row, html.dark .finder-col-row { color: #e2e2e5 !important; }
+html.dark .finder-icon-item:hover, html.dark .finder-list-row:hover, html.dark .finder-col-row:hover { background: rgba(255, 255, 255, 0.07) !important; }
+html.dark .finder-search, html.dark .ft-search { background: rgba(255, 255, 255, 0.1) !important; color: #e9e9ec !important; }
+
+/* System Settings */
+html.dark .settings-pane { color: #e9e9ec; }
+html.dark .settings-pane h2 { color: #fff; }
+html.dark .settings-pane .sub { color: #9a9aa0; }
+html.dark .settings-card { background: #2d2d31 !important; }
+html.dark .settings-row { border-bottom-color: rgba(255, 255, 255, 0.08) !important; color: #e9e9ec; }
+html.dark .settings-row span[style*="#888"], html.dark .settings-row span[style*="888"] { color: #9a9aa0 !important; }
+
+/* Generic lists, placeholders, cards */
+html.dark .list-row { color: #e9e9ec !important; border-bottom-color: rgba(255, 255, 255, 0.08) !important; }
+html.dark .list-row:hover { background: rgba(255, 255, 255, 0.05) !important; }
+html.dark .list-row .lr-sub { color: #9a9aa0 !important; }
+html.dark .wb-pad, html.dark .wb-center { color: #e9e9ec; }
+html.dark .wb-center h2 { color: #fff; }
+html.dark .wb-center p { color: #9a9aa0; }
+html.dark .as-card { background: #2d2d31 !important; }
+html.dark .as-meta .as-name { color: #f2f2f4 !important; }
+html.dark .as-get { background: rgba(255, 255, 255, 0.12) !important; }
+
+/* Contenteditable note/text areas */
+html.dark .notes-editor, html.dark .textedit { background: #1f1f22 !important; }
+html.dark .notes-editor [contenteditable], html.dark .textedit [contenteditable] { color: #e9e9ec !important; }
+html.dark .notes-editor h1 { color: #fff !important; }
+
+/* Scrollbars in dark */
+html.dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.26); background-clip: padding-box; }

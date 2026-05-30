@@ -1,0 +1,169 @@
+/* ---- Windows layer ---- */
+#windows-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+#windows-layer .window { pointer-events: auto; }
+
+.window {
+  position: absolute;
+  min-width: 320px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  background: var(--win-bg);
+  border-radius: var(--window-radius);
+  box-shadow: var(--shadow-inactive);
+  overflow: hidden;
+  border: 0.5px solid var(--win-border);
+  transition: box-shadow 0.2s ease, transform 0.28s var(--ease-out), opacity 0.28s var(--ease-out);
+  will-change: transform;
+}
+.window.active { box-shadow: var(--shadow-active); }
+.window.dragging, .window.resizing { transition: box-shadow 0.2s ease; }
+
+/* Title bar */
+.titlebar {
+  height: 38px;
+  flex: 0 0 38px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 8px;
+  background: var(--titlebar-bg);
+  border-bottom: 0.5px solid var(--win-border);
+  position: relative;
+  cursor: default;
+}
+.window.active .titlebar { background: var(--titlebar-bg-active); }
+
+/* Traffic lights */
+.traffic-lights {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.tl {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  position: relative;
+  border: 0.5px solid rgba(0,0,0,0.12);
+  background: #ccc;
+}
+.window.active .tl-close { background: var(--tl-red); }
+.window.active .tl-min { background: var(--tl-yellow); }
+.window.active .tl-max { background: var(--tl-green); }
+.tl-glyph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  line-height: 1;
+  color: rgba(0,0,0,0.55);
+  opacity: 0;
+  font-weight: 700;
+}
+.traffic-lights:hover .tl-glyph { opacity: 1; }
+
+.titlebar-title {
+  position: absolute;
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--titlebar-fg);
+  pointer-events: none;
+  padding: 0 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.window.active .titlebar-title { color: var(--titlebar-fg-active); }
+
+.titlebar-spacer { flex: 1; }
+.titlebar-accessory {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+}
+.tb-btn {
+  width: 28px; height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: rgba(0,0,0,0.6);
+}
+.tb-btn:hover { background: rgba(0,0,0,0.08); }
+.tb-btn svg { display: block; }
+
+/* Window body */
+.window-body {
+  flex: 1 1 auto;
+  overflow: auto;
+  position: relative;
+  background: var(--win-bg);
+  color: var(--win-fg);
+  min-height: 0;
+}
+
+/* Resize handles */
+.resize-handle { position: absolute; z-index: 5; }
+.rh-n  { top: -3px; left: 8px; right: 8px; height: 7px; cursor: ns-resize; }
+.rh-s  { bottom: -3px; left: 8px; right: 8px; height: 7px; cursor: ns-resize; }
+.rh-e  { right: -3px; top: 8px; bottom: 8px; width: 7px; cursor: ew-resize; }
+.rh-w  { left: -3px; top: 8px; bottom: 8px; width: 7px; cursor: ew-resize; }
+.rh-ne { top: -4px; right: -4px; width: 14px; height: 14px; cursor: nesw-resize; }
+.rh-nw { top: -4px; left: -4px; width: 14px; height: 14px; cursor: nwse-resize; }
+.rh-se { bottom: -4px; right: -4px; width: 14px; height: 14px; cursor: nwse-resize; }
+.rh-sw { bottom: -4px; left: -4px; width: 14px; height: 14px; cursor: nesw-resize; }
+
+/* Minimize / open / close animations */
+.window.minimizing {
+  transform: scale(0.16) translateY(60vh);
+  opacity: 0;
+  pointer-events: none;
+}
+.window.opening { animation: winOpen 0.26s var(--ease-out); }
+@keyframes winOpen {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.window.closing {
+  animation: winClose 0.18s ease forwards;
+  pointer-events: none;
+}
+@keyframes winClose {
+  to { opacity: 0; transform: scale(0.94); }
+}
+
+.window.maximized {
+  border-radius: 0;
+  border: none;
+}
+
+/* Generic window content helpers */
+.wb-pad { padding: 18px 20px; color: var(--win-fg); font-size: 14px; line-height: 1.5; }
+.wb-center {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  color: var(--win-fg);
+  padding: 30px;
+}
+.wb-center .big-glyph {
+  font-size: 72px;
+  line-height: 1;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.18));
+}
+.wb-center h2 { font-size: 20px; font-weight: 700; }
+.wb-center p { font-size: 13px; color: var(--win-muted); max-width: 360px; }

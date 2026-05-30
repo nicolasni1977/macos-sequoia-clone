@@ -1,0 +1,31 @@
+/* Dictionary */
+.dict-root { display: flex; height: 100%; background: #fff; color: #1c1c1e; }
+
+.dict-sidebar { width: 230px; flex: 0 0 230px; border-right: 0.5px solid rgba(0,0,0,0.1); background: #faf8f4; display: flex; flex-direction: column; }
+.dict-search { display: flex; align-items: center; gap: 7px; margin: 10px; padding: 6px 10px; background: rgba(0,0,0,0.06); border-radius: 8px; color: #8a8a8e; }
+.dict-input { flex: 1; font-size: 13px; color: #1c1c1e; }
+.dict-list { flex: 1; overflow-y: auto; padding: 0 6px 10px; }
+.dict-row { display: flex; flex-direction: column; padding: 7px 10px; border-radius: 7px; cursor: default; }
+.dict-row:hover { background: rgba(0,0,0,0.05); }
+.dict-row.active { background: #b8893f; color: #fff; }
+.dict-row-word { font-size: 14px; font-weight: 600; }
+.dict-row-pos { font-size: 11px; font-style: italic; color: #a0937c; }
+.dict-row.active .dict-row-pos { color: rgba(255,255,255,0.85); }
+.dict-noresult { padding: 20px; text-align: center; color: #a0a0a4; font-size: 13px; }
+
+.dict-pane { flex: 1; overflow-y: auto; padding: 30px 36px; font-family: Georgia, "Times New Roman", serif; }
+.dict-word { font-size: 34px; font-weight: 700; }
+.dict-pron { font-size: 15px; color: #8a8a8e; margin: 6px 0 2px; font-family: var(--font-system); }
+.dict-listen { cursor: default; }
+.dict-listen:hover { opacity: 0.7; }
+.dict-pos-line { font-style: italic; color: #b8893f; font-size: 15px; margin-bottom: 12px; }
+.dict-defs { padding-left: 22px; margin-bottom: 18px; }
+.dict-defs li { font-size: 15.5px; line-height: 1.55; margin-bottom: 8px; }
+.dict-ex-label, .dict-syn-label {
+  font-family: var(--font-system); font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: #a0a0a4; margin-bottom: 6px;
+}
+.dict-ex { font-size: 15px; font-style: italic; color: #555; margin-bottom: 20px; padding-left: 12px; border-left: 3px solid #e6ddca; }
+.dict-syns { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--font-system); }
+.dict-syn { padding: 4px 12px; border-radius: 14px; background: rgba(184,137,63,0.12); color: #936c28; font-size: 13px; cursor: default; }
+.dict-syn:hover { background: #b8893f; color: #fff; }

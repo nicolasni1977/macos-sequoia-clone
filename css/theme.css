@@ -1,0 +1,94 @@
+/* theme.css — design tokens. Full LIGHT and DARK palettes via CSS custom
+   properties. Toggling .dark on <html> flips every surface. Apps and core
+   chrome must consume these variables (never hardcode colors). */
+
+:root {
+  /* Accent */
+  --accent: #0a84ff;
+  --accent-fg: #ffffff;
+
+  /* Window surfaces */
+  --win-bg: #ffffff;
+  --win-fg: #1d1d1f;
+  --win-muted: #6e6e73;
+  --win-border: rgba(0, 0, 0, 0.12);
+  --win-titlebar: #f6f6f6;
+  --win-shadow: 0 22px 70px rgba(0, 0, 0, 0.35), 0 0 0 0.5px rgba(0, 0, 0, 0.12);
+  --win-sidebar: #ececec;
+  --win-hover: rgba(0, 0, 0, 0.06);
+  --win-selected: var(--accent);
+
+  /* Menu bar */
+  --menubar-bg: rgba(255, 255, 255, 0.38);
+  --menubar-fg: #1d1d1f;
+  --menubar-blur: saturate(180%) blur(20px);
+
+  /* Dropdown / context menus */
+  --menu-bg: rgba(245, 245, 245, 0.86);
+  --menu-fg: #1d1d1f;
+  --menu-hover: var(--accent);
+  --menu-hover-fg: #ffffff;
+  --menu-border: rgba(0, 0, 0, 0.1);
+  --menu-sep: rgba(0, 0, 0, 0.12);
+
+  /* Dock */
+  --dock-bg: rgba(255, 255, 255, 0.32);
+  --dock-border: rgba(255, 255, 255, 0.45);
+
+  /* Panels (control/notification center) */
+  --panel-bg: rgba(245, 245, 245, 0.72);
+  --panel-fg: #1d1d1f;
+  --panel-tile: rgba(255, 255, 255, 0.6);
+  --panel-border: rgba(0, 0, 0, 0.08);
+
+  /* Generic controls */
+  --control-track: rgba(0, 0, 0, 0.16);
+  --control-knob: #ffffff;
+  --toggle-on: #34c759;
+  --toggle-off: rgba(0, 0, 0, 0.22);
+
+  --blur: saturate(180%) blur(30px);
+}
+
+html.dark {
+  --accent: #0a84ff;
+  --accent-fg: #ffffff;
+
+  --win-bg: #2a2a2c;
+  --win-fg: #f5f5f7;
+  --win-muted: #98989d;
+  --win-border: rgba(255, 255, 255, 0.12);
+  --win-titlebar: #323234;
+  --win-shadow: 0 22px 70px rgba(0, 0, 0, 0.6), 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+  --win-sidebar: #232325;
+  --win-hover: rgba(255, 255, 255, 0.08);
+
+  --menubar-bg: rgba(30, 30, 32, 0.45);
+  --menubar-fg: #f5f5f7;
+
+  --menu-bg: rgba(50, 50, 52, 0.9);
+  --menu-fg: #f5f5f7;
+  --menu-border: rgba(255, 255, 255, 0.12);
+  --menu-sep: rgba(255, 255, 255, 0.14);
+
+  --dock-bg: rgba(40, 40, 42, 0.42);
+  --dock-border: rgba(255, 255, 255, 0.16);
+
+  --panel-bg: rgba(40, 40, 42, 0.7);
+  --panel-fg: #f5f5f7;
+  --panel-tile: rgba(255, 255, 255, 0.1);
+  --panel-border: rgba(255, 255, 255, 0.1);
+
+  --control-track: rgba(255, 255, 255, 0.18);
+  --control-knob: #ffffff;
+  --toggle-off: rgba(255, 255, 255, 0.22);
+}
+
+/* Wallpaper presets (no external images — pure CSS gradients). */
+.wallpaper--sequoia { background: linear-gradient(160deg, #2b1055 0%, #7597de 55%, #d9a7c7 100%); }
+.wallpaper--sonoma  { background: radial-gradient(120% 120% at 30% 20%, #ff7e5f 0%, #feb47b 40%, #6a3093 100%); }
+.wallpaper--ventura { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); }
+.wallpaper--graphite{ background: linear-gradient(135deg, #3a3a3c 0%, #1c1c1e 100%); }
+.wallpaper--sky     { background: linear-gradient(160deg, #56 ccf2 0%, #2f80ed 100%); }
+.wallpaper--sky     { background: linear-gradient(160deg, #56ccf2 0%, #2f80ed 100%); }
+.wallpaper--dune    { background: linear-gradient(160deg, #f6d365 0%, #fda085 100%); }

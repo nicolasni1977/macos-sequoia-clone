@@ -1,0 +1,578 @@
+/* =============================================================
+   FaceTime — per-app CSS
+   All selectors are scoped under .app-facetime so nothing leaks.
+   Uses CSS custom properties defined by the shell (reset.css).
+   ============================================================= */
+
+/* ---------- Custom color tokens for FaceTime ---------- */
+.app-facetime {
+  --ft-green:      #34c759;
+  --ft-red:        #ff3b30;
+  --ft-missed:     #ff3b30;
+  --ft-blue:       #0a84ff;
+  --ft-ctrl-size:  56px;
+  --ft-sidebar-w:  240px;
+}
+
+/* =========================================================
+   Root layout
+   ========================================================= */
+.app-facetime .ft-root {
+  display: flex;
+  height: 100%;
+  background: var(--win-bg);
+  color: var(--win-fg);
+  font-family: var(--font-system);
+  overflow: hidden;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+.app-facetime .ft-sidebar {
+  width: var(--ft-sidebar-w);
+  flex: 0 0 var(--ft-sidebar-w);
+  display: flex;
+  flex-direction: column;
+  background: var(--sidebar-bg);
+  border-right: 0.5px solid var(--sidebar-border);
+  overflow: hidden;
+}
+
+/* --- Header --- */
+.app-facetime .ft-side-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 12px 10px;
+  border-bottom: 0.5px solid var(--sidebar-border);
+  flex-shrink: 0;
+}
+
+.app-facetime .ft-side-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--win-fg);
+}
+
+.app-facetime .ft-new-btn {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ft-blue);
+  background: var(--control-bg);
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: default;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.app-facetime .ft-new-btn:hover {
+  background: color-mix(in srgb, var(--ft-blue) 15%, transparent);
+}
+
+/* --- Search --- */
+.app-facetime .ft-search-wrap {
+  padding: 8px 10px 6px;
+  flex-shrink: 0;
+}
+
+.app-facetime .ft-search-input {
+  width: 100%;
+  padding: 6px 10px;
+  background: var(--field-bg);
+  border-radius: 8px;
+  border: 0.5px solid var(--win-border);
+  font-size: 13px;
+  color: var(--win-fg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.app-facetime .ft-search-input::placeholder { color: var(--win-muted); }
+.app-facetime .ft-search-input:focus { border-color: var(--ft-blue); }
+
+/* --- Recents list --- */
+.app-facetime .ft-recents-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 6px 12px;
+}
+
+.app-facetime .ft-recents-empty {
+  padding: 24px 12px;
+  text-align: center;
+  color: var(--win-muted);
+  font-size: 13px;
+}
+
+/* --- Recent row --- */
+.app-facetime .ft-recent-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  cursor: default;
+  transition: background 0.12s;
+  position: relative;
+}
+.app-facetime .ft-recent-row:hover {
+  background: var(--win-hover);
+}
+.app-facetime .ft-recent-row.active {
+  background: color-mix(in srgb, var(--ft-blue) 14%, transparent);
+}
+.app-facetime .ft-recent-row:hover .ft-recent-call-btn {
+  opacity: 1;
+}
+
+.app-facetime .ft-recent-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.app-facetime .ft-recent-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-facetime .ft-recent-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--win-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-facetime .ft-recent-meta {
+  font-size: 11px;
+  color: var(--win-muted);
+  margin-top: 2px;
+}
+
+.app-facetime .ft-recent-call-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ft-blue) 16%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  opacity: 0;
+  flex-shrink: 0;
+  transition: opacity 0.15s, background 0.12s;
+}
+.app-facetime .ft-recent-call-btn:hover {
+  background: color-mix(in srgb, var(--ft-blue) 28%, transparent);
+}
+
+/* =========================================================
+   MAIN PANEL
+   ========================================================= */
+.app-facetime .ft-main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  min-width: 0;
+}
+
+/* =========================================================
+   IDLE SCREEN
+   ========================================================= */
+.app-facetime .ft-idle {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* --- Self-preview tile --- */
+.app-facetime .ft-self-tile {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #0a0a0f;
+}
+
+.app-facetime .ft-self-gradient {
+  position: absolute;
+  inset: 0;
+  opacity: 0.85;
+}
+
+.app-facetime .ft-self-label {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  white-space: nowrap;
+  border: 0.5px solid rgba(255,255,255,0.18);
+}
+
+/* --- Picker section --- */
+.app-facetime .ft-picker-section {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.app-facetime .ft-picker-label {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--win-fg);
+}
+
+/* --- Contact input with dropdown --- */
+.app-facetime .ft-contact-wrap {
+  position: relative;
+}
+
+.app-facetime .ft-contact-input {
+  width: 100%;
+  padding: 9px 12px;
+  background: var(--field-bg);
+  border: 0.5px solid var(--win-border);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--win-fg);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  cursor: text;
+}
+.app-facetime .ft-contact-input::placeholder { color: var(--win-muted); }
+.app-facetime .ft-contact-input:focus {
+  border-color: var(--ft-blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ft-blue) 18%, transparent);
+}
+
+/* Dropdown */
+.app-facetime .ft-contact-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--menu-bg);
+  border: 0.5px solid var(--menu-border);
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  z-index: 10;
+}
+.app-facetime .ft-contact-dropdown.visible { display: block; }
+
+.app-facetime .ft-dd-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  cursor: default;
+  font-size: 13px;
+  color: var(--menu-fg);
+  transition: background 0.1s;
+}
+.app-facetime .ft-dd-item:hover { background: var(--win-hover); }
+
+.app-facetime .ft-dd-av {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* --- Suggestion chips --- */
+.app-facetime .ft-suggest-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--win-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.app-facetime .ft-suggest-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.app-facetime .ft-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: default;
+  padding: 8px;
+  border-radius: 10px;
+  min-width: 60px;
+  transition: background 0.12s;
+}
+.app-facetime .ft-chip:hover { background: var(--win-hover); }
+
+.app-facetime .ft-chip-av {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.app-facetime .ft-chip-name {
+  font-size: 11px;
+  color: var(--win-fg);
+  white-space: nowrap;
+}
+
+/* --- Call buttons (idle) --- */
+.app-facetime .ft-call-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.app-facetime .ft-call-btn {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: default;
+  transition: filter 0.15s, transform 0.1s;
+  text-align: center;
+}
+.app-facetime .ft-call-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.app-facetime .ft-call-btn:active { transform: translateY(0); filter: brightness(0.95); }
+
+.app-facetime .ft-video-btn {
+  background: var(--ft-green);
+  color: #fff;
+}
+.app-facetime .ft-audio-btn {
+  background: var(--ft-blue);
+  color: #fff;
+}
+
+/* --- SharePlay hint --- */
+.app-facetime .ft-shareplay-hint {
+  font-size: 12px;
+  color: var(--win-muted);
+  text-align: center;
+  padding: 4px 0 0;
+}
+
+/* =========================================================
+   CALL SCREEN
+   ========================================================= */
+.app-facetime .ft-call-screen {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-facetime .ft-call-screen.hidden { display: none; }
+
+/* --- Remote tile --- */
+.app-facetime .ft-remote-tile {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.app-facetime .ft-remote-grad {
+  position: absolute;
+  inset: 0;
+  opacity: 0.9;
+}
+
+.app-facetime .ft-remote-avatar {
+  position: relative;
+  z-index: 1;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid rgba(255,255,255,0.28);
+  letter-spacing: 1px;
+}
+
+.app-facetime .ft-remote-name {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  white-space: nowrap;
+}
+
+/* --- Self PiP --- */
+.app-facetime .ft-pip {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 100px;
+  height: 78px;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 5;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.65);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  cursor: default;
+  transition: opacity 0.3s;
+}
+
+.app-facetime .ft-pip.ft-pip-off { opacity: 0.45; }
+
+.app-facetime .ft-pip-grad {
+  position: absolute;
+  inset: 0;
+}
+
+.app-facetime .ft-pip-label {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+}
+
+/* --- Call info bar --- */
+.app-facetime .ft-call-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.app-facetime .ft-call-name-el {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.app-facetime .ft-call-timer {
+  color: rgba(255,255,255,0.70);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+
+/* --- Call controls bar --- */
+.app-facetime .ft-call-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 14px 0 18px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.app-facetime .ft-ctrl-btn {
+  width: var(--ft-ctrl-size);
+  height: var(--ft-ctrl-size);
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  transition: transform 0.12s, filter 0.12s, background 0.15s;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border: none;
+}
+.app-facetime .ft-ctrl-btn:hover {
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.26);
+}
+.app-facetime .ft-ctrl-btn:active { transform: scale(0.95); }
+.app-facetime .ft-ctrl-btn.active {
+  background: rgba(255,255,255,0.42);
+}
+
+.app-facetime .ft-end-btn {
+  background: var(--ft-red) !important;
+  width: 60px;
+  height: 60px;
+  font-size: 22px;
+}
+.app-facetime .ft-end-btn:hover { background: color-mix(in srgb, var(--ft-red) 82%, #000) !important; }
+
+/* =========================================================
+   Scrollbar styling
+   ========================================================= */
+.app-facetime .ft-recents-list::-webkit-scrollbar { width: 6px; }
+.app-facetime .ft-recents-list::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+.app-facetime .ft-recents-list::-webkit-scrollbar-track { background: transparent; }
+
+.app-facetime .ft-idle::-webkit-scrollbar { width: 6px; }
+.app-facetime .ft-idle::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+.app-facetime .ft-idle::-webkit-scrollbar-track { background: transparent; }
+
+/* =========================================================
+   Utility
+   ========================================================= */
+.app-facetime .hidden { display: none !important; }

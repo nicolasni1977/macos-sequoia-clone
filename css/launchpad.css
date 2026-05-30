@@ -1,0 +1,94 @@
+/* ---- Launchpad ---- */
+#launchpad-overlay {
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px;
+  background: rgba(20,20,30,0.28);
+  backdrop-filter: blur(45px) saturate(150%);
+  -webkit-backdrop-filter: blur(45px) saturate(150%);
+}
+#launchpad-overlay.show { animation: lpFade 0.22s ease; }
+#launchpad-overlay.show #launchpad-grid { animation: lpZoom 0.26s var(--ease-out); }
+@keyframes lpFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lpZoom { from { transform: scale(1.08); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.launchpad-search-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+.launchpad-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 260px;
+  padding: 7px 14px;
+  background: rgba(255,255,255,0.18);
+  border: 0.5px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+  color: #fff;
+}
+.launchpad-search svg { color: rgba(255,255,255,0.8); }
+#launchpad-input { flex: 1; color: #fff; font-size: 14px; }
+#launchpad-input::placeholder { color: rgba(255,255,255,0.6); }
+
+#launchpad-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 24px 28px;
+  width: min(1040px, 92vw);
+  align-content: start;
+  flex: 1;
+  overflow: hidden;
+}
+.lp-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  cursor: default;
+  border-radius: 18px;
+  padding: 6px;
+  min-width: 0;
+  transition: transform 0.12s ease;
+}
+.lp-item:hover { transform: scale(1.06); }
+.lp-icon {
+  width: 70px; height: 70px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 42px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.4);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 600;
+}
+.lp-icon::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.32), rgba(255,255,255,0) 45%);
+}
+.lp-icon .glyph { position: relative; z-index: 2; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25)); }
+.lp-label {
+  font-size: 13px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  text-align: center;
+  max-width: 92px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#launchpad-pager {
+  display: flex;
+  gap: 9px;
+  padding: 24px 0 30px;
+}
+.lp-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+}
+.lp-dot.active { background: rgba(255,255,255,0.95); }

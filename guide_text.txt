@@ -1,0 +1,928 @@
+========== PAGE 1 ==========
+
+========== PAGE 2 ==========
+
+========== PAGE 3 ==========
+macOS
+® 
+Sequoia
+™
+by Guy Hart-Davis
+
+========== PAGE 4 ==========
+macOS® Sequoia™ For Dummies®
+Published by: John Wiley & Sons, Inc., 111 River Street, Hoboken, NJ 07030-5774, www.wiley.com
+Copyright © 2025 by John Wiley & Sons, Inc. All rights reserved, including rights for text and data mining and 
+training of artificial technologies or similar technologies.
+Media and software compilation © 2025 by John Wiley & Sons, Inc. All rights reserved, including rights for text and 
+data mining and training of artificial technologies or similar technologies.
+Published simultaneously in Canada
+No part of this publication may be reproduced, stored in a retrieval system or transmitted in any form or by any 
+means, electronic, mechanical, photocopying, recording, scanning or otherwise, except as permitted under Sections 
+107 or 108 of the 1976 United States Copyright Act, without the prior written permission of the Publisher. Requests to 
+the Publisher for permission should be addressed to the Permissions Department, John Wiley & Sons, Inc., 111 River 
+Street, Hoboken, NJ 07030, (201) 748-6011, fax (201) 748-6008, or online at http://www.wiley.com/go/permissions.
+Trademarks: Wiley, For Dummies, the Dummies Man logo, Dummies.com, Making Everything Easier, and related 
+trade dress are trademarks or registered trademarks of John Wiley & Sons, Inc. and may not be used without written 
+permission. macOS Sequoia is a trademark of Apple Inc. All other trademarks are the property of their respective 
+owners. John Wiley & Sons, Inc. is not associated with any product or vendor mentioned in this book. macOS® 
+Sequoia™ For Dummies® is an independent publication and has not been authorized, sponsored, or otherwise 
+approved by Apple, Inc.
+LIMIT OF LIABILITY/DISCLAIMER OF WARRANTY: THE PUBLISHER AND THE AUTHOR MAKE NO 
+REPRESENTATIONS OR WARRANTIES WITH RESPECT TO THE ACCURACY OR COMPLETENESS OF THE CONTENTS 
+OF THIS WORK AND SPECIFICALLY DISCLAIM ALL WARRANTIES, INCLUDING WITHOUT LIMITATION WARRANTIES 
+OF FITNESS FOR A PARTICULAR PURPOSE.  NO WARRANTY MAY BE CREATED OR EXTENDED BY SALES OR 
+PROMOTIONAL MATERIALS. THE ADVICE AND STRATEGIES CONTAINED HEREIN MAY NOT BE SUITABLE FOR 
+EVERY SITUATION. THIS WORK IS SOLD WITH THE UNDERSTANDING THAT THE PUBLISHER IS NOT ENGAGED 
+IN RENDERING LEGAL, ACCOUNTING, OR OTHER PROFESSIONAL SERVICES. IF PROFESSIONAL ASSISTANCE IS 
+REQUIRED, THE SERVICES OF A COMPETENT PROFESSIONAL PERSON SHOULD BE SOUGHT.  NEITHER THE 
+PUBLISHER NOR THE AUTHOR SHALL BE LIABLE FOR DAMAGES ARISING HEREFROM. THE FACT THAT AN 
+ORGANIZATION OR WEBSITE IS REFERRED TO IN THIS WORK AS A CITATION AND/OR A POTENTIAL SOURCE OF 
+FURTHER INFORMATION DOES NOT MEAN THAT THE AUTHOR OR THE PUBLISHER ENDORSES THE INFORMATION 
+THE ORGANIZATION OR WEBSITE MAY PROVIDE OR RECOMMENDATIONS IT MAY MAKE. FURTHER, READERS 
+SHOULD BE AWARE THAT INTERNET WEBSITES LISTED IN THIS WORK MAY HAVE CHANGED OR DISAPPEARED 
+BETWEEN WHEN THIS WORK WAS WRITTEN AND WHEN IT IS READ.
+For general information on our other products and services, please contact our Customer Care Department within 
+the U.S. at 877-762-2974, outside the U.S. at 317-572-3993, or fax 317-572-4002. For technical support, please visit 
+https://hub.wiley.com/community/support/dummies.
+Wiley publishes in a variety of print and electronic formats and by print-on-demand. Some material included with 
+standard print versions of this book may not be included in e-books or in print-on-demand. If this book refers to 
+media that is not included in the version you purchased, you may download this material at http://booksupport. 
+wiley.com. For more information about Wiley products, visit www.wiley.com.
+Library of Congress Control Number: 2024946904
+ISBN 978-1-394-28676-8 (pbk); ISBN 978-1-394-28677-5 (ebk); ISBN 978-1-394-28678-2 (ebk)
+
+========== PAGE 5 ==========
+Contents at a Glance
+Introduction. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 1
+Part 1: Getting Started with macOS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 5
+CHAPTER 1:	 macOS Sequoia 101 (Prerequisites: None). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 7
+CHAPTER 2:	 Desktop and Windows and Menus (Oh My!). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 25
+CHAPTER 3:	 What’s Up, Dock?. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 45
+CHAPTER 4:	 Getting to Know Finder and Its Desktop. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 61
+CHAPTER 5:	 Getting Fancy with the Desktop and Finder. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 89
+CHAPTER 6:	 Setting Your Mac Straight. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  103
+Part 2: Getting Things Done. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  125
+CHAPTER 7:	 Opening and Saving Files. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  127
+CHAPTER 8:	 Managing Files and Folders the Smart Way. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  149
+CHAPTER 9: Eight Terrific Time-Saving Tools. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  159
+CHAPTER 10:	Organizing Your Life. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  189
+CHAPTER 11:	Finding Your Way with Maps. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  213
+CHAPTER 12:	Using Stocks, News, Voice Memos, and Shortcuts. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  229
+Part 3: Getting Along with Others. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  241
+CHAPTER 13:	(Inter)Networking. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  243
+CHAPTER 14:	Dealing with People. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  267
+CHAPTER 15:	Communicating with Mail and Messages. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  277
+CHAPTER 16:	Sharing Your Mac with Others. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  305
+Part 4: Making the Most of Your Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  333
+CHAPTER 17:	Mac Machine Music. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  335
+CHAPTER 18:	Enjoying Multimedia. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  349
+CHAPTER 19:	Managing Fonts and Printing. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  361
+CHAPTER 20:	Features for the Way You Work. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  379
+CHAPTER 21:	Safety First: Backups and Other Security Issues. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  405
+CHAPTER 22:	Troubleshooting macOS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  421
+Part 5: The Part of Tens. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  431
+CHAPTER 23:	Ten Ways to Improve Your Mac Experience. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  433
+CHAPTER 24:	Ten Tools That Make Your Life Easier. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  441
+Index. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  455
+
+========== PAGE 6 ==========
+
+========== PAGE 7 ==========
+Table of Contents      v
+Table of Contents
+INTRODUCTION . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 1
+About This Book. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  1
+Foolish Assumptions. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  2
+Icons Used in This Book. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  2
+Beyond the Book. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  3
+Where to Go from Here. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  3
+PART 1: GETTING STARTED WITH macOS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 5
+CHAPTER 1:	 macOS Sequoia 101 (Prerequisites: None). .  .  .  .  .  .  .  .  .  .  . 7
+Okay, What Does macOS Do? . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  8
+Turning On Your Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  9
+What you should see on start-up. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  9
+What you may see if things go wrong . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  10
+Setting Up macOS Sequoia . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  10
+Logging In. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  12
+Meeting the macOS Desktop. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  14
+Pointing, Clicking, and More . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  16
+Putting Your Mac to Sleep and Shutting It Down. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  18
+Putting your Mac to sleep . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  18
+Shutting down your Mac . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  18
+Care and Feeding of Your Mac . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  19
+Feed your Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  19
+Treat your Mac gently. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  20
+Back up your data. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  20
+Getting Help. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  21
+Getting the Lowdown on Apple Intelligence. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  23
+CHAPTER 2:	 Desktop and Windows and Menus (Oh My!). .  .  .  .  .  .  .  . 25
+Touring Finder and the macOS Desktop. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  26
+Dissecting a Window. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  27
+Zooming, splitting, and minimizing windows. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  29
+Scrolling. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  31
+Active and inactive windows. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  33
+Opening a Dialog with Your Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  34
+Working with Windows. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  36
+Opening and closing windows. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  36
+Resizing windows and window panes . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  37
+Moving windows. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  37
+Shuffling windows. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  37
+
+========== PAGE 8 ==========
+vi      macOS Sequoia For Dummies
+Sampling the Menus. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  39
+Using the ever-changing menu bar.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 40
+Using the contextual (shortcut) menus. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  40
+Recognizing disabled commands. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  41
+Navigating submenus. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  42
+Under the Apple menu tree. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  43
+Giving commands via keyboard shortcuts. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  44
+CHAPTER 3:	 What’s Up, Dock? . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 45
+Meeting Your Dock. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  45
+Identifying the Dock’s default icons. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  46
+Trash talkin’ . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  48
+Opening app menus on the Dock. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  50
+Reading Dock icon body language. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  52
+Opening files from the Dock. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  52
+Customizing Your Dock.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 53
+Adding Dock icons. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  53
+Removing an icon from the Dock. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  55
+Resizing the Dock.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 55
+Configuring your Dock settings. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  55
+CHAPTER 4:	 Getting to Know Finder and Its Desktop . .  .  .  .  .  .  .  .  .  .  .  . 61
+Getting the Hang of Finder, the Desktop, and Icons . .  .  .  .  .  .  .  .  .  .  .  .  .  .  61
+Introducing the desktop. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  62
+Coming to grips with the toolbar . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  64
+Grasping what an icon is . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  66
+Identifying your Finder icons in the wild. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  67
+Alias Files and Folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  68
+Understanding the advantages of aliases. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  69
+Creating aliases. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  69
+Deleting aliases. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  70
+Hunting down an alias’s parent. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  70
+Opening a Window and Enjoying the View. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  70
+Moving through folders fast in Column view . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  71
+Perusing in Icon view . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  72
+Listless? Try viewing folders as a list. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  73
+Playing to the Gallery . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  75
+What’s your view? . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  76
+Finder on the Menu. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  78
+The actual Finder menu. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  78
+Navigating with the current folder’s pop-up menu . .  .  .  .  .  .  .  .  .  .  .  .  80
+Go places with the Go menu. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  80
+
+========== PAGE 9 ==========
+Table of Contents      vii
+Customizing Finder Windows . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  82
+Adding files and folders to the sidebar . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  82
+Configuring Finder settings. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  83
+Digging for Data in the Info Window . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  86
+CHAPTER 5:	 Getting Fancy with the Desktop and Finder. .  .  .  .  .  .  .  . 89
+Cleaning Up Your Desktop Automatically with Stacks. .  .  .  .  .  .  .  .  .  .  .  .  .  89
+Adding Widgets to Your Desktop . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  92
+Doing Things Faster with Quick Actions. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  95
+Getting the most out of Markup. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  95
+Trimming video without launching an app. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  98
+Creating PDFs Without Launching an App. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  99
+Shooting Screen Stills and Movies . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  100
+CHAPTER 6:	 Setting Your Mac Straight. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  103
+Introducing System Settings . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  103
+Setting Wallpaper . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  106
+Configuring a Screen Saver or Just Turning Off the Display. .  .  .  .  .  .  .  108
+Configuring Appearance Settings. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  111
+Choosing Desktop & Dock Settings. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  112
+Adjusting the Keyboard, Mouse, Trackpad, and Other Hardware. .  .  114
+Choosing keyboard settings. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  114
+Tweaking your mouse. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  118
+Configuring your trackpad. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  120
+Configuring Sound Settings. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  122
+PART 2: GETTING THINGS DONE . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  125
+CHAPTER 7:	 Opening and Saving Files. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  127
+Where Did That File Go?. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  127
+Understanding the macOS Folder Structure. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  128
+Understanding nested folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  129
+The Computer folder. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  130
+The Applications folder. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  131
+The Library folders . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  131
+The System folder. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  133
+The Home folder. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  133
+Opening your own Library folder. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  134
+Saving Your Document. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  136
+Understanding Auto Save and Versions. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  136
+Stepping through a basic save. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  137
+Save As versus Duplicate: Different names for  
+the same result. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  141
+
+========== PAGE 10 ==========
+viii      macOS Sequoia For Dummies
+Open, Sez Me. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  143
+With drag-and-drop. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  145
+With Quick Look. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  145
+When your Mac can’t open a file. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  145
+With the app of your choice. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  145
+CHAPTER 8:	 Managing Files and Folders the Smart Way. .  .  .  .  .  .  .  149
+Organizing Your Stuff in Folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  149
+What’s the difference between a file and a folder? . .  .  .  .  .  .  .  .  .  .  .  150
+Organizing your stuff with subfolders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  150
+Creating new folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  151
+Navigating with spring-loaded folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  152
+Using smart folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  153
+Working with Files and Folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  155
+Moving files and folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  155
+Selecting multiple items. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  156
+Renaming items. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  157
+Renaming multiple items at once. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  157
+Compressing files . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  157
+Getting rid of files and folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  157
+Using iCloud, iCloud+, and iCloud Drive. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  158
+CHAPTER 9: Eight Terrific Time-Saving Tools. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  159
+Getting to Grips with Siri . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  160
+What Siri can do for you. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  160
+Working with Siri. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  161
+Making Siri your own . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  162
+Introducing the macOS Clipboard.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 163
+Copying files and folders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  164
+Pasting from the Clipboard. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  166
+Expanding your horizons with the Universal Clipboard . .  .  .  .  .  .  .  166
+Taking Actions from Quick Look. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  167
+Share and share alike with the Share menu. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  169
+Slide into Slideshow (full-screen) mode. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  169
+Finding Files and Folders Fast with Spotlight . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  170
+Using the Find command. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  171
+Using the Spotlight menu and its keyboard shortcut . .  .  .  .  .  .  .  .  .  173
+Blasting Off with Mission Control. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  174
+Setting Mission Control parameters. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  175
+Setting actions for hot corners. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  177
+Organizing desktops and spaces with Mission Control. .  .  .  .  .  .  .  .  178
+All the World’s a Stage . . . and You’re the Manager. .  .  .  .  .  .  .  .  .  .  .  .  .  .  180
+Enabling Stage Manager. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  180
+Using Stage Manager . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  182
+
+========== PAGE 11 ==========
+Table of Contents      ix
+Taking Control of Essential Settings. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  186
+Configuring Launchpad to Launch Apps Quickly. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  187
+CHAPTER 10:	Organizing Your Life . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  189
+Keeping Track with Calendar. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  189
+Navigating Calendar views. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  190
+Understanding the Calendar list. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  191
+Creating calendars.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 191
+Sharing and publishing calendars. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  192
+Deleting a calendar. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  192
+Creating and managing events. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  193
+Staying Organized with Reminders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  196
+Getting started with Reminders . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  196
+Creating and managing reminders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  198
+Sharing lists and assigning reminders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  200
+Everything You Need to Know about Notification Center. .  .  .  .  .  .  .  .  .  200
+Tweaking Notification settings.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 200
+Managing Widgets 101. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  202
+Using Notification Center. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  203
+Getting focused. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  203
+Taking Notes with the Notes App. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  205
+Taking a Quick Note with Quick Note. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  209
+Tracking Activities with Screen Time. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  209
+CHAPTER 11:	Finding Your Way with Maps. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  213
+Finding Your Current Location . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  213
+Finding a Person, Place, or Thing . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  214
+Viewing, Zooming, and Panning. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  215
+Using Maps with Contacts. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  217
+Saving Time with Library, Guides, and Recents . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  218
+Library. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  218
+Guides. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  219
+Recents. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  220
+Getting Smart with Maps. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  220
+Getting route maps and driving directions. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  221
+Getting walking directions. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  223
+Getting directions for public transportation. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  223
+Getting cycling directions. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  223
+Creating custom routes. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  223
+Get traffic info in real time. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  224
+Enjoying flyovers and look arounds. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  225
+Doing more on the card for a location. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  226
+
+========== PAGE 12 ==========
+x      macOS Sequoia For Dummies
+CHAPTER 12:	Using Stocks, News, Voice Memos,  
+and Shortcuts. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  229
+Tracking Your Stocks. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  230
+Adding and removing stocks, funds, and indexes . .  .  .  .  .  .  .  .  .  .  .  .  231
+The devil is in the details . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  231
+Charting a course . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  232
+Keeping Current with News. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  233
+What are your interests? . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  233
+How News works. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  233
+Managing your news. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  234
+Recording Memos with Voice Memos . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  235
+Recording a voice memo. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  235
+Listening to a voice memo. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  235
+Transcribing a voice memo. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  236
+Naming a voice memo. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  236
+Trimming a voice memo. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  236
+Automating Repetitive Tasks with Shortcuts. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  238
+PART 3: GETTING ALONG WITH OTHERS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  241
+CHAPTER 13:	(Inter)Networking. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  243
+Getting Connected to the Internet. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  244
+Choosing an Internet service provider (ISP) . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  244
+Connecting your Mac to a network via Wi-Fi. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  245
+Managing your Wi-Fi networks. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  247
+Connecting your Mac to a network via Ethernet. .  .  .  .  .  .  .  .  .  .  .  .  .  .  252
+Browsing the Web with Safari. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  253
+Using and customizing the toolbar. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  254
+Using the Safari sidebar. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  255
+Browsing smarter with Safari Highlights. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  260
+Removing distracting items. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  260
+Creating profiles for home and work. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  260
+Creating web apps from websites. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  264
+Controlling audio and video playback. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  265
+Using passkeys. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  265
+CHAPTER 14:	Dealing with People. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  267
+Collecting Your Contacts . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  267
+Adding contacts. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  268
+Importing contacts from other apps . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  270
+Creating a basic list. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  271
+Setting up a smart list (based on contact criteria). .  .  .  .  .  .  .  .  .  .  .  .  272
+Deleting a list or smart list. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  273
+
+========== PAGE 13 ==========
+Table of Contents      xi
+Syncing Your Contacts Across Your Devices. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  273
+Making Audio and Video Calls with FaceTime. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  274
+Making a FaceTime call. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  274
+Using SharePlay during a FaceTime call. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  276
+CHAPTER 15:	Communicating with Mail and Messages. .  .  .  .  .  .  .  .  .  277
+Sending and Receiving Email with Mail. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  277
+Setting up Mail. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  278
+Identifying the toolbar icons. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  279
+Composing a new message. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  281
+Proofing and rewriting a message with Writing Tools. .  .  .  .  .  .  .  .  .  284
+Sending email from the Contacts app. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  286
+Checking your mail. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  287
+Dealing with spam. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  288
+Managing your mailboxes. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  291
+Changing settings for Mail. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  293
+Signing your messages the smart way. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  293
+Ruling over your mail. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  295
+Run a slide show from Quick Look. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  297
+Marking up an image or PDF document . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  297
+Transferring large files via Mail Drop. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  298
+Unsubscribing, muting, and blocking senders. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  299
+Communicating with Messages. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  299
+What can you do with iMessage? . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  299
+Chatting with Messages. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  300
+CHAPTER 16:	Sharing Your Mac with Others. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  305
+Introducing Networks and File Sharing. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  306
+Understanding the essentials of home and home- 
+office networking. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  307
+Setting up your home or home-office network. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  309
+Setting Up File Sharing. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  310
+Controlling Access and Permissions: Who Can Do What. .  .  .  .  .  .  .  .  .  .  313
+Understanding users, groups, and guests. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  313
+Creating users. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  314
+macOS knows best: Folders shared by default. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  318
+Sharing a folder or disk by setting permissions. .  .  .  .  .  .  .  .  .  .  .  .  .  .  319
+Applying useful settings for permissions. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  323
+Unsharing a folder. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  324
+Connecting to a Shared Disk or Folder on a Remote Mac. .  .  .  .  .  .  .  .  .  324
+Changing the Password for Your Account. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  327
+Resetting the Password for Another Account. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  328
+
+========== PAGE 14 ==========
+xii      macOS Sequoia For Dummies
+Exploring Other Types of macOS Sharing. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  329
+Sharing another Mac’s screen. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  329
+Sharing your Mac’s Internet connection . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  330
+Sharing printers and scanners . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  331
+Sharing media. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  331
+Sharing items via Bluetooth. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  332
+PART 4: MAKING THE MOST OF YOUR MAC. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  333
+CHAPTER 17:	Mac Machine Music. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  335
+Understanding iTunes Match and Apple Music . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  335
+Getting Started with the Music App. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  337
+Working with Media . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  339
+Adding songs. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  340
+Listening to Radio. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  342
+Making the Most of Playlists . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  345
+Creating a regular playlist . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  345
+Working with smart playlists. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  347
+Working with the Genius playlist. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  348
+CHAPTER 18:	Enjoying Multimedia. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  349
+Playing Movies and Music in QuickTime Player . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  349
+Watching TV. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  351
+Using the Books App. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  352
+Buying an ebook or audiobook. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  353
+Shopping for ebooks without Apple. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  354
+Finding and Listening to Podcasts with the Podcasts App . .  .  .  .  .  .  .  .  355
+You’re the Star with Photo Booth. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  357
+Viewing and Converting Images and PDFs in Preview. .  .  .  .  .  .  .  .  .  .  .  .  359
+CHAPTER 19:	Managing Fonts and Printing. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  361
+Font Mania. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  361
+Choosing font typefaces. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  362
+Managing your fonts with Font Book. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  362
+Printing. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  365
+Pre-printer prep. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  365
+Ready: Connecting and adding your printer. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  365
+Set: Setting up your document with Page Setup . .  .  .  .  .  .  .  .  .  .  .  .  .  372
+Preview: Checking the page and setting PDF options  
+in the Preview app. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  373
+Print: Printing from the Print dialog. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  374
+
+========== PAGE 15 ==========
+Table of Contents      xiii
+CHAPTER 20:	Features for the Way You Work. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  379
+Going Over to the Dark Side . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  379
+App Shopping Made Easy. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  381
+Using Your iPhone as Your Mac’s Camera or Scanner. .  .  .  .  .  .  .  .  .  .  .  .  382
+Talking and Listening to Your Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  385
+Using Dictation: You talk, and your Mac types. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  385
+Commanding your Mac by voice. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  386
+Listening to your Mac read your screen. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  388
+Controlling Your iPhone from Your Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  390
+Other Useful Goodies. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  392
+Accessibility pane . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  393
+Battery pane and Energy Saver pane. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  395
+Bluetooth pane . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  396
+Ink pane . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  396
+Automatic login. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  397
+Allow your Apple Watch to unlock your Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  397
+AirPlay and AirPlay to Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  397
+Handoff. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  398
+Universal Control. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  399
+CHAPTER 21:	Safety First: Backups and Other  
+Security Issues. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  405
+Backing Up Is (Not) Hard to Do. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  406
+Backing up with Sequoia’s excellent Time Machine. .  .  .  .  .  .  .  .  .  .  .  406
+Backing up by using the manual, brute-force method . .  .  .  .  .  .  .  .  410
+Backing up by using commercial backup software . .  .  .  .  .  .  .  .  .  .  .  410
+Why You Need Two Backups. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  411
+Non-Backup Security Concerns. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  412
+About viruses and other malware. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  412
+Installing security updates — or more — automatically. .  .  .  .  .  .  .  414
+Protecting Your Data from Prying Eyes. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  416
+Blocking or limiting connections. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  416
+Locking down files with FileVault . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  416
+Putting your Mac in Lockdown mode. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  417
+Setting other options for security. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  418
+CHAPTER 22:	Troubleshooting macOS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  421
+Understanding Start-Up Disks and Booting . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  421
+Finding or creating a start-up disk . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  422
+Interpreting prohibitory signs and messages. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  422
+Recovering with Recovery HD. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  423
+Step 1: Run First Aid . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  423
+Step 2: Boot into Safe mode . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  425
+
+========== PAGE 16 ==========
+xiv      macOS Sequoia For Dummies
+Step 3: Zap the PRAM/NVRAM. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  426
+Step 4: Reinstall macOS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  427
+Step 5: Things to try before taking your Mac in for repair . .  .  .  .  .  427
+If Your Mac Crashes at Start-Up . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  428
+Managing Storage with the Storage Feature. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  429
+PART 5: THE PART OF TENS. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  431
+CHAPTER 23:	Ten Ways to Improve Your Mac Experience . .  .  .  .  .  .  433
+Use Those Keyboard Shortcuts. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  434
+Improve Your Typing Skills. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  435
+Use Text Replacements and Automatic Correction. .  .  .  .  .  .  .  .  .  .  .  .  .  .  436
+Change Your Resolution. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  436
+Buy a Faster Mac. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  437
+Add RAM. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  438
+Add a Second Display. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  438
+Use Your iPad as an Extra Display . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  439
+Upgrade to a Solid-State Drive (SSD). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  439
+Get More Storage . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  440
+CHAPTER 24:	Ten Tools That Make Your Life Easier. .  .  .  .  .  .  .  .  .  .  .  .  .  .  441
+Calculator. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  442
+Activity Monitor. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  443
+Disk Utility. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  445
+Volume +/–. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  446
+Partition button. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  446
+First Aid button . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  446
+Erase button. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  447
+Mount/Unmount button. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  448
+Info button. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  448
+Passwords App . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  448
+Migration Assistant. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  450
+System Information. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  450
+Terminal. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  451
+Image Capture. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  451
+Stickies . .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  452
+AirPort Utility. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  453
+INDEX. .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  455
+
+========== PAGE 17 ==========
+Introduction      1
+Introduction
+L
+ooks like you’ve made three good choices: You have a Mac, macOS Sequoia 
+(aka macOS version 15), and this book. If you’re brand-new to the Mac, 
+you’re all set to start enjoying computing with the finest operating system 
+on the planet. If you’ve been using your Mac and macOS for a while, you’re ready 
+to start enjoying using them even more. Sure, this book is a computer book, but 
+it’s not one of those dull books best suited to serve as a doorstop; it’s one that 
+makes discovering the ins and outs of macOS Sequoia easy and even fun!
+About This Book
+macOS Sequoia For Dummies is the latest revision of the best-selling book by 
+legendary Mac maven Bob “Dr. Mac” LeVitus, technology columnist at the ­Houston 
+Chronicle. The book has been completely updated for macOS Sequoia to cover 
+all the latest features — such as Apple Intelligence, Writing Tools, and iPhone 
+­Mirroring — and everything else that has changed. This edition combines all the 
+old, familiar features of dozens of previous editions with the very latest informa-
+tion on Macs and macOS Sequoia.
+Why write a For Dummies book about macOS Sequoia? Well, Sequoia is a big, some-
+what complicated, personal-computer operating system. So macOS Sequoia For 
+Dummies, a not-so-big, not-too-complicated book, shows you what Sequoia is all 
+about without boring you to tears or poking you with sharp objects.
+This book is chock-full of information and advice, explaining everything you need 
+to know about macOS Sequoia in easy-to-understand language  — along with 
+time-saving tips, tricks, techniques, and step-by-step instructions. I feel 
+confident that you’ll find what you need to know about using macOS Sequoia in 
+this book.
+Still, a book this size can’t explain everything you might want to know about an 
+operating system the size of macOS Sequoia and the apps that run on it. If you’re 
+looking for information on topics such as Microsoft Office, Apple’s lifestyle and 
+productivity apps (such as iMovie, GarageBand, Numbers, and Pages), or 
+
+========== PAGE 18 ==========
+2      macOS Sequoia For Dummies
+programming, I recommend you look at other books published by Wiley. The 
+Wiley website (https://www.wiley.com/) is the best place to start.
+Within this book, you may note that some web addresses break across two lines of 
+text. If you’re reading this book in print and want to visit one of these webpages, 
+simply key in the web address exactly as it’s noted in the text, as though the line 
+break doesn’t exist. If you’re reading it as an ebook, you’ve got it easy: Just click 
+or tap the web address to be taken directly to the webpage.
+Foolish Assumptions
+Although I know what happens when you assume, I’ve made a few assumptions 
+anyway. I assume that you, gentle reader, know nothing about using macOS — 
+beyond knowing what a Mac is, that you want to use macOS, that you want to 
+understand macOS without having to digest an incomprehensible technical man-
+ual, and that you made the right choice by selecting this particular book. So I do 
+my best to explain each new concept fully.
+Icons Used in This Book
+Little pictures (icons) appear to the side of text throughout this book. Consider 
+these icons to be miniature road signs, telling you a little something extra about 
+the topic at hand. Here’s what the icons look like and what they mean.
+Look for Tip icons to find the juiciest morsels: shortcuts, tips, and undocumented 
+secrets about Sequoia. Try them all; impress your friends!
+When you see this icon, it means that this particular morsel is something you may 
+want to memorize (or at least write on your shirt cuff).
+Put on your propeller-beanie hat and pocket protector; these tidbits include the 
+truly geeky stuff. They’re certainly not required reading, but they’ll help you grasp 
+the background, get the bigger picture, or both.
+Read these notes very carefully. Warning icons flag important cautionary infor-
+mation that could save you any amount of grief.
+
+========== PAGE 19 ==========
+Introduction      3
+This icon highlights things new and different in macOS Sequoia.
+App icons (such as the Launchpad icon shown here) and interface icons show you 
+key items that you’ll be clicking, dragging, and otherwise interacting with.
+Beyond the Book
+In addition to what you’re reading right now, this book comes with a free access-
+anywhere cheat sheet that provides handy shortcuts for use with macOS Sequoia, 
+offers recommendations for backing up your Mac to avoid losing data, and more. 
+To get this cheat sheet, simply go to www.dummies.com and type macOS Sequoia 
+For Dummies Cheat Sheet in the Search box.
+Where to Go from Here
+The first few chapters of this book explain the basic things you need to understand 
+to operate your Mac effectively. If you’re new to Macs and macOS Sequoia, 
+start there.
+Although macOS Sequoia looks slightly different from previous versions, it largely 
+works the same as always. The first part of the book presents concepts so basic 
+that if you’ve been using a Mac for long, you may think you know it all — and 
+okay, you might know some (or most) of it. But remember that not-so-old-timers 
+need a solid foundation, too. So skim the stuff you already know, and you’ll get to 
+the better stuff soon enough.
+Enough of the introduction. Turn the page, and let’s get started!
+
+========== PAGE 20 ==========
+
+========== PAGE 21 ==========
+1
+Getting Started 
+with macOS
+
+========== PAGE 22 ==========
+IN THIS PART . . .
+Master the basics, from starting your Mac to 
+shutting it down.
+Get a practical introduction to Finder and its desktop.
+Make the Dock work harder for you.
+Find everything you need to know about Sequoia’s 
+windows, icons, and menus.
+Learn key Finder tips and tricks to make life with 
+macOS even easier (and more fulfilling).
+Wrangle System Settings to make your Mac 
+work your way.
+
+========== PAGE 23 ==========
+CHAPTER 1  macOS Sequoia 101 (Prerequisites: None)      7
+Chapter 1
+macOS Sequoia 101 
+(Prerequisites: None)
+S
+o you’re the proud owner of a Mac running macOS Sequoia? Great choice! 
+Your Mac gives you powerful hardware in a sleek package, and Sequoia — 
+macOS version 15, if you’re feeling formal — puts an intuitive and easy-to- 
+use interface on Unix, the best industrial-strength operating system in the world.
+In this chapter, we’ll make sure you’re set up to put your Mac and macOS to good 
+use. We’ll start by taking a quick look at what macOS actually does. We’ll then 
+move along to getting started by the numbers: turning on your Mac, going through 
+the setup routine if it’s a new Mac or a new install, logging in, and meeting the 
+IN THIS CHAPTER
+»
+» Understanding what an operating 
+system is and is not
+»
+» Turning your Mac on and off
+»
+» Setting up Sequoia
+»
+» Logging in to macOS
+»
+» Meeting the desktop
+»
+» Pointing, clicking, and dragging
+»
+» Putting your Mac to sleep and 
+shutting it down
+»
+» Taking care of your Mac
+»
+» Getting help from your Mac
+»
+» Getting the lowdown on Apple 
+Intelligence
+
+========== PAGE 24 ==========
+8      PART 1  Getting Started with macOS
+desktop. We’ll review how to use your mouse or trackpad. We’ll go through a few 
+essentials of treating your Mac well and avoiding avoidable damage, then look at 
+how to get help on Macs, macOS, and apps. Finally, we’ll talk about Apple’s new 
+feature group, Apple Intelligence, and where to find it on your Mac.
+If your Mac is all set up and you’re comfortable with start-up, login, navigation, 
+and shutdown, feel free to skip this chapter and move ahead to whichever chapter 
+will most benefit you immediately.
+Before we start, a quick word about macOS version numbers and version names . . .
+Each version of macOS has both a version number and a version name. This book 
+covers macOS version 15, whose version name is Sequoia. Most people prefer the 
+version names because they’re easier to remember.
+What about previous versions? Okay (deep breath): macOS version 14 was Sonoma, 
+version 13 was Ventura, version 12 was Monterey, version 11 was Big Sur, version 
+10.15 was Catalina, 10.14 was Mojave, 10.13 was High Sierra, and 10.12 was Sierra. 
+Before that, Apple called the operating system “OS X” (with the X pronounced 
+“ten”) rather than “macOS.” OS X version 10.11 was El Capitan, 10.10 was Yosem-
+ite, 10.9 was Mavericks, 10.8 was Mountain Lion, 10.7 was Lion, 10.6 was Snow 
+Leopard, 10.5 was Leopard, 10.4 was Tiger, 10.3 was Panther, 10.2 was Jaguar, 10.1 
+was Puma, and 10.0 was Cheetah.
+Okay, What Does macOS Do?
+The operating system (that is, the OS part of macOS) controls the basic and most 
+important functions of your computer. In the case of macOS and your Mac, the 
+operating system
+»
+» Manages memory
+»
+» Controls how windows, icons, and menus work
+»
+» Keeps track of files
+»
+» Manages networking and security
+»
+» Does housekeeping (but only its own — not yours)
+Other forms of software, such as word processors and web browsers, rely on the 
+OS to create and maintain the environment in which they work. When you create 
+a memo, for example, the word processor provides the tools for you to type and 
+
+========== PAGE 25 ==========
+CHAPTER 1  macOS Sequoia 101 (Prerequisites: None)      9
+format the information and save it in a file. In the background, the OS is the 
+muscle for the word processor, performing the following crucial functions:
+»
+» Providing the mechanism for drawing and moving the on-screen window in 
+which you write the memo
+»
+» Keeping track of the file when you save it
+»
+» Helping the word processor create drop-down menus and dialogs for you to 
+interact with
+»
+» Communicating with other programs
+There’s much, much more — but you get the idea.
+Turning On Your Mac
+No great surprises here: You turn on your Mac by pressing the power button — 
+once you find it. Here’s where to look:
+»
+» MacBook: At the upper-right corner of the keyboard
+»
+» iMac: At the back of the screen, lower-left corner or lower-right corner
+»
+» Mac mini, Mac Studio: At the back of the enclosure
+»
+» Mac Pro: On the front panel
+The power button usually looks like the little circle icon you see in the margin — 
+but on some Mac models, the power button doubles as the Touch ID button for 
+authenticating you via your fingerprint and doesn’t show the icon.
+What you should see on start-up
+When you turn on your Mac, the Mac powers up, checks the hardware, and then 
+loads macOS. While loading macOS, the Mac displays a white Apple logo in the 
+middle of the screen, as shown in the margin here.
+If you need to set up macOS Sequoia, the setup routine begins automatically. See 
+the following section, “Setting Up macOS Sequoia.” Otherwise (assuming Sequoia 
+has already been set up), the login screen appears, and you can log in. See the sec-
+tion “Logging In,” later in this chapter.
+
+========== PAGE 26 ==========
+10      PART 1  Getting Started with macOS
+What you may see if things go wrong
+If something is wrong with your Mac, you may see any of the following on start-up:
+»
+» Blue/black/gray screen of death: If any of your hardware fails when it’s 
+tested, you may see a blue, black, or gray screen. See Chapter 22 for moves to 
+try to get your Mac well again. Failing those, it may need repairs. If your 
+computer is under warranty, set up a Genius Bar appointment at your nearest 
+Apple Store or dial 1-800-SOS-APPL (or the equivalent number in your country 
+or region), and a customer-service person can tell you what to do.
+»
+» Prohibitory sign or flashing question mark in a folder: These icons mean 
+that your Mac can’t find a start-up disk, hard drive, USB drive, or network 
+server containing a valid Mac operating system. See Chapter 22 for ways to 
+ease your Mac’s ills.
+»
+» Kernel panic: You may occasionally see a block of text in several languages, 
+including English, as shown in Figure 1-1. This means that your Mac has 
+experienced a kernel panic, the most severe type of system crash. Restart your 
+Mac (there’s no other choice). If either of these messages recurs, see 
+Chapter 22 for advice.
+Okay, assuming you’re not seeing any of the above nasties, let’s return to our 
+scheduled programming: first, setup (if your Mac needs it), and then login.
+Setting Up macOS Sequoia
+If your Mac is new, or if you’ve just installed Sequoia from scratch rather than 
+upgrading it from an earlier version of macOS, you’ll need to run through a setup 
+routine. The following list explains the main steps:
+»
+» Specify your country or region. On the Select Your Country or Region 
+screen, click your country, and then click the Continue button.
+FIGURE 1-1: 
+If you’re seeing 
+something like 
+this, consult 
+Chapter 22 for 
+suggestions.
+
+========== PAGE 27 ==========
+CHAPTER 1  macOS Sequoia 101 (Prerequisites: None)      11
+»
+» Choose Accessibility features. On the Accessibility screen, set up any 
+accessibility features you need by clicking the Vision button, the Motor button, 
+the Hearing button, or the Cognitive button, and then working through the 
+resulting screens. You can set up most accessibility features at this point if you 
+know that you or other users of the Mac will need them. However, you may 
+find it better to set up only those features that you need now to help you 
+complete the setup routine, and then configure other accessibility features 
+after setup. If you don’t need to set up any accessibility features now, click the 
+Not Now button to move right along.
+»
+» Connect to a Wi-Fi network. On the Select Your Wi-Fi Network screen, click 
+the network you want your Mac to use, and then type the network password 
+in the Password box. Once the connection is established, click the 
+Continue button.
+If your Mac has an Ethernet port that is connected to your wired network via a 
+cable, you won’t need to connect to a Wi-Fi network.
+»
+» Read about data and privacy. On the Data & Privacy screen, read the 
+information, and click the Learn More link if you want to learn more. Click  
+the Continue button when you’re ready to move along.
+»
+» Choose whether to transfer your data to this Mac. On the Migration 
+Assistant screen, select the From a Mac, Time Machine Backup, or Startup  
+Disk option button if you want to transfer data from one of these Mac-based 
+sources; or select the From a Windows PC option button if you want to 
+transfer data from a PC; and then click the Continue button and follow the 
+prompts to specify the data. If you don’t want to transfer data at all, or you 
+want to transfer it later, click the Not Now button.
+»
+» Sign in using your Apple ID. On the Sign In with Your Apple ID screen, type 
+the email address associated with your Apple ID. Enter the password, and 
+then click the Continue button.
+»
+» Accept the Terms and Conditions. On the Terms and Conditions screen, 
+read the terms and conditions. If you want to proceed, click the Agree button, 
+and then click the Agree button again in the confirmation dialog.
+»
+» Read the Find My information. On the Find My screen, read how the Find 
+My feature helps you retrieve your Mac when it goes missing and protects 
+your Mac with Activation Lock. Click the Continue button to proceed.
+»
+» Choose whether to enable Location Services. On the Enable Location 
+Services screen, select the Enable Location Services on This Mac check box if 
+you want to turn on Location Services, which tell apps like Maps and services 
+like Spotlight Suggestions where your Mac is located. Once more, click the 
+Continue button to proceed.
+
+========== PAGE 28 ==========
+12      PART 1  Getting Started with macOS
+»
+» Choose whether to share your Analytics information. On the Analytics 
+screen, choose whether to share your analytics data with Apple and with app 
+developers. This is a public-spirited action that helps Apple and the develop-
+ers improve their software, and Apple anonymizes the data so that it cannot 
+come back to haunt you. Click the Continue button to move along.
+»
+» Choose whether to enable Screen Time. On the Screen Time screen, read 
+the details of the Screen Time feature, which enables you to set usage limits 
+for the Mac for yourself and other users. Click the Continue button if you want 
+to enable Screen Time now; if not, click the Set Up Later button.
+The setup routine implies Screen Time is something you should want to use. 
+Screen Time can certainly be useful, especially if you need a commitment 
+device to limit your Mac usage in certain ways (such as setting time limits on 
+social media) or you need to manage family members’ usage. But if your Mac 
+is yours alone and you don’t need or want Screen Time, don’t set it up. Screen 
+Time is not a notorious resource hog, but it certainly doesn’t make your Mac 
+run faster. You can set up Screen Time later if needed.
+»
+» Choose whether to enable Ask Siri. On the Siri screen, select or clear the 
+Enable Ask Siri check box, as needed, and then click the Continue button. If 
+you enable Ask Siri, choose a voice on the Select a Siri Voice screen. Click the 
+Continue button to keep moving along.
+»
+» Choose whether to set up Touch ID. If your MacBook or your Mac’s 
+keyboard includes a Touch ID fingerprint reader, set up Touch ID fingerprint 
+recognition by clicking the Continue button on the Touch ID screen, and then 
+following the prompts. If you prefer to set up Touch ID later, click the Set Up 
+Touch ID Later link.
+»
+» Choose Light Mode, Dark Mode, or Auto Mode. On the Choose Your Look 
+screen, click the Light button, the Dark button, or the Auto button, as needed. 
+Auto Mode switches between light and dark to match the time of day in your 
+current location. Click the Continue button one final time.
+The setup routine finishes, and your desktop appears. Move on to the section 
+“Meeting the macOS Desktop,” later in this chapter.
+Logging In
+After starting up successfully, macOS displays the login screen. Figure 1-2 shows 
+an example of the login screen with four user accounts set up on the Mac. As you 
+can see, the user accounts appear at the bottom of the screen.
+
+========== PAGE 29 ==========
+CHAPTER 1  macOS Sequoia 101 (Prerequisites: None)      13
+Click your username to display the Enter Password field (see the left screen in 
+Figure 1-3), type your password, and then press Return or click the little right- 
+arrow-in-a-circle to the right of the password (see the right screen in Figure 1-3). 
+The arrow appears once you’ve typed something in the Enter Password field.
+FIGURE 1-2: 
+On the login 
+screen, click your 
+username. 
+You may 
+sometimes 
+need to 
+change the 
+input language.
+FIGURE 1-3: 
+Type your 
+password (left), 
+and then press 
+Return or click 
+the arrow (right).
+
+========== PAGE 30 ==========
+14      PART 1  Getting Started with macOS
+Login should be straightforward, provided that you know your password and can 
+type it without mistakes (and without seeing the characters). But there are three 
+things that might trip you up:
+»
+» Caps Lock or Num Lock is enabled. If Caps Lock or Num Lock is enabled on 
+the keyboard, your password likely won’t match. The login screen may or 
+may not show a warning that Caps Lock or Num Lock is on. If in doubt, look 
+at the keyboard to see if there’s a status light showing that Caps Lock or Num 
+Lock is on.
+»
+» The keyboard is set to a different layout. Look at the readout in the upper-
+right corner of the screen to make sure the keyboard is set to the appropriate 
+layout, such as U.S. If not, click the readout, and then choose the right layout on 
+the menu that appears. This problem occurs only when the Mac is configured to 
+use multiple layouts, such as the U.S. layout and the Dvorak layout.
+»
+» Your Bluetooth keyboard isn’t connected or isn’t working. If you’re using a 
+Bluetooth keyboard, make sure it’s showing its usual lights. If not, try connect-
+ing the keyboard via USB (if it supports that) or using a different keyboard.
+If you don’t want to type your password every time you start or restart your Mac, 
+you can set up automatic login. Full disclosure: This is almost never wise, but 
+some people find it useful. See Chapter 20 for details.
+Meeting the macOS Desktop
+Once you’ve logged in, the macOS desktop appears. Figure  1-4 shows how the 
+desktop looks before you customize it. The desktop is mostly empty space at first, 
+so for visual interest, this figure also shows the About This Mac window, whose 
+macOS readout shows the version of macOS your Mac is running — Sequoia 14.0 in 
+this example. To open this window, click the  icon in the upper-left corner of the 
+screen, and then click the About This Mac command on the menu that opens. To 
+close the window, click the red button in its upper-left corner.
+Here are the elements you see in the figure:
+»
+» Apple menu: This menu always appears at the left end of the menu bar. It 
+gives you access to essential system commands, including Sleep, Restart, Shut 
+Down, and Log Out.
+»
+» Menu bar: This bar appears across the top of the screen and displays the 
+menus for the active app. In Figure 1-4, the active app is Finder, the macOS 
+file-management app. Chapters 4 and 5 dig into Finder in depth.

@@ -1,0 +1,159 @@
+/* ---- Dock ---- */
+#dock-container {
+  position: absolute;
+  left: 0; right: 0; bottom: 6px;
+  z-index: 7000;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+#dock {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: calc(var(--dock-base, 56px) + 16px);
+  padding: 6px 8px;
+  background: var(--dock-bg);
+  backdrop-filter: blur(34px) saturate(180%);
+  -webkit-backdrop-filter: blur(34px) saturate(180%);
+  border-radius: 22px;
+  border: 0.5px solid var(--dock-border);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35), inset 0 0.5px 0 rgba(255,255,255,0.45);
+}
+
+.dock-item {
+  position: relative;
+  width: var(--dock-base, 56px);
+  height: var(--dock-base, 56px);
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform-origin: bottom center;
+  /* width/transform are set imperatively for magnification */
+}
+.dock-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  line-height: 1;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.4);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 600;
+  transition: filter 0.15s ease;
+}
+.dock-icon .glyph { position: relative; z-index: 2; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25)); }
+.dock-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0) 45%);
+  pointer-events: none;
+}
+
+/* Tooltip */
+.dock-tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 4px 11px;
+  background: rgba(40,40,44,0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 12.5px;
+  border-radius: 7px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  border: 0.5px solid rgba(255,255,255,0.12);
+}
+.dock-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(40,40,44,0.82);
+}
+.dock-item:hover .dock-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Running indicator */
+.dock-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+}
+.dock-item.running .dock-indicator { opacity: 1; }
+
+/* Separator */
+.dock-sep {
+  width: 1px;
+  height: 48px;
+  margin: 0 4px 4px;
+  align-self: center;
+  background: rgba(255,255,255,0.32);
+  flex: 0 0 auto;
+}
+
+/* Launch bounce */
+@keyframes dockBounce {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(-30px); }
+  60% { transform: translateY(0); }
+  78% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+.dock-item.bouncing .dock-icon { animation: dockBounce 0.62s ease; }
+
+/* Icon gradient palette — original CSS approximations, not Apple artwork */
+.ic-finder   { background: linear-gradient(180deg,#3ea0ff,#1f6fe0); }
+.ic-safari   { background: radial-gradient(circle at 50% 45%, #ffffff 0 26%, #e9eef3 27% 30%, #1a8cff 31% 100%); }
+.ic-mail     { background: linear-gradient(180deg,#56b3ff,#1e7bff); }
+.ic-messages { background: linear-gradient(180deg,#4ce06a,#21b24a); }
+.ic-maps     { background: linear-gradient(135deg,#a7e26b,#5bc0a0 55%,#4aa3e0); }
+.ic-photos   { background: conic-gradient(from 210deg,#ff5f6d,#ffc371,#5ee7df,#b490ca,#ff5f6d); }
+.ic-music    { background: linear-gradient(180deg,#fb5c74,#fa2750); }
+.ic-podcasts { background: linear-gradient(180deg,#c264ff,#8a2be2); }
+.ic-tv       { background: linear-gradient(180deg,#2a2a2e,#0a0a0c); }
+.ic-appstore { background: linear-gradient(180deg,#27a4ff,#0a64e6); }
+.ic-notes    { background: linear-gradient(180deg,#fff3b0,#ffd83d); }
+.ic-reminders{ background: linear-gradient(180deg,#ffffff,#f1f1f4); }
+.ic-calendar { background: linear-gradient(180deg,#ffffff,#f1f1f4); }
+.ic-settings { background: linear-gradient(180deg,#9aa0a6,#5f6368); }
+.ic-terminal { background: linear-gradient(180deg,#2b2b2f,#101012); }
+.ic-calc     { background: linear-gradient(180deg,#3a3a3c,#1c1c1e); }
+.ic-facetime { background: linear-gradient(180deg,#4ce06a,#16a34a); }
+.ic-contacts { background: linear-gradient(180deg,#9aa0a6,#6b7176); }
+.ic-find     { background: linear-gradient(180deg,#4ce06a,#16a34a); }
+.ic-news     { background: linear-gradient(180deg,#ff5f6d,#ff2d55); }
+.ic-stocks   { background: linear-gradient(180deg,#2a2a2e,#0a0a0c); }
+.ic-home     { background: linear-gradient(180deg,#ff9f47,#ff7a00); }
+.ic-voice    { background: linear-gradient(180deg,#ff5f6d,#ff2d55); }
+.ic-books    { background: linear-gradient(180deg,#ff8a3d,#ff6a00); }
+.ic-clock    { background: linear-gradient(180deg,#2a2a2e,#0a0a0c); }
+.ic-weather  { background: linear-gradient(180deg,#3ea0ff,#1f6fe0); }
+.ic-trash    { background: linear-gradient(180deg,#e9eef3,#cfd6de); }
+.ic-generic  { background: linear-gradient(180deg,#b8bec7,#8a929c); }
+.ic-creative { background: linear-gradient(135deg,#ff6ea3,#ff2d75); }
+.ic-dev      { background: linear-gradient(180deg,#2b6fff,#1247c8); }
+.ic-pink     { background: linear-gradient(180deg,#ff7eb3,#ff4e8e); }
+.ic-purple   { background: linear-gradient(180deg,#b06cff,#7a35e0); }
+.ic-teal     { background: linear-gradient(180deg,#3fd6c9,#1aa79a); }
+.ic-orange   { background: linear-gradient(180deg,#ffb347,#ff8a00); }
+.ic-indigo   { background: linear-gradient(180deg,#6a7bff,#3a4ce0); }
+.ic-graphite { background: linear-gradient(180deg,#6b7176,#3a3d40); }

@@ -1,0 +1,57 @@
+/* Disk Utility */
+.du-root { display: flex; flex-direction: column; height: 100%; background: #fff; color: #1c1c1e; }
+
+.du-toolbar { display: flex; gap: 4px; padding: 8px 14px; border-bottom: 0.5px solid rgba(0,0,0,0.12); background: linear-gradient(180deg,#f7f7f9,#ededf0); }
+.du-tb-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 10px; border-radius: 7px; color: #3a3a3c; min-width: 56px; }
+.du-tb-btn:hover { background: rgba(0,0,0,0.07); }
+.du-tb-ic { font-size: 17px; }
+.du-tb-label { font-size: 10.5px; }
+
+.du-body { flex: 1; display: flex; min-height: 0; }
+.du-sidebar { width: 220px; flex: 0 0 220px; border-right: 0.5px solid rgba(0,0,0,0.1); background: #faf9fb; overflow-y: auto; padding: 8px 6px; }
+.du-sb-group { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #a0a0a4; padding: 12px 8px 4px; }
+.du-sb-item { display: flex; align-items: center; gap: 9px; padding: 7px 8px; border-radius: 7px; cursor: default; }
+.du-sb-item:hover { background: rgba(0,0,0,0.05); }
+.du-sb-item.active { background: var(--accent); color: #fff; }
+.du-sb-ic { font-size: 18px; }
+.du-sb-text { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.du-sb-name { font-size: 13px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.du-sb-cap { font-size: 11px; opacity: 0.65; }
+
+.du-main { flex: 1; overflow-y: auto; padding: 24px 30px; }
+.du-head { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+.du-head-ic { font-size: 50px; }
+.du-head-name { font-size: 21px; font-weight: 700; }
+.du-head-sub { font-size: 13px; color: #8a8a8e; }
+.du-head-usage { margin-left: auto; text-align: right; }
+.du-usage-num { font-size: 26px; font-weight: 300; }
+.du-usage-lbl { font-size: 12px; color: #8a8a8e; }
+
+.du-bar { display: flex; height: 36px; border-radius: 8px; overflow: hidden; box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.1); background: #e5e5ea; }
+.du-seg { height: 100%; width: 0; transition: width 0.6s cubic-bezier(0.22,1,0.36,1); position: relative; }
+.du-bar.grown .du-seg { /* width set inline; class just gates the transition timing */ }
+.du-seg + .du-seg { box-shadow: inset 1px 0 0 rgba(255,255,255,0.5); }
+
+.du-legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 24px; }
+.du-legend-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; }
+.du-dot { width: 11px; height: 11px; border-radius: 3px; }
+.du-leg-label { color: #3a3a3c; }
+.du-leg-gb { color: #8a8a8e; }
+
+.du-info-card { background: #f5f5f7; border-radius: 12px; overflow: hidden; max-width: 460px; }
+.du-info-row { display: flex; justify-content: space-between; padding: 10px 16px; font-size: 13px; border-bottom: 0.5px solid rgba(0,0,0,0.07); }
+.du-info-row:last-child { border-bottom: none; }
+.du-info-row span:first-child { color: #8a8a8e; }
+.du-ok { color: #34c759; font-weight: 600; }
+
+/* First Aid modal */
+.du-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; z-index: 50; }
+.du-modal { width: min(460px, 86%); background: #fff; border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.4); overflow: hidden; }
+.du-modal-head { padding: 16px 18px; font-size: 14px; font-weight: 600; border-bottom: 0.5px solid rgba(0,0,0,0.1); }
+.du-modal-log { height: 180px; overflow-y: auto; padding: 12px 18px; font-family: var(--font-mono, monospace); font-size: 12px; color: #444; line-height: 1.7; }
+.du-log-ok { color: #34c759; font-weight: 700; margin-top: 6px; }
+.du-modal-bar { height: 6px; background: rgba(0,0,0,0.1); margin: 0 18px; border-radius: 3px; overflow: hidden; }
+.du-modal-fill { height: 100%; width: 0; background: var(--accent); border-radius: 3px; transition: width 0.4s ease; }
+.du-modal-foot { display: flex; justify-content: flex-end; padding: 14px 18px; }
+.du-modal-btn { padding: 6px 18px; border-radius: 7px; background: var(--accent); color: #fff; font-size: 13px; font-weight: 600; }
+.du-modal-btn:disabled { background: #c7c7cc; }

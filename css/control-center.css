@@ -1,0 +1,204 @@
+/* ============================================================
+   Control Center + Notification Center glass panels.
+   Uses shared theme tokens (see APP_CONTRACT.md) for dark mode.
+   ============================================================ */
+
+/* ============ Control Center ============ */
+#control-center {
+  position: fixed;
+  top: calc(var(--menubar-h) + 6px);
+  right: 8px;
+  width: 320px;
+  z-index: 8800;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  border-radius: 18px;
+  background: var(--menu-bg, rgba(245, 245, 247, 0.7));
+  border: 0.5px solid var(--menu-border);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(45px) saturate(180%);
+  -webkit-backdrop-filter: blur(45px) saturate(180%);
+  color: var(--win-fg);
+  transform-origin: top right;
+  opacity: 0;
+  transform: scale(0.94) translateY(-6px);
+  transition: opacity 0.16s var(--ease-out), transform 0.16s var(--ease-out);
+}
+#control-center.hidden { display: none; }
+#control-center.show { opacity: 1; transform: none; }
+
+.cc-tile {
+  background: var(--control-bg, rgba(0, 0, 0, 0.06));
+  border-radius: 14px;
+  padding: 11px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.cc-tile.span2 { grid-column: span 2; }
+
+.cc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.cc-toggle .cc-ic {
+  width: 30px; height: 30px;
+  flex: 0 0 30px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  background: rgba(120, 120, 128, 0.28);
+  color: var(--win-fg);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.cc-toggle.on .cc-ic { background: var(--accent); color: #fff; }
+.cc-toggle .cc-labels { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.cc-toggle .cc-name { font-size: 12.5px; font-weight: 600; }
+.cc-toggle .cc-state { font-size: 11px; color: var(--win-muted); }
+
+.cc-slider-label { font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.cc-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--control-bg, rgba(0, 0, 0, 0.1));
+  outline: none;
+}
+.cc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  cursor: default;
+}
+.cc-slider::-moz-range-thumb {
+  width: 20px; height: 20px; border: none; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+/* Appearance segmented toggle */
+.cc-appearance { display: flex; gap: 8px; }
+.cc-appearance button {
+  flex: 1;
+  padding: 7px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--control-bg, rgba(0, 0, 0, 0.06));
+  color: var(--win-fg);
+  border: 1.5px solid transparent;
+  cursor: default;
+}
+.cc-appearance button.active { border-color: var(--accent); }
+
+/* Now Playing */
+.cc-now {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.cc-now-art {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  background: linear-gradient(135deg, #fa2750, #ff9f0a);
+}
+.cc-now-meta { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.cc-now-title { font-size: 12.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cc-now-artist { font-size: 11px; color: var(--win-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cc-now-controls { display: flex; gap: 4px; font-size: 15px; }
+.cc-now-controls span { cursor: default; padding: 2px; }
+
+/* ============ Notification Center ============ */
+#notification-center {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 318px;
+  z-index: 8700;
+  padding: calc(var(--menubar-h) + 14px) 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+  background: rgba(10, 10, 14, 0.18);
+  backdrop-filter: blur(34px) saturate(150%);
+  -webkit-backdrop-filter: blur(34px) saturate(150%);
+  transform: translateX(100%);
+  transition: transform 0.28s var(--ease-out);
+}
+html.dark #notification-center { background: rgba(10, 10, 14, 0.34); }
+#notification-center.hidden { display: none; }
+#notification-center.show { transform: translateX(0); }
+
+.nc-widget {
+  border-radius: 16px;
+  background: var(--vibrancy-light, rgba(246, 246, 248, 0.75));
+  border: 0.5px solid var(--menu-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  color: var(--win-fg);
+  overflow: hidden;
+}
+
+/* Date widget */
+.nc-date {
+  padding: 16px 18px;
+  text-align: left;
+}
+.nc-date .nc-weekday { font-size: 14px; font-weight: 600; color: #ff453a; }
+.nc-date .nc-day { font-size: 40px; font-weight: 700; line-height: 1; margin-top: 2px; }
+
+/* Mini calendar */
+.nc-cal { padding: 12px 14px; }
+.nc-cal-head { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.nc-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px 0;
+  text-align: center;
+}
+.nc-cal-dow { font-size: 10px; color: var(--win-muted); padding-bottom: 4px; }
+.nc-cal-cell {
+  font-size: 11.5px;
+  padding: 4px 0;
+  border-radius: 50%;
+  font-variant-numeric: tabular-nums;
+}
+.nc-cal-cell.out { opacity: 0.3; }
+.nc-cal-cell.today { background: #ff453a; color: #fff; font-weight: 700; }
+
+/* Weather widget */
+.nc-weather { padding: 14px 16px; }
+.nc-weather .nc-city { font-size: 13px; font-weight: 600; }
+.nc-weather .nc-temp { font-size: 32px; font-weight: 700; line-height: 1; }
+.nc-weather .nc-cond { font-size: 12px; color: var(--win-muted); }
+.nc-weather .nc-hl { font-size: 11.5px; color: var(--win-muted); margin-top: 4px; }
+
+/* Notifications list */
+.nc-notif {
+  padding: 12px 14px;
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+}
+.nc-notif + .nc-notif { border-top: 0.5px solid var(--win-border); }
+.nc-notif .nc-n-ic {
+  width: 34px; height: 34px;
+  flex: 0 0 34px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px;
+  background: rgba(120, 120, 128, 0.22);
+}
+.nc-notif .nc-n-meta { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.nc-notif .nc-n-app { font-size: 11px; font-weight: 600; color: var(--win-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+.nc-notif .nc-n-title { font-size: 13px; font-weight: 600; }
+.nc-notif .nc-n-body { font-size: 12px; color: var(--win-muted); }

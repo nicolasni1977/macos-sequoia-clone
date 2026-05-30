@@ -1,0 +1,159 @@
+/* ---- Reset & design tokens ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+                 "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, "Menlo", "Cascadia Code", "Consolas", monospace;
+
+  --menubar-h: 26px;
+
+  --tl-red: #ff5f57;
+  --tl-yellow: #febc2e;
+  --tl-green: #28c840;
+
+  --accent: #0a84ff;
+  --accent-light: #409cff;
+
+  /* Light vibrancy */
+  --vibrancy-light: rgba(246, 246, 248, 0.72);
+  --vibrancy-dark: rgba(40, 40, 44, 0.62);
+
+  --window-radius: 11px;
+  --shadow-active: 0 28px 70px rgba(0,0,0,0.45), 0 8px 22px rgba(0,0,0,0.30);
+  --shadow-inactive: 0 16px 40px rgba(0,0,0,0.28), 0 4px 12px rgba(0,0,0,0.18);
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---- Dock resting size (adjustable from Desktop & Dock settings) ---- */
+  --dock-base: 56px;
+
+  /* =======================================================
+     THEME TOKENS — LIGHT (default). Toggling html.dark
+     overrides these to switch every surface at once.
+     ======================================================= */
+
+  /* Window surfaces */
+  --win-bg: #ffffff;            /* window body background           */
+  --win-fg: #1c1c1e;            /* primary text on window surfaces  */
+  --win-muted: #6b6b70;         /* secondary / muted text           */
+  --win-border: rgba(0,0,0,0.12);
+  --win-hover: rgba(0,0,0,0.05);
+
+  /* Titlebar */
+  --titlebar-bg: linear-gradient(180deg,#fbfbfd,#ececef);
+  --titlebar-bg-active: linear-gradient(180deg,#fdfdff,#eef0f3);
+  --titlebar-fg: rgba(0,0,0,0.45);
+  --titlebar-fg-active: rgba(0,0,0,0.78);
+
+  /* Sidebars (Finder, Settings, Mail, ...) */
+  --sidebar-bg: rgba(245,245,247,0.85);
+  --sidebar-fg: #2a2a2e;
+  --sidebar-border: rgba(0,0,0,0.10);
+
+  /* Cards / grouped rows (Settings, App Store, ...) */
+  --card-bg: #f5f5f7;
+  --card-border: rgba(0,0,0,0.07);
+
+  /* Controls / fields */
+  --control-bg: rgba(0,0,0,0.06);
+  --field-bg: #f0f0f2;
+
+  /* Chrome surfaces */
+  --menubar-bg: rgba(255,255,255,0.10);
+  --menubar-fg: #ffffff;
+  --menu-bg: var(--vibrancy-light);
+  --menu-fg: #1a1a1a;
+  --menu-border: rgba(0,0,0,0.12);
+  --menu-sep: rgba(0,0,0,0.14);
+  --dock-bg: rgba(255,255,255,0.22);
+  --dock-border: rgba(255,255,255,0.30);
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(0,0,0,0.28);
+  --scrollbar-thumb-hover: rgba(0,0,0,0.42);
+}
+
+/* =========================================================
+   THEME TOKENS — DARK. Applied when <html> has class "dark".
+   ========================================================= */
+html.dark {
+  --vibrancy-light: rgba(40, 40, 44, 0.78);
+
+  --win-bg: #1e1e20;
+  --win-fg: #f2f2f5;
+  --win-muted: #98989d;
+  --win-border: rgba(255,255,255,0.12);
+  --win-hover: rgba(255,255,255,0.07);
+
+  --titlebar-bg: linear-gradient(180deg,#3a3a3d,#2a2a2d);
+  --titlebar-bg-active: linear-gradient(180deg,#414145,#2f2f33);
+  --titlebar-fg: rgba(255,255,255,0.45);
+  --titlebar-fg-active: rgba(255,255,255,0.82);
+
+  --sidebar-bg: rgba(38,38,42,0.85);
+  --sidebar-fg: #d7d7db;
+  --sidebar-border: rgba(255,255,255,0.10);
+
+  --card-bg: #2c2c2e;
+  --card-border: rgba(255,255,255,0.08);
+
+  --control-bg: rgba(255,255,255,0.10);
+  --field-bg: #3a3a3d;
+
+  --menubar-bg: rgba(0,0,0,0.28);
+  --menubar-fg: #ffffff;
+  --menu-bg: rgba(44,44,48,0.82);
+  --menu-fg: #f2f2f5;
+  --menu-border: rgba(255,255,255,0.12);
+  --menu-sep: rgba(255,255,255,0.16);
+  --dock-bg: rgba(50,50,55,0.42);
+  --dock-border: rgba(255,255,255,0.14);
+
+  --scrollbar-thumb: rgba(255,255,255,0.26);
+  --scrollbar-thumb-hover: rgba(255,255,255,0.42);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font-system);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  user-select: none;
+  cursor: default;
+  background: #000;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: default;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+.hidden { display: none !important; }
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); background-clip: padding-box; }
+::-webkit-scrollbar-track { background: transparent; }

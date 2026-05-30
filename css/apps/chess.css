@@ -1,0 +1,57 @@
+/* Chess */
+.ch-root { height: 100%; display: flex; flex-direction: column; background: #2e2622; color: #efe7df; padding: 12px; gap: 8px; }
+
+.ch-bar { display: flex; align-items: center; gap: 10px; padding: 4px 6px; }
+.ch-turn-dot { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.5); flex: 0 0 auto; }
+.ch-turn-dot.w { background: #f4f0ea; }
+.ch-turn-dot.b { background: #1c1c1e; }
+.ch-status { font-size: 15px; font-weight: 600; }
+.ch-reset { margin-left: auto; padding: 5px 13px; border-radius: 8px; background: rgba(255,255,255,0.14); color: #fff; font-size: 12.5px; font-weight: 500; }
+.ch-reset:hover { background: rgba(255,255,255,0.24); }
+
+.ch-tray { min-height: 26px; display: flex; flex-wrap: wrap; gap: 1px; padding: 0 4px; font-size: 20px; line-height: 1; align-items: center; }
+.ch-tray-empty { color: rgba(255,255,255,0.25); font-size: 13px; }
+.ch-cap { opacity: 0.92; }
+
+/* Wrapper is a query container; the board sizes to the largest square that
+   fits it (min of width/height) — so it stays square on phone or desktop. */
+.ch-board-wrap {
+  flex: 1; min-height: 0; min-width: 0;
+  display: flex; align-items: center; justify-content: center;
+  container-type: size;
+}
+.ch-board {
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  border-radius: 6px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+.ch-sq {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  cursor: default; user-select: none;
+}
+.ch-sq.light { background: #ecd9b8; }
+.ch-sq.dark { background: #a97a52; }
+.ch-sq.lastmove::after { content: ""; position: absolute; inset: 0; background: rgba(255,221,87,0.38); }
+.ch-sq.sel::after { content: ""; position: absolute; inset: 0; background: rgba(96,165,250,0.55); }
+.ch-piece {
+  position: relative; z-index: 2;
+  font-size: min(8cqw, 8cqh); line-height: 1;
+}
+.ch-piece.w { color: #ffffff; text-shadow: 0 1px 1px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.5); }
+.ch-piece.b { color: #1a1a1c; text-shadow: 0 1px 1px rgba(255,255,255,0.35); }
+
+/* move hints */
+.ch-sq.move-target::before {
+  content: ""; position: absolute; z-index: 1;
+  width: 28%; height: 28%; border-radius: 50%;
+  background: rgba(0,0,0,0.28);
+}
+.ch-sq.cap-target::before {
+  content: ""; position: absolute; z-index: 1; inset: 8%;
+  border: 4px solid rgba(0,0,0,0.30); border-radius: 50%;
+}
+.ch-sq.move-target:hover, .ch-sq.cap-target:hover { filter: brightness(1.06); }

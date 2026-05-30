@@ -1,0 +1,440 @@
+/* =========================================================
+   Time Machine — css/apps/timemachine.css
+   All selectors scoped under .app-timemachine
+   Uses CSS custom properties from reset.css for dark/light.
+   ========================================================= */
+
+/* ---------- Root container ---------- */
+.app-timemachine .tm-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: #060c18; /* fallback; stars canvas covers this */
+  outline: none;
+}
+
+/* ---------- Stars canvas (full bg) ---------- */
+.app-timemachine .tm-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- Receding-windows stack ---------- */
+.app-timemachine .tm-stack {
+  position: absolute;
+  /* Center the stack, leaving room for timeline on the right */
+  left: 0;
+  right: 220px;
+  top: 0;
+  bottom: 64px;
+  z-index: 1;
+  perspective: 900px;
+  perspective-origin: 50% 80%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Slide animations when navigating */
+.app-timemachine .tm-stack.tm-slide-older {
+  animation: tm-push-back 0.3s var(--ease-out, cubic-bezier(0.22,1,0.36,1)) forwards;
+}
+.app-timemachine .tm-stack.tm-slide-newer {
+  animation: tm-pull-forward 0.3s var(--ease-out, cubic-bezier(0.22,1,0.36,1)) forwards;
+}
+
+@keyframes tm-push-back {
+  0%   { transform: translateZ(0); opacity: 1; }
+  40%  { transform: translateZ(-120px) rotateX(8deg); opacity: 0.4; }
+  100% { transform: translateZ(0); opacity: 1; }
+}
+@keyframes tm-pull-forward {
+  0%   { transform: translateZ(-120px) rotateX(8deg); opacity: 0.4; }
+  100% { transform: translateZ(0); opacity: 1; }
+}
+
+/* ---------- Foreground (active) Finder window ---------- */
+.app-timemachine .tm-finder {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(560px, 90%);
+  height: min(380px, 88%);
+  background: var(--win-bg);
+  border-radius: var(--window-radius, 11px);
+  box-shadow: var(--shadow-active, 0 28px 70px rgba(0,0,0,0.45));
+  border: 0.5px solid var(--win-border);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-rows: 38px 1fr;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* ---------- Ghost windows (receding behind the active one) ---------- */
+.app-timemachine .tm-ghost {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(560px, 90%);
+  height: min(380px, 88%);
+  background: var(--win-bg);
+  border-radius: var(--window-radius, 11px);
+  border: 0.5px solid var(--win-border);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-rows: 38px 1fr;
+  overflow: hidden;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+}
+
+.app-timemachine .tm-ghost[data-depth="1"] {
+  transform: translateX(-50%) translateY(-24px) translateZ(-80px) scale(0.94);
+  opacity: 0.55;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  z-index: 9;
+}
+.app-timemachine .tm-ghost[data-depth="2"] {
+  transform: translateX(-50%) translateY(-48px) translateZ(-160px) scale(0.88);
+  opacity: 0.38;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+  z-index: 8;
+}
+.app-timemachine .tm-ghost[data-depth="3"] {
+  transform: translateX(-50%) translateY(-70px) translateZ(-240px) scale(0.82);
+  opacity: 0.22;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  z-index: 7;
+}
+.app-timemachine .tm-ghost[data-depth="4"] {
+  transform: translateX(-50%) translateY(-90px) translateZ(-310px) scale(0.76);
+  opacity: 0.13;
+  z-index: 6;
+}
+.app-timemachine .tm-ghost[data-depth="5"] {
+  transform: translateX(-50%) translateY(-108px) translateZ(-370px) scale(0.70);
+  opacity: 0.07;
+  z-index: 5;
+}
+
+/* ---------- Mini Finder inside windows ---------- */
+
+/* Titlebar row */
+.app-timemachine .tm-finder-titlebar,
+.app-timemachine .tm-ghost  .tm-finder-titlebar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  background: var(--titlebar-bg);
+  border-bottom: 0.5px solid var(--win-border);
+  font-size: 12.5px;
+  color: var(--titlebar-fg-active, rgba(0,0,0,0.78));
+}
+.app-timemachine .tm-tl-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.app-timemachine .tm-finder-title {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12.5px;
+  color: var(--win-fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Sidebar column */
+.app-timemachine .tm-finder-sidebar,
+.app-timemachine .tm-ghost  .tm-finder-sidebar {
+  background: var(--sidebar-bg);
+  border-right: 0.5px solid var(--sidebar-border);
+  padding: 8px 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.app-timemachine .tm-sb-item {
+  font-size: 11.5px;
+  color: var(--sidebar-fg);
+  padding: 4px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app-timemachine .tm-sb-active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Main body column */
+.app-timemachine .tm-finder-body,
+.app-timemachine .tm-ghost  .tm-finder-body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--win-bg);
+}
+
+.app-timemachine .tm-finder-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border-bottom: 0.5px solid var(--win-border);
+  font-size: 12px;
+  color: var(--win-muted);
+}
+.app-timemachine .tm-tb-spacer { flex: 1; }
+.app-timemachine .tm-tb-path { font-weight: 500; color: var(--win-fg); }
+
+.app-timemachine .tm-finder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px 6px;
+  padding: 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+.app-timemachine .tm-ff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--win-fg);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 3px;
+}
+.app-timemachine .tm-ff-glyph {
+  font-size: 32px;
+  line-height: 1;
+}
+.app-timemachine .tm-ff-name {
+  word-break: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+}
+
+/* ---------- Right-edge timeline ---------- */
+.app-timemachine .tm-timeline {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 64px;
+  width: 200px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 14px 16px 14px 0;
+  gap: 2px;
+  overflow-y: auto;
+  /* Semi-transparent dark stripe */
+  background: linear-gradient(to left,
+    rgba(4, 10, 22, 0.82) 0%,
+    rgba(4, 10, 22, 0.55) 70%,
+    transparent 100%
+  );
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.18) transparent;
+}
+.app-timemachine .tm-timeline::-webkit-scrollbar { width: 4px; }
+.app-timemachine .tm-timeline::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.18);
+  border-radius: 2px;
+}
+
+.app-timemachine .tm-tl-group {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  padding: 8px 4px 2px;
+  align-self: stretch;
+  text-align: right;
+}
+
+.app-timemachine .tm-tl-tick {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 3px 4px;
+  border-radius: 4px;
+  cursor: default;
+  align-self: stretch;
+  transition: background 0.12s;
+}
+.app-timemachine .tm-tl-tick:hover {
+  background: rgba(255,255,255,0.08);
+}
+.app-timemachine .tm-tl-tick.tm-tl-selected {
+  background: rgba(10,132,255,0.22);
+}
+.app-timemachine .tm-tl-tick.tm-tl-selected .tm-tl-dot-el {
+  background: var(--accent, #0a84ff);
+  box-shadow: 0 0 6px 1px rgba(10,132,255,0.6);
+}
+
+.app-timemachine .tm-tl-tick-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  white-space: nowrap;
+}
+.app-timemachine .tm-tl-selected .tm-tl-tick-label {
+  color: #fff;
+  font-weight: 600;
+}
+
+.app-timemachine .tm-tl-dot-el {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+/* Vertical connecting line between ticks */
+.app-timemachine .tm-timeline::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  right: 19px;
+  bottom: 14px;
+  width: 1px;
+  background: rgba(255,255,255,0.12);
+  pointer-events: none;
+}
+
+/* ---------- Bottom bar ---------- */
+.app-timemachine .tm-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 20px;
+  background: linear-gradient(to top,
+    rgba(4, 10, 22, 0.92) 0%,
+    rgba(4, 10, 22, 0.75) 100%
+  );
+  border-top: 0.5px solid rgba(255,255,255,0.08);
+}
+
+.app-timemachine .tm-nav-row {
+  display: flex;
+  gap: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 0.5px solid rgba(255,255,255,0.18);
+}
+
+.app-timemachine .tm-nav-btn {
+  width: 32px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+  font-size: 15px;
+  cursor: default;
+  border: none;
+  transition: background 0.12s;
+}
+.app-timemachine .tm-nav-btn:not([disabled]):hover {
+  background: rgba(255,255,255,0.2);
+}
+.app-timemachine .tm-nav-btn:first-child {
+  border-right: 0.5px solid rgba(255,255,255,0.18);
+}
+
+.app-timemachine .tm-snap-label {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-timemachine .tm-restore-btn {
+  padding: 6px 18px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--accent, #0a84ff);
+  color: #fff;
+  border: none;
+  cursor: default;
+  transition: background 0.12s, transform 0.1s;
+}
+.app-timemachine .tm-restore-btn:hover {
+  background: var(--accent-light, #409cff);
+  transform: scale(1.02);
+}
+.app-timemachine .tm-restore-btn:active {
+  transform: scale(0.97);
+}
+
+.app-timemachine .tm-cancel-btn {
+  padding: 6px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  border: 0.5px solid rgba(255,255,255,0.18);
+  cursor: default;
+  transition: background 0.12s;
+}
+.app-timemachine .tm-cancel-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ---------- Responsive: narrow window ---------- */
+@media (max-width: 580px) {
+  .app-timemachine .tm-stack {
+    right: 160px;
+  }
+  .app-timemachine .tm-timeline {
+    width: 152px;
+  }
+  .app-timemachine .tm-finder,
+  .app-timemachine .tm-ghost {
+    width: 96%;
+  }
+  .app-timemachine .tm-snap-label {
+    display: none;
+  }
+}

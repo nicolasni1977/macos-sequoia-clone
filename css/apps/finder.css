@@ -1,0 +1,759 @@
+/* =========================================================
+   Finder App Styles
+   All selectors scoped under .app-finder
+   Uses shell CSS custom properties for light/dark adaptation
+   ========================================================= */
+
+/* ---- Root layout ---- */
+.app-finder .finder-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--win-bg);
+  color: var(--win-fg);
+  overflow: hidden;
+}
+
+/* ---- Toolbar ---- */
+.app-finder .finder-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--titlebar-bg);
+  border-bottom: 0.5px solid var(--win-border);
+  flex: 0 0 auto;
+  min-height: 44px;
+}
+
+.app-finder .ft-nav {
+  display: flex;
+  gap: 2px;
+}
+
+.app-finder .ft-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--win-fg);
+  line-height: 1;
+  transition: background 0.1s;
+}
+
+.app-finder .ft-btn:hover:not(.ft-btn-disabled) {
+  background: var(--win-hover);
+}
+
+.app-finder .ft-btn-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Breadcrumb */
+.app-finder .ft-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--win-fg);
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.app-finder .ft-bc-sep {
+  color: var(--win-muted);
+  padding: 0 1px;
+  font-size: 15px;
+}
+
+.app-finder .ft-bc-crumb {
+  padding: 2px 5px;
+  border-radius: 5px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-finder .ft-bc-link {
+  color: var(--accent);
+  cursor: default;
+}
+
+.app-finder .ft-bc-link:hover {
+  background: var(--win-hover);
+}
+
+.app-finder .ft-spacer {
+  flex: 0 0 6px;
+}
+
+/* Search field */
+.app-finder .ft-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 26px;
+  padding: 0 10px;
+  background: var(--field-bg);
+  border: 0.5px solid var(--win-border);
+  border-radius: 7px;
+  width: 160px;
+  transition: box-shadow 0.15s, border-color 0.15s, width 0.2s var(--ease-out);
+}
+
+.app-finder .ft-search-wrap.focused {
+  width: 200px;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.18);
+}
+
+.app-finder .ft-search-icon {
+  font-size: 12px;
+  flex: 0 0 auto;
+  opacity: 0.5;
+}
+
+.app-finder .ft-search {
+  flex: 1;
+  font-size: 12.5px;
+  color: var(--win-fg);
+  background: transparent;
+  border: none;
+  outline: none;
+  min-width: 0;
+}
+
+.app-finder .ft-search::placeholder {
+  color: var(--win-muted);
+}
+
+/* View switcher */
+.app-finder .ft-view-switcher {
+  display: flex;
+  gap: 1px;
+  background: var(--win-border);
+  border: 0.5px solid var(--win-border);
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.app-finder .ftv-btn {
+  width: 28px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background: var(--control-bg);
+  color: var(--win-muted);
+  transition: background 0.1s, color 0.1s;
+}
+
+.app-finder .ftv-btn:hover {
+  background: var(--win-hover);
+  color: var(--win-fg);
+}
+
+.app-finder .ftv-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---- Body: sidebar + main ---- */
+.app-finder .finder-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---- Sidebar ---- */
+.app-finder .finder-sidebar {
+  width: 188px;
+  flex: 0 0 188px;
+  background: var(--sidebar-bg);
+  border-right: 0.5px solid var(--sidebar-border);
+  overflow-y: auto;
+  padding: 8px 0;
+  font-size: 12.5px;
+}
+
+.app-finder .finder-sb-section {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--win-muted);
+  padding: 10px 14px 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.app-finder .finder-sb-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px 4px 14px;
+  border-radius: 7px;
+  margin: 0 5px;
+  color: var(--sidebar-fg);
+  cursor: default;
+  transition: background 0.08s;
+}
+
+.app-finder .finder-sb-row:hover {
+  background: var(--win-hover);
+}
+
+.app-finder .finder-sb-row.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.app-finder .finder-sb-glyph {
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.app-finder .finder-sb-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- Main area wrapper ---- */
+.app-finder .finder-main-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--win-bg);
+}
+
+/* ---- Main area ---- */
+.app-finder .finder-main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  background: var(--win-bg);
+  color: var(--win-fg);
+}
+
+.app-finder .finder-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 120px;
+  color: var(--win-muted);
+  font-size: 14px;
+}
+
+/* ---- Status Bar ---- */
+.app-finder .finder-status-bar {
+  flex: 0 0 auto;
+  border-top: 0.5px solid var(--win-border);
+  padding: 4px 14px;
+  font-size: 11.5px;
+  color: var(--win-muted);
+  text-align: center;
+  background: var(--titlebar-bg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   ICON VIEW
+   ========================================================= */
+
+.app-finder .finder-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 6px 4px;
+  padding: 16px;
+  align-items: start;
+}
+
+.app-finder .finder-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 4px 6px;
+  border-radius: 8px;
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.app-finder .finder-icon-item:hover {
+  background: var(--win-hover);
+}
+
+.app-finder .finder-icon-item.selected {
+  background: var(--accent);
+}
+
+.app-finder .finder-icon-item.selected .finder-icon-label {
+  color: #fff;
+}
+
+.app-finder .finder-icon-glyph {
+  font-size: 44px;
+  line-height: 1;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s var(--ease-spring);
+}
+
+.app-finder .finder-icon-item:hover .finder-icon-glyph {
+  transform: scale(1.06);
+}
+
+.app-finder .finder-icon-glyph.is-folder {
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.18));
+}
+
+.app-finder .finder-icon-label {
+  font-size: 12px;
+  color: var(--win-fg);
+  text-align: center;
+  word-break: break-word;
+  max-width: 86px;
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* =========================================================
+   LIST VIEW
+   ========================================================= */
+
+.app-finder .finder-list-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 400px;
+}
+
+.app-finder .finder-list-thead {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-bottom: 0.5px solid var(--win-border);
+  background: var(--card-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--win-muted);
+  height: 28px;
+}
+
+.app-finder .finder-list-body {
+  flex: 1;
+}
+
+.app-finder .finder-list-row {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  height: 28px;
+  border-bottom: 0.5px solid var(--win-border);
+  font-size: 13px;
+  color: var(--win-fg);
+  cursor: default;
+  transition: background 0.08s;
+}
+
+.app-finder .finder-list-row:hover {
+  background: var(--win-hover);
+}
+
+.app-finder .finder-list-row.selected {
+  background: var(--accent);
+  color: #fff;
+}
+
+.app-finder .finder-list-row.selected .flt-muted {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.app-finder .flt-col {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.app-finder .flt-name {
+  flex: 1 1 auto;
+  gap: 8px;
+  min-width: 0;
+}
+
+.app-finder .flt-date {
+  flex: 0 0 130px;
+  font-size: 12px;
+}
+
+.app-finder .flt-size {
+  flex: 0 0 70px;
+  font-size: 12px;
+  justify-content: flex-end;
+}
+
+.app-finder .flt-kind {
+  flex: 0 0 120px;
+  font-size: 12px;
+  padding-left: 14px;
+}
+
+.app-finder .flt-glyph {
+  font-size: 16px;
+  flex: 0 0 20px;
+  text-align: center;
+}
+
+.app-finder .flt-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.app-finder .flt-muted {
+  color: var(--win-muted);
+}
+
+/* =========================================================
+   COLUMN VIEW
+   ========================================================= */
+
+.app-finder .finder-main.finder-view-column {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.app-finder .finder-column-wrap {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.app-finder .finder-col {
+  flex: 0 0 220px;
+  border-right: 0.5px solid var(--win-border);
+  overflow-y: auto;
+  height: 100%;
+  font-size: 13px;
+}
+
+.app-finder .finder-col-preview {
+  flex: 0 0 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 16px;
+  background: var(--card-bg);
+  text-align: center;
+}
+
+.app-finder .fcp-glyph {
+  font-size: 56px;
+  line-height: 1;
+}
+
+.app-finder .fcp-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--win-fg);
+  word-break: break-word;
+}
+
+.app-finder .fcp-kind,
+.app-finder .fcp-size {
+  font-size: 12px;
+  color: var(--win-muted);
+}
+
+.app-finder .finder-col-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px 5px 12px;
+  border-radius: 6px;
+  margin: 1px 4px;
+  cursor: default;
+  transition: background 0.08s;
+  font-size: 13px;
+  color: var(--win-fg);
+}
+
+.app-finder .finder-col-row:hover {
+  background: var(--win-hover);
+}
+
+.app-finder .finder-col-row.selected {
+  background: var(--accent);
+  color: #fff;
+}
+
+.app-finder .fc-glyph {
+  font-size: 16px;
+  flex: 0 0 20px;
+  text-align: center;
+}
+
+.app-finder .fc-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-finder .fc-arrow {
+  font-size: 15px;
+  color: var(--win-muted);
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.app-finder .finder-col-row.selected .fc-arrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.app-finder .fc-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  color: var(--win-muted);
+  font-size: 13px;
+}
+
+/* =========================================================
+   GALLERY VIEW
+   ========================================================= */
+
+.app-finder .finder-main.finder-view-gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-finder .finder-gallery-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-finder .finder-gallery-preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 32px 24px 20px;
+  background: var(--win-bg);
+  border-bottom: 0.5px solid var(--win-border);
+  min-height: 0;
+}
+
+.app-finder .fg-preview-glyph {
+  font-size: 80px;
+  line-height: 1;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22));
+  transition: transform 0.2s var(--ease-spring);
+}
+
+.app-finder .fg-preview-info {
+  text-align: center;
+}
+
+.app-finder .fgp-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--win-fg);
+  margin-bottom: 4px;
+}
+
+.app-finder .fgp-detail {
+  font-size: 12.5px;
+  color: var(--win-muted);
+}
+
+.app-finder .finder-gallery-strip {
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  overflow-x: auto;
+  background: var(--card-bg);
+}
+
+.app-finder .fg-thumb {
+  flex: 0 0 60px;
+  height: 60px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: default;
+  background: var(--win-hover);
+  border: 2px solid transparent;
+  transition: border-color 0.15s, transform 0.15s var(--ease-spring);
+  user-select: none;
+}
+
+.app-finder .fg-thumb:hover {
+  transform: scale(1.06);
+}
+
+.app-finder .fg-thumb.active {
+  border-color: var(--accent);
+  background: rgba(10, 132, 255, 0.10);
+}
+
+/* =========================================================
+   RENAME MODAL
+   ========================================================= */
+
+.app-finder .finder-rename-modal {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.32);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-finder .finder-rename-modal.show {
+  display: flex;
+}
+
+.app-finder .frm-inner {
+  background: var(--win-bg);
+  border: 0.5px solid var(--win-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 280px;
+}
+
+.app-finder .frm-inner label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--win-fg);
+}
+
+.app-finder .frm-input {
+  background: var(--field-bg);
+  border: 0.5px solid var(--win-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13.5px;
+  color: var(--win-fg);
+  outline: none;
+  width: 100%;
+  user-select: text;
+  cursor: text;
+}
+
+.app-finder .frm-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.18);
+}
+
+.app-finder .frm-btns {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.app-finder .frm-btns button {
+  padding: 6px 18px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.app-finder .frm-cancel {
+  background: var(--control-bg);
+  color: var(--win-fg);
+}
+
+.app-finder .frm-cancel:hover {
+  background: var(--win-hover);
+}
+
+.app-finder .frm-ok {
+  background: var(--accent);
+  color: #fff;
+}
+
+.app-finder .frm-ok:hover {
+  background: var(--accent-light);
+}
+
+/* =========================================================
+   SCROLLBAR STYLING (inherited from reset.css, still nice to
+   reinforce for main panes)
+   ========================================================= */
+
+.app-finder .finder-sidebar::-webkit-scrollbar,
+.app-finder .finder-main::-webkit-scrollbar,
+.app-finder .finder-column-wrap::-webkit-scrollbar,
+.app-finder .finder-gallery-strip::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.app-finder .finder-sidebar::-webkit-scrollbar-thumb,
+.app-finder .finder-main::-webkit-scrollbar-thumb,
+.app-finder .finder-gallery-strip::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+/* =========================================================
+   DARK MODE TWEAKS (handled automatically via CSS vars,
+   but a few overrides for better contrast)
+   ========================================================= */
+
+html.dark .app-finder .finder-toolbar {
+  background: var(--titlebar-bg);
+}
+
+html.dark .app-finder .finder-status-bar {
+  background: var(--titlebar-bg);
+}
+
+html.dark .app-finder .ft-search-wrap {
+  background: var(--field-bg);
+  border-color: var(--win-border);
+}
+
+html.dark .app-finder .frm-inner {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
