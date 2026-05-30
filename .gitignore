@@ -4,3 +4,5 @@ __pycache__/
 .DS_Store
 node_modules/
 .claude/
+# Stray local media — not part of the clone (the iPod app uses apps/halcyon/demo/).
+assets/

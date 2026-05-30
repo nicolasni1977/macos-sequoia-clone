@@ -2,3 +2,7 @@
 __pycache__
 *.pyc
 server.py
+# Stray local media (personal/copyrighted) — not used by the deployed clone.
+# The embedded iPod ships only apps/halcyon/demo/.
+assets/
+halcyon-fm/
