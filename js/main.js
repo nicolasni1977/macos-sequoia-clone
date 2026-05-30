@@ -162,8 +162,9 @@ function boot() {
   setTimeout(() => {
     bootScreen.classList.add('fade');
     setTimeout(() => bootScreen.remove(), 650);
-    // On phones, boot to a clean desktop (don't auto-open a window).
+    // Desktop boots into Finder; phones boot straight into the iPod app.
     if (window.innerWidth > 640) openApp('finder');
+    else openApp('halcyon');
   }, 1700);
 
   // Only close overlays on a real width change (orientation / window resize),
