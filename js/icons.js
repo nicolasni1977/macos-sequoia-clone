@@ -71,6 +71,7 @@ const S = {
   colorsync: '<path d="M50 32c9 11 15 17 15 25a15 15 0 0 1-30 0c0-8 6-14 15-25z"/><circle cx="50" cy="54" r="4.5" fill="#54a8ff" stroke="none"/>',
   grapher: '<path d="M30 50h40M50 30v40"/><path d="M32 64q14-34 36 0" stroke-width="5" stroke="#34c759"/>',
   chess: '<text x="50" y="46" dy="0.36em" text-anchor="middle" font-size="42" fill="#fff" stroke="none">♞</text><rect x="36" y="69" width="28" height="4.5" rx="2.2" fill="#d99a45" stroke="none"/>',
+  halcyon: '<rect x="34" y="24" width="32" height="52" rx="7"/><rect x="40" y="30" width="20" height="13" rx="2" stroke-width="4"/><circle cx="50" cy="60" r="9" stroke-width="4"/><circle cx="50" cy="60" r="2.6" fill="#54a8ff" stroke="none"/>',
   stickies: '<path d="M34 34h24l8 8v24a2 2 0 0 1-2 2H34a2 2 0 0 1-2-2V36a2 2 0 0 1 2-2z"/><path d="M58 34v8h8"/>',
   shortcuts: '<rect x="32" y="32" width="23" height="23" rx="7"/><rect x="45" y="45" width="23" height="23" rx="7"/>',
   numbers: '<rect x="31" y="31" width="38" height="38" rx="6"/><path d="M44 31v38M31 44h38M31 56h38"/>',

@@ -26,6 +26,7 @@ import { content as diskutilityContent } from './apps/diskutility.js';
 import { content as chessAppContent } from './apps/chess.js';
 import { content as booksAppContent } from './apps/books.js';
 import { content as musicAppContent } from './apps/music.js';
+import { content as halcyonContent } from './apps/halcyon.js';
 
 /* =========================================================
    Rich content renderers
@@ -505,7 +506,9 @@ export const APPS = [
   { id: 'imagecapture', name: 'Image Capture', icon: 'ic-teal', glyph: '🎞️', cat: 'media', size: [680, 480], content: placeholder({ name: 'Image Capture', glyph: '🎞️', blurb: 'Import photos from devices.' }) },
   { id: 'colorsync', name: 'ColorSync Utility', icon: 'ic-creative', glyph: '🎨', cat: 'dev', size: [640, 480], content: placeholder({ name: 'ColorSync Utility', glyph: '🎨', blurb: 'Inspect and repair color profiles.' }) },
   { id: 'grapher', name: 'Grapher', icon: 'ic-teal', glyph: 'ƒx', cat: 'dev', size: [720, 520], content: grapherContent },
-  { id: 'chess', name: 'Chess', icon: 'ic-graphite', glyph: '♞', cat: 'media', size: [520, 560], content: chessAppContent },  { id: 'missioncontrol', name: 'Mission Control', icon: 'ic-graphite', glyph: '🪟', cat: 'system', size: [720, 480], content: missionControlLauncher },
+  { id: 'chess', name: 'Chess', icon: 'ic-graphite', glyph: '♞', cat: 'media', size: [520, 560], content: chessAppContent },
+  { id: 'halcyon', name: 'Halcyon', icon: 'ic-graphite', glyph: '🎧', cat: 'media', size: [360, 640], content: halcyonContent },
+  { id: 'missioncontrol', name: 'Mission Control', icon: 'ic-graphite', glyph: '🪟', cat: 'system', size: [720, 480], content: missionControlLauncher },
   { id: 'siri', name: 'Siri', icon: 'ic-creative', glyph: '🌀', cat: 'system', size: [460, 440], content: siriContent },
   { id: 'timemachine', name: 'Time Machine', icon: 'ic-graphite', glyph: '🕰️', cat: 'system', size: [720, 500], content: timemachineContent },
   { id: 'sysinfo', name: 'System Information', icon: 'ic-generic', glyph: 'ℹ️', cat: 'system', size: [720, 500], content: sysInfoContent },
@@ -579,5 +582,5 @@ export const APP_MAP = Object.fromEntries(APPS.map((a) => [a.id, a]));
 export const DOCK_LAYOUT = [
   'finder', 'launchpad', 'safari', 'mail', 'messages', 'maps', 'photos',
   'facetime', 'calendar', 'notes', 'reminders', 'music',
-  'podcasts', 'appstore', 'settings', 'terminal', 'sep', 'trash',
+  'podcasts', 'halcyon', 'appstore', 'settings', 'terminal', 'sep', 'trash',
 ];

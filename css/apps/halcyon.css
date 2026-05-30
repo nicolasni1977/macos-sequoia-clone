@@ -1,0 +1,17 @@
+/* Halcyon iPod app — the embedded iframe fills the whole window body. */
+.window-body.app-halcyon {
+  padding: 0;
+  overflow: hidden;
+  background: #0d0d10;
+}
+.app-halcyon .halcyon-app {
+  position: absolute;
+  inset: 0;
+}
+.app-halcyon .halcyon-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #0d0d10;
+}
