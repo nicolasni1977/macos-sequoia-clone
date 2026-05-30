@@ -507,7 +507,7 @@ export const APPS = [
   { id: 'colorsync', name: 'ColorSync Utility', icon: 'ic-creative', glyph: '🎨', cat: 'dev', size: [640, 480], content: placeholder({ name: 'ColorSync Utility', glyph: '🎨', blurb: 'Inspect and repair color profiles.' }) },
   { id: 'grapher', name: 'Grapher', icon: 'ic-teal', glyph: 'ƒx', cat: 'dev', size: [720, 520], content: grapherContent },
   { id: 'chess', name: 'Chess', icon: 'ic-graphite', glyph: '♞', cat: 'media', size: [520, 560], content: chessAppContent },
-  { id: 'halcyon', name: 'Halcyon', icon: 'ic-graphite', glyph: '🎧', cat: 'media', size: [360, 640], content: halcyonContent },
+  { id: 'halcyon', name: 'iPod', icon: 'ic-graphite', glyph: '🎧', cat: 'media', size: [360, 640], content: halcyonContent },
   { id: 'missioncontrol', name: 'Mission Control', icon: 'ic-graphite', glyph: '🪟', cat: 'system', size: [720, 480], content: missionControlLauncher },
   { id: 'siri', name: 'Siri', icon: 'ic-creative', glyph: '🌀', cat: 'system', size: [460, 440], content: siriContent },
   { id: 'timemachine', name: 'Time Machine', icon: 'ic-graphite', glyph: '🕰️', cat: 'system', size: [720, 500], content: timemachineContent },
