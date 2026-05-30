@@ -44,22 +44,12 @@ function buildFS() {
     { name: 'Clock', glyph: '⏰', kind: 'Application', size: '12 MB', appId: 'clock' },
     { name: 'Weather', glyph: '⛅', kind: 'Application', size: '18 MB', appId: 'weather' },
     { name: 'App Store', glyph: 'A', kind: 'Application', size: '60 MB', appId: 'appstore' },
-    { name: 'Books', glyph: '📚', kind: 'Application', size: '90 MB', appId: 'books' },
-    { name: 'Contacts', glyph: '👤', kind: 'Application', size: '14 MB', appId: 'contacts' },
-    { name: 'FaceTime', glyph: '📹', kind: 'Application', size: '55 MB', appId: 'facetime' },
-    { name: 'TV', glyph: '📺', kind: 'Application', size: '210 MB', appId: 'tv' },
-    { name: 'Podcasts', glyph: '🎙️', kind: 'Application', size: '44 MB', appId: 'podcasts' },
+    { name: 'Books', glyph: '📚', kind: 'Application', size: '90 MB', appId: 'books' },    { name: 'FaceTime', glyph: '📹', kind: 'Application', size: '55 MB', appId: 'facetime' },    { name: 'Podcasts', glyph: '🎙️', kind: 'Application', size: '44 MB', appId: 'podcasts' },
     { name: 'News', glyph: '📰', kind: 'Application', size: '32 MB', appId: 'news' },
-    { name: 'Stocks', glyph: '📈', kind: 'Application', size: '16 MB', appId: 'stocks' },
-    { name: 'Numbers', glyph: '📊', kind: 'Application', size: '68 MB', appId: 'numbers' },
-    { name: 'Pages', glyph: '✍️', kind: 'Application', size: '72 MB', appId: 'pages' },
-    { name: 'Keynote', glyph: '📽️', kind: 'Application', size: '88 MB', appId: 'keynote' },
-    { name: 'Preview', glyph: '🖼️', kind: 'Application', size: '26 MB', appId: 'preview' },
+    { name: 'Stocks', glyph: '📈', kind: 'Application', size: '16 MB', appId: 'stocks' },    { name: 'Preview', glyph: '🖼️', kind: 'Application', size: '26 MB', appId: 'preview' },
     { name: 'TextEdit', glyph: '📄', kind: 'Application', size: '7 MB', appId: 'textedit' },
     { name: 'Chess', glyph: '♞', kind: 'Application', size: '4 MB', appId: 'chess' },
-    { name: 'Activity Monitor', glyph: '💹', kind: 'Application', size: '11 MB', appId: 'activity' },
-    { name: 'Stickies', glyph: '🗒️', kind: 'Application', size: '3 MB', appId: 'stickies' },
-  ];
+    { name: 'Activity Monitor', glyph: '💹', kind: 'Application', size: '11 MB', appId: 'activity' },  ];
 
   FS['/'].children['Applications'] = {
     type: 'folder',

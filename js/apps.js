@@ -8,19 +8,14 @@ export { el, setHTML };
 
 // Upgraded app modules (js/apps/*.js) — each exports content(win, api) => Element.
 import { content as mapsContent } from './apps/maps.js';
-import { content as facetimeContent } from './apps/facetime.js';
-import { content as voicememosContent } from './apps/voicememos.js';
-import { content as shortcutsContent } from './apps/shortcuts.js';
-import { content as stocksContent } from './apps/stocks.js';
+import { content as facetimeContent } from './apps/facetime.js';import { content as stocksContent } from './apps/stocks.js';
 import { content as newsContent } from './apps/news.js';
 import { content as weatherContent } from './apps/weather.js';
 import { content as remindersContent } from './apps/reminders.js';
 import { content as photosContent } from './apps/photos.js';
 import { content as previewContent } from './apps/preview.js';
 import { content as siriContent } from './apps/siri.js';
-import { content as timemachineContent } from './apps/timemachine.js';
-import { content as findmyContent } from './apps/findmy.js';
-import { content as mailContent } from './apps/mail.js';
+import { content as timemachineContent } from './apps/timemachine.js';import { content as mailContent } from './apps/mail.js';
 import { content as messagesContent } from './apps/messages.js';
 import { content as finderContent } from './apps/finder.js';
 import { content as grapherContent } from './apps/grapher.js';
@@ -484,21 +479,12 @@ export const APPS = [
   { id: 'maps', name: 'Maps', icon: 'ic-maps', glyph: '🗺️', cat: 'internet', size: [800, 560], content: mapsContent },
   { id: 'photos', name: 'Photos', icon: 'ic-photos', glyph: '🌸', cat: 'media', size: [820, 560], content: photosContent },
   { id: 'facetime', name: 'FaceTime', icon: 'ic-facetime', glyph: '📹', cat: 'internet', size: [560, 600], content: facetimeContent },
-  { id: 'calendar', name: 'Calendar', icon: 'ic-calendar', glyph: '📅', cat: 'productivity', size: [820, 560], content: calendarContent },
-  { id: 'contacts', name: 'Contacts', icon: 'ic-contacts', glyph: '👤', cat: 'productivity', size: [680, 480], content: contactsContent },
-  { id: 'reminders', name: 'Reminders', icon: 'ic-reminders', glyph: '☑️', cat: 'productivity', size: [560, 480], content: remindersContent },
-  { id: 'notes', name: 'Notes', icon: 'ic-notes', glyph: '📝', cat: 'productivity', size: [720, 500], content: notesContent },
-  { id: 'freeform', name: 'Freeform', icon: 'ic-teal', glyph: '📐', cat: 'productivity', size: [760, 540], content: placeholder({ name: 'Freeform', glyph: '📐', blurb: 'A flexible canvas for brainstorming and collaboration.' }) },
-  { id: 'tv', name: 'TV', icon: 'ic-tv', glyph: '📺', cat: 'media', size: [820, 540], content: placeholder({ name: 'TV', glyph: '📺', blurb: 'Movies and shows, all in one place.' }) },
-  { id: 'music', name: 'Music', icon: 'ic-music', glyph: '🎵', cat: 'media', size: [760, 580], content: musicAppContent },
+  { id: 'calendar', name: 'Calendar', icon: 'ic-calendar', glyph: '📅', cat: 'productivity', size: [820, 560], content: calendarContent },  { id: 'reminders', name: 'Reminders', icon: 'ic-reminders', glyph: '☑️', cat: 'productivity', size: [560, 480], content: remindersContent },
+  { id: 'notes', name: 'Notes', icon: 'ic-notes', glyph: '📝', cat: 'productivity', size: [720, 500], content: notesContent },  { id: 'music', name: 'Music', icon: 'ic-music', glyph: '🎵', cat: 'media', size: [760, 580], content: musicAppContent },
   { id: 'podcasts', name: 'Podcasts', icon: 'ic-podcasts', glyph: '🎙️', cat: 'media', size: [760, 540], content: podcastsContent },
   { id: 'news', name: 'News', icon: 'ic-news', glyph: '📰', cat: 'internet', size: [760, 560], content: newsContent },
   { id: 'stocks', name: 'Stocks', icon: 'ic-stocks', glyph: '📈', cat: 'productivity', size: [680, 520], content: stocksContent },
-  { id: 'home', name: 'Home', icon: 'ic-home', glyph: '🏠', cat: 'system', size: [720, 520], content: homeContent },
-  { id: 'voicememos', name: 'Voice Memos', icon: 'ic-voice', glyph: '🎤', cat: 'media', size: [560, 480], content: voicememosContent },
-  { id: 'findmy', name: 'Find My', icon: 'ic-find', glyph: '📍', cat: 'system', size: [780, 540], content: findmyContent },
-  { id: 'photobooth', name: 'Photo Booth', icon: 'ic-purple', glyph: '📸', cat: 'media', size: [640, 520], content: placeholder({ name: 'Photo Booth', glyph: '📸', blurb: 'Take fun photos with effects.' }) },
-  { id: 'preview', name: 'Preview', icon: 'ic-generic', glyph: '🖼️', cat: 'productivity', size: [720, 540], content: previewContent },
+  { id: 'home', name: 'Home', icon: 'ic-home', glyph: '🏠', cat: 'system', size: [720, 520], content: homeContent },  { id: 'preview', name: 'Preview', icon: 'ic-generic', glyph: '🖼️', cat: 'productivity', size: [720, 540], content: previewContent },
   { id: 'textedit', name: 'TextEdit', icon: 'ic-generic', glyph: '📄', cat: 'productivity', size: [640, 520], content: textEditContent },
   { id: 'calculator', name: 'Calculator', icon: 'ic-calc', glyph: '🧮', cat: 'productivity', size: [300, 460], content: calculatorContent, fixed: true },
   { id: 'dictionary', name: 'Dictionary', icon: 'ic-graphite', glyph: '📖', cat: 'productivity', size: [640, 480], content: dictionaryContent },
@@ -519,15 +505,7 @@ export const APPS = [
   { id: 'imagecapture', name: 'Image Capture', icon: 'ic-teal', glyph: '🎞️', cat: 'media', size: [680, 480], content: placeholder({ name: 'Image Capture', glyph: '🎞️', blurb: 'Import photos from devices.' }) },
   { id: 'colorsync', name: 'ColorSync Utility', icon: 'ic-creative', glyph: '🎨', cat: 'dev', size: [640, 480], content: placeholder({ name: 'ColorSync Utility', glyph: '🎨', blurb: 'Inspect and repair color profiles.' }) },
   { id: 'grapher', name: 'Grapher', icon: 'ic-teal', glyph: 'ƒx', cat: 'dev', size: [720, 520], content: grapherContent },
-  { id: 'chess', name: 'Chess', icon: 'ic-graphite', glyph: '♞', cat: 'media', size: [520, 560], content: chessAppContent },
-  { id: 'stickies', name: 'Stickies', icon: 'ic-notes', glyph: '🗒️', cat: 'productivity', size: [320, 320], content: () => { const r = textEditContent(); r.style.background = '#fff7b0'; r.querySelector('[contenteditable]').innerHTML = '<p>📌 A sticky note!</p>'; return r; } },
-  { id: 'shortcuts', name: 'Shortcuts', icon: 'ic-creative', glyph: '⚡', cat: 'productivity', size: [720, 520], content: shortcutsContent },
-  { id: 'numbers', name: 'Numbers', icon: 'ic-messages', glyph: '📊', cat: 'productivity', size: [820, 540], content: numbersContent },
-  { id: 'pages', name: 'Pages', icon: 'ic-orange', glyph: '✍️', cat: 'productivity', size: [760, 560], content: () => { const r = textEditContent(); r.querySelector('[contenteditable]').innerHTML = '<h1 style="font-size:24px">Untitled Document</h1><p>A clean page to write on.</p>'; return r; } },
-  { id: 'keynote', name: 'Keynote', icon: 'ic-indigo', glyph: '📽️', cat: 'productivity', size: [820, 540], content: placeholder({ name: 'Keynote', glyph: '📽️', blurb: 'Build cinematic presentations.' }) },
-  { id: 'garageband', name: 'GarageBand', icon: 'ic-orange', glyph: '🎸', cat: 'media', size: [820, 520], content: placeholder({ name: 'GarageBand', glyph: '🎸', blurb: 'Make music with virtual instruments.' }) },
-  { id: 'imovie', name: 'iMovie', icon: 'ic-purple', glyph: '🎬', cat: 'media', size: [820, 540], content: placeholder({ name: 'iMovie', glyph: '🎬', blurb: 'Edit videos into shareable films.' }) },
-  { id: 'missioncontrol', name: 'Mission Control', icon: 'ic-graphite', glyph: '🪟', cat: 'system', size: [720, 480], content: missionControlLauncher },
+  { id: 'chess', name: 'Chess', icon: 'ic-graphite', glyph: '♞', cat: 'media', size: [520, 560], content: chessAppContent },  { id: 'missioncontrol', name: 'Mission Control', icon: 'ic-graphite', glyph: '🪟', cat: 'system', size: [720, 480], content: missionControlLauncher },
   { id: 'siri', name: 'Siri', icon: 'ic-creative', glyph: '🌀', cat: 'system', size: [460, 440], content: siriContent },
   { id: 'timemachine', name: 'Time Machine', icon: 'ic-graphite', glyph: '🕰️', cat: 'system', size: [720, 500], content: timemachineContent },
   { id: 'sysinfo', name: 'System Information', icon: 'ic-generic', glyph: 'ℹ️', cat: 'system', size: [720, 500], content: sysInfoContent },
@@ -600,6 +578,6 @@ export const APP_MAP = Object.fromEntries(APPS.map((a) => [a.id, a]));
 // Dock layout: app ids + 'sep' + specials.
 export const DOCK_LAYOUT = [
   'finder', 'launchpad', 'safari', 'mail', 'messages', 'maps', 'photos',
-  'facetime', 'calendar', 'notes', 'reminders', 'freeform', 'music',
+  'facetime', 'calendar', 'notes', 'reminders', 'music',
   'podcasts', 'appstore', 'settings', 'terminal', 'sep', 'trash',
 ];
