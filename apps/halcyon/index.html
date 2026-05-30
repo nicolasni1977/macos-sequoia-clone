@@ -1704,18 +1704,58 @@ const MOSAIC_PALETTE = [
 ];
 
 // All photos available as right-pane art when browsing tracks.
-const PHOTO_POOL = (() => {
-  // Personal photos are omitted from this build; synthesize gradient "shots" so
-  // the Photos browser stays fully functional. The trailing #IMG_00xx fragment
-  // is ignored when the image loads but lets the album grouping logic sort them.
-  const pairs = [['#ff7a59','#a855f7'],['#3a78d8','#4cd964'],['#ff2d55','#ffb800'],
-    ['#8a2be2','#3a78d8'],['#0ea5e9','#22d3ee'],['#f97316','#ef4444'],
-    ['#10b981','#84cc16'],['#ec4899','#8b5cf6'],['#06b6d4','#3b82f6'],['#eab308','#f97316']];
-  return pairs.map(([a,b],i) =>
-    `data:image/svg+xml,${encodeURIComponent(
-      `<svg xmlns='http://www.w3.org/2000/svg' width='480' height='480'><defs><linearGradient id='g${i}' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${a}'/><stop offset='1' stop-color='${b}'/></linearGradient></defs><rect width='480' height='480' fill='url(#g${i})'/><circle cx='${110+i*28}' cy='${360-i*22}' r='${46+i*7}' fill='rgba(255,255,255,0.16)'/></svg>`
-    )}#IMG_00${10+i}`);
-})();
+const PHOTO_POOL = [
+  '/media/photo/IMG_7411.JPG',
+  '/media/photo/IMG_7418.JPG',
+  '/media/photo/IMG_7420.JPG',
+  '/media/photo/IMG_7421.JPG',
+  '/media/photo/IMG_7423.JPG',
+  '/media/photo/IMG_7425.JPG',
+  '/media/photo/IMG_7429.JPG',
+  '/media/photo/IMG_7434.JPG',
+  '/media/photo/IMG_7437.JPG',
+  '/media/photo/IMG_7438.JPG',
+  '/media/photo/IMG_7449.JPG',
+  '/media/photo/IMG_7450.JPG',
+  '/media/photo/IMG_7451.JPG',
+  '/media/photo/IMG_7453.JPG',
+  '/media/photo/IMG_7454.JPG',
+  '/media/photo/IMG_7455.JPG',
+  '/media/photo/IMG_7456.JPG',
+  '/media/photo/IMG_7459.JPG',
+  '/media/photo/IMG_7460.JPG',
+  '/media/photo/IMG_7464.JPG',
+  '/media/photo/IMG_7467.JPG',
+  '/media/photo/IMG_7468.JPG',
+  '/media/photo/IMG_7482.JPG',
+  '/media/photo/IMG_7486.JPG',
+  '/media/photo/IMG_7488.JPG',
+  '/media/photo/IMG_7516.JPG',
+  '/media/photo/IMG_7520.JPG',
+  '/media/photo/IMG_7521.JPG',
+  '/media/photo/IMG_7527.JPG',
+  '/media/photo/IMG_7532.JPG',
+  '/media/photo/IMG_7536.JPG',
+  '/media/photo/IMG_7584.JPG',
+  '/media/photo/IMG_7587.JPG',
+  '/media/photo/IMG_7594.JPG',
+  '/media/photo/IMG_7595.JPG',
+  '/media/photo/IMG_7596.JPG',
+  '/media/photo/IMG_7598.JPG',
+  '/media/photo/IMG_7599.JPG',
+  '/media/photo/IMG_7601.JPG',
+  '/media/photo/IMG_7605.JPG',
+  '/media/photo/IMG_7609.JPG',
+  '/media/photo/IMG_7612.JPG',
+  '/media/photo/IMG_7614.JPG',
+  '/media/photo/IMG_7621.JPG',
+  '/media/photo/IMG_7625.JPG',
+  '/media/photo/IMG_7626.JPG',
+  '/media/photo/IMG_7627.JPG',
+  '/media/photo/IMG_7628.JPG',
+  '/media/photo/IMG_7685.JPG',
+  '/media/photo/IMG_7694.JPG'
+];
 
 // Themed albums for "Photo Library". Without a vision API to inspect content,
 // we chunk PHOTO_POOL by sequential IMG number (a proxy for shoot/location)
@@ -1747,7 +1787,30 @@ function photoForTrack(track) {
 // Demo tracks — loaded instantly from assets/music/ with no fetch/blob needed.
 // IDs are high fixed integers so they never clash with IDB auto-increment values.
 const DEMO_LIBRARY = [
-  { id:9001, title:'Halcyon Theme', artist:'Halcyon', album:'Demo Sessions', trackNum:1, duration:0, coverBlob:null, coverUrl:null, demoUrl:'demo/halcyon-demo.wav', lyricsUrl:null },
+  { id:9201, title:'山丘', artist:'李宗盛', album:'李宗盛精选', trackNum:1, duration:0, coverBlob:null, coverUrl:'/media/cover/1. 山丘.jpg', demoUrl:'/media/music/1. 山丘.mp3', lyricsUrl:'/media/lyrics/1. 山丘.lrc' },
+  { id:9202, title:'凡人歌', artist:'李宗盛', album:'李宗盛精选', trackNum:2, duration:0, coverBlob:null, coverUrl:'/media/cover/2. 凡人歌.jpg', demoUrl:'/media/music/2. 凡人歌.mp3', lyricsUrl:'/media/lyrics/2. 凡人歌.lrc' },
+  { id:9203, title:'鬼迷心窍', artist:'李宗盛', album:'李宗盛精选', trackNum:3, duration:0, coverBlob:null, coverUrl:'/media/cover/3. 鬼迷心窍.jpg', demoUrl:'/media/music/3. 鬼迷心窍.mp3', lyricsUrl:'/media/lyrics/3. 鬼迷心窍.lrc' },
+  { id:9204, title:'真心英雄', artist:'李宗盛', album:'李宗盛精选', trackNum:4, duration:0, coverBlob:null, coverUrl:'/media/cover/4. 真心英雄.jpg', demoUrl:'/media/music/4. 真心英雄.mp3', lyricsUrl:'/media/lyrics/4. 真心英雄.lrc' },
+  { id:9205, title:'爱的代价', artist:'李宗盛', album:'李宗盛精选', trackNum:5, duration:0, coverBlob:null, coverUrl:'/media/cover/5. 爱的代价.jpg', demoUrl:'/media/music/5. 爱的代价.mp3', lyricsUrl:'/media/lyrics/5. 爱的代价.lrc' },
+  { id:9206, title:'漂洋过海来看你', artist:'李宗盛', album:'李宗盛精选', trackNum:6, duration:0, coverBlob:null, coverUrl:'/media/cover/6. 漂洋过海来看你.jpg', demoUrl:'/media/music/6. 漂洋过海来看你.mp3', lyricsUrl:'/media/lyrics/6. 漂洋过海来看你.lrc' },
+  { id:9301, title:'吻别', artist:'张学友', album:'张学友精选', trackNum:1, duration:0, coverBlob:null, coverUrl:'/media/cover/1. 吻别.jpg', demoUrl:'/media/music/1. 吻别.mp3', lyricsUrl:'/media/lyrics/1. 吻别.lrc' },
+  { id:9302, title:'一路上有你', artist:'张学友', album:'张学友精选', trackNum:2, duration:0, coverBlob:null, coverUrl:'/media/cover/2. 一路上有你.jpg', demoUrl:'/media/music/2. 一路上有你.mp3', lyricsUrl:'/media/lyrics/2. 一路上有你.lrc' },
+  { id:9303, title:'一千个伤心的理由', artist:'张学友', album:'张学友精选', trackNum:3, duration:0, coverBlob:null, coverUrl:'/media/cover/3. 一千个伤心的理由.jpg', demoUrl:'/media/music/3. 一千个伤心的理由.mp3', lyricsUrl:'/media/lyrics/3. 一千个伤心的理由.lrc' },
+  { id:9304, title:'她来听我的演唱会', artist:'张学友', album:'张学友精选', trackNum:4, duration:0, coverBlob:null, coverUrl:'/media/cover/4. 她来听我的演唱会.jpg', demoUrl:'/media/music/4. 她来听我的演唱会.mp3', lyricsUrl:'/media/lyrics/4. 她来听我的演唱会.lrc' },
+  { id:9305, title:'情网', artist:'张学友', album:'张学友精选', trackNum:5, duration:0, coverBlob:null, coverUrl:'/media/cover/5. 情网.jpg', demoUrl:'/media/music/5. 情网.mp3', lyricsUrl:'/media/lyrics/5. 情网.lrc' },
+  { id:9306, title:'祝福', artist:'张学友', album:'张学友精选', trackNum:6, duration:0, coverBlob:null, coverUrl:'/media/cover/6. 祝福.jpg', demoUrl:'/media/music/6. 祝福.mp3', lyricsUrl:'/media/lyrics/6. 祝福.lrc' },
+  { id:9401, title:'Monica', artist:'张国荣', album:'张国荣精选', trackNum:1, duration:0, coverBlob:null, coverUrl:'/media/cover/1. Monica.jpg', demoUrl:'/media/music/1. Monica.mp3', lyricsUrl:'/media/lyrics/1. Monica.lrc' },
+  { id:9402, title:'风继续吹', artist:'张国荣', album:'张国荣精选', trackNum:2, duration:0, coverBlob:null, coverUrl:'/media/cover/2. 风继续吹.jpg', demoUrl:'/media/music/2. 风继续吹.mp3', lyricsUrl:null },
+  { id:9403, title:'风再起时', artist:'张国荣', album:'张国荣精选', trackNum:3, duration:0, coverBlob:null, coverUrl:'/media/cover/3. 风再起时.jpg', demoUrl:'/media/music/3. 风再起时.mp3', lyricsUrl:'/media/lyrics/3. 风再起时.lrc' },
+  { id:9404, title:'倩女幽魂', artist:'张国荣', album:'张国荣精选', trackNum:4, duration:0, coverBlob:null, coverUrl:'/media/cover/4. 倩女幽魂.jpg', demoUrl:'/media/music/4. 倩女幽魂.mp3', lyricsUrl:'/media/lyrics/4. 倩女幽魂.lrc' },
+  { id:9405, title:'当年情', artist:'张国荣', album:'张国荣精选', trackNum:5, duration:0, coverBlob:null, coverUrl:'/media/cover/5. 当年情.jpg', demoUrl:'/media/music/5. 当年情.mp3', lyricsUrl:'/media/lyrics/5. 当年情.lrc' },
+  { id:9406, title:'沉默是金', artist:'张国荣', album:'张国荣精选', trackNum:6, duration:0, coverBlob:null, coverUrl:'/media/cover/6. 沉默是金.jpg', demoUrl:'/media/music/6. 沉默是金.mp3', lyricsUrl:'/media/lyrics/6. 沉默是金.lrc' },
+  { id:9501, title:'偏偏喜欢你', artist:'陈百强', album:'陈百强精选', trackNum:1, duration:0, coverBlob:null, coverUrl:'/media/cover/1. 偏偏喜欢你.jpg', demoUrl:'/media/music/1. 偏偏喜欢你.mp3', lyricsUrl:'/media/lyrics/1. 偏偏喜欢你.lrc' },
+  { id:9502, title:'一生何求', artist:'陈百强', album:'陈百强精选', trackNum:2, duration:0, coverBlob:null, coverUrl:'/media/cover/2. 一生何求.jpg', demoUrl:'/media/music/2. 一生何求.mp3', lyricsUrl:'/media/lyrics/2. 一生何求.lrc' },
+  { id:9503, title:'念亲恩', artist:'陈百强', album:'陈百强精选', trackNum:3, duration:0, coverBlob:null, coverUrl:'/media/cover/3. 念亲恩.jpg', demoUrl:'/media/music/3. 念亲恩.mp3', lyricsUrl:'/media/lyrics/3. 念亲恩.lrc' },
+  { id:9504, title:'涟漪', artist:'陈百强', album:'陈百强精选', trackNum:4, duration:0, coverBlob:null, coverUrl:'/media/cover/4. 涟漪.jpg', demoUrl:'/media/music/4. 涟漪.mp3', lyricsUrl:'/media/lyrics/4. 涟漪.lrc' },
+  { id:9505, title:'喝采', artist:'陈百强', album:'陈百强精选', trackNum:5, duration:0, coverBlob:null, coverUrl:'/media/cover/5. 喝采.jpg', demoUrl:'/media/music/5. 喝采.mp3', lyricsUrl:'/media/lyrics/5. 喝采.lrc' },
+  { id:9506, title:'眼泪为你流', artist:'陈百强', album:'陈百强精选', trackNum:6, duration:0, coverBlob:null, coverUrl:'/media/cover/6. 眼泪为你流.jpg', demoUrl:'/media/music/6. 眼泪为你流.mp3', lyricsUrl:'/media/lyrics/6. 眼泪为你流.lrc' },
 ];
 
 // ============================================================
