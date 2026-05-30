@@ -70,7 +70,7 @@ const S = {
   imagecapture: '<rect x="31" y="40" width="38" height="24" rx="5"/><circle cx="50" cy="52" r="7"/><path d="M50 26v9M46 31l4 4 4-4"/>',
   colorsync: '<path d="M50 32c9 11 15 17 15 25a15 15 0 0 1-30 0c0-8 6-14 15-25z"/>',
   grapher: '<path d="M30 50h40M50 30v40"/><path d="M32 64q14-34 36 0" stroke-width="5"/>',
-  chess: '<text x="50" y="50" dy="0.36em" text-anchor="middle" font-size="48" fill="#fff" stroke="none">♞</text>',
+  chess: '<text x="50" y="46" dy="0.36em" text-anchor="middle" font-size="42" fill="#fff" stroke="none">♞</text><rect x="36" y="69" width="28" height="4.5" rx="2.2" fill="#d99a45" stroke="none"/>',
   stickies: '<path d="M34 34h24l8 8v24a2 2 0 0 1-2 2H34a2 2 0 0 1-2-2V36a2 2 0 0 1 2-2z"/><path d="M58 34v8h8"/>',
   shortcuts: '<rect x="32" y="32" width="23" height="23" rx="7"/><rect x="45" y="45" width="23" height="23" rx="7"/>',
   numbers: '<rect x="31" y="31" width="38" height="38" rx="6"/><path d="M44 31v38M31 44h38M31 56h38"/>',
