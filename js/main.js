@@ -26,6 +26,7 @@ function buildDesktopIcons() {
     { icon: 'machd', glyph: '💽', name: 'Macintosh HD', kind: 'Volume', open: () => openFinderAt([]) },
     { icon: 'chess', glyph: '♞', name: 'Chess', kind: 'Application', open: () => openApp('chess') },
     { icon: 'halcyon', glyph: '🎧', name: 'iPod', kind: 'Application', open: () => openApp('halcyon') },
+    { icon: 'weather', glyph: '⛅', name: 'Weather', kind: 'Application', open: () => openApp('weather') },
   ];
   icons.forEach((ic) => {
     const d = document.createElement('div');
