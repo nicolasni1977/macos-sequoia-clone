@@ -2329,6 +2329,7 @@ function handlePowerOff() {
   AudioEngine.powerOff();
   appState.state = STATES.OFF;
   audioEl.pause();
+  podAudio.pause();
   ScreenRenderer.render();
 }
 
@@ -2423,6 +2424,7 @@ function handleSelect(payload) {
   if (appState.state === STATES.VIDEO_BROWSER) {
     // Pause the iPod's audio so it doesn't compete with the YouTube embed.
     if (!audioEl.paused) audioEl.pause();
+    if (!podAudio.paused) podAudio.pause();
     appState.menuStack.push({
       items: [],
       selectedIndex: appState._videoBrowserIdx || 0,
@@ -2590,7 +2592,7 @@ function handleMenu() {
   }
 
   if (appState.state === STATES.PODCAST_PLAYER) {
-    audioEl.pause();
+    podAudio.pause();
     appState.menuStack.pop();
     appState.state = STATES.PODCAST_BROWSER;
     ScreenRenderer.render();
@@ -2692,8 +2694,8 @@ function handlePlayPause() {
     return;
   }
   if (appState.state === STATES.PODCAST_PLAYER) {
-    if (audioEl.paused) audioEl.play().catch(()=>{});
-    else audioEl.pause();
+    if (podAudio.paused) podAudio.play().catch(()=>{});
+    else podAudio.pause();
     return;
   }
   if (audioEl.paused) {
@@ -3364,6 +3366,15 @@ audioEl.preload = 'auto';
 audioEl.volume = 0.7;  // default level — adjusted via wheel rotation on Now Playing
 document.body.appendChild(audioEl);
 
+// Podcasts play through a SEPARATE element. They're cross-origin with no CORS,
+// so they can't be routed through Web Audio without being muted. Music uses
+// audioEl (routed through the analyser → real reactive waveform); podcasts use
+// podAudio (un-routed → audible, with a synthetic wave). Only one plays at a time.
+const podAudio = document.createElement('audio');
+podAudio.preload = 'none';
+podAudio.volume = 0.85;
+document.body.appendChild(podAudio);
+
 // ============================================================
 // AUDIO VISUALIZER — fixed canvas above the iPod, reacts to audioEl.
 // Lazy-inits a Web Audio graph on first play (createMediaElementSource can
@@ -3374,6 +3385,7 @@ document.body.appendChild(audioEl);
 // ============================================================
 const AudioViz = (() => {
   let canvas = null, ctx2d = null, dpr = 1;
+  let actx = null, analyser = null, source = null, data = null;
   let raf = null, phase = 0, energy = 0.3, inited = false;
 
   function setupCanvas() {
@@ -3395,22 +3407,49 @@ const AudioViz = (() => {
     inited = true;
   }
 
-  // Decorative serpentine dot-wave, driven purely by time — NOT by the <audio>
-  // element. We deliberately do NOT route audio through Web Audio
-  // (createMediaElementSource), because that taints and silences cross-origin
-  // podcast streams. The audio element plays straight to the speakers; this just
-  // animates while it's playing.
+  // Real FFT analysis of the MUSIC element only (same-origin → no CORS taint).
+  // Podcasts play on podAudio (cross-origin, can't be analysed) and fall back to
+  // a synthetic wave below.
+  function connectAudio() {
+    if (actx) return;
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      actx = new AC();
+      source = actx.createMediaElementSource(audioEl);
+      analyser = actx.createAnalyser();
+      analyser.fftSize = 256;
+      analyser.smoothingTimeConstant = 0.8;
+      source.connect(analyser);
+      analyser.connect(actx.destination); // keep music audible
+      data = new Uint8Array(analyser.frequencyBinCount);
+    } catch (e) {
+      actx = null; analyser = null; data = null;
+    }
+  }
+
   function draw() {
     if (!ctx2d || !canvas) return;
     const W = canvas.width / dpr, H = canvas.height / dpr;
 
-    // Synthetic energy that wanders between ~0.2 and ~1 so the wave looks alive.
-    const target = 0.5 + 0.3 * Math.sin(phase * 0.8) + 0.18 * Math.sin(phase * 2.2 + 1.1);
-    energy += (Math.max(0.2, Math.min(1, target)) - energy) * 0.07;
+    // Music → real frequency data. Podcast (podAudio playing) → synthetic.
+    const podcastLive = (typeof podAudio !== 'undefined') && !podAudio.paused && !podAudio.ended;
+    let real = 0, haveReal = false;
+    if (!podcastLive && analyser && data) {
+      analyser.getByteFrequencyData(data);
+      let sum = 0; for (let i = 0; i < data.length; i++) sum += data[i];
+      real = sum / (data.length * 255);
+      haveReal = true;
+    }
+
+    const target = haveReal
+      ? 0.08 + real * 1.7
+      : 0.5 + 0.3 * Math.sin(phase * 0.8) + 0.18 * Math.sin(phase * 2.2 + 1.1);
+    energy += (Math.max(0.06, Math.min(1, target)) - energy) * (haveReal ? 0.4 : 0.07);
 
     ctx2d.clearRect(0, 0, W, H);
     const cols = 80, rows = 5, cellW = W / cols, baseY = H / 2, maxAmp = H * 0.34;
-    phase += 0.05 + energy * 0.05;
+    phase += 0.05 + energy * 0.06;
 
     for (let r = 0; r < rows; r++) {
       const rNorm = (r / (rows - 1)) - 0.5;
@@ -3420,11 +3459,14 @@ const AudioViz = (() => {
         const w1 = Math.sin(cNorm * 6  + phase * 1.6 + rNorm * 1.4);
         const w2 = Math.sin(cNorm * 12 + phase * 1.1 + rNorm * 0.7);
         const wave = w1 * 0.7 + w2 * 0.3;
-        const amp = maxAmp * (0.14 + energy * 0.86);
+        const amp = maxAmp * (0.12 + energy * 0.88);
         const y = baseY + wave * amp + rNorm * 10;
-        const mag = 0.5 + 0.5 * Math.sin(cNorm * 16 + phase * 2.0 + rNorm * 1.7);
-        const dotR = 1.0 + mag * energy * 2.2;
-        const opacity = 0.18 + mag * energy * 0.7;
+        // Per-dot magnitude: real frequency bin for music, synthetic for podcast.
+        let mag;
+        if (haveReal) { mag = data[Math.floor(cNorm * data.length)] / 255; }
+        else { mag = 0.5 + 0.5 * Math.sin(cNorm * 16 + phase * 2.0 + rNorm * 1.7); }
+        const dotR = 1.0 + mag * (haveReal ? 2.6 : energy * 2.2);
+        const opacity = 0.16 + mag * (haveReal ? 0.78 : energy * 0.7);
         ctx2d.beginPath();
         ctx2d.arc(x, y, dotR, 0, Math.PI * 2);
         ctx2d.fillStyle = 'rgba(150, 200, 255, ' + opacity + ')';
@@ -3436,6 +3478,8 @@ const AudioViz = (() => {
   function start() {
     init();
     if (!canvas) return;
+    connectAudio();
+    if (actx && actx.state === 'suspended') actx.resume().catch(() => {});
     canvas.classList.add('active');
     if (raf) return;                       // already looping
     const loop = () => { draw(); raf = requestAnimationFrame(loop); };
@@ -3451,9 +3495,26 @@ const AudioViz = (() => {
   return { init: init, start: start, stop: stop };
 })();
 
-audioEl.addEventListener('play',  () => AudioViz.start());
-audioEl.addEventListener('pause', () => AudioViz.stop());
-audioEl.addEventListener('ended', () => AudioViz.stop());
+// Music element drives the real waveform; starting it stops any podcast.
+audioEl.addEventListener('play',  () => { if (!podAudio.paused) podAudio.pause(); AudioViz.start(); });
+audioEl.addEventListener('pause', () => { if (podAudio.paused) AudioViz.stop(); });
+audioEl.addEventListener('ended', () => { if (podAudio.paused) AudioViz.stop(); });
+
+// Podcast element: un-routed (stays audible), waveform falls back to synthetic.
+podAudio.addEventListener('play',  () => { if (!audioEl.paused) audioEl.pause(); AudioViz.start(); });
+podAudio.addEventListener('pause', () => { if (audioEl.paused) AudioViz.stop(); });
+podAudio.addEventListener('ended', () => { podAudio.currentTime = 0; if (audioEl.paused) AudioViz.stop(); });
+podAudio.addEventListener('timeupdate', () => {
+  if (appState.state !== STATES.PODCAST_PLAYER) return;
+  const cur = podAudio.currentTime, dur = podAudio.duration || 0;
+  const pct = dur ? cur / dur * 100 : 0;
+  const fill = document.getElementById('podcast-player-fill');
+  if (fill) fill.style.width = pct + '%';
+  const el = document.getElementById('podcast-player-elapsed');
+  const re = document.getElementById('podcast-player-remaining');
+  if (el) el.textContent = formatTime(cur);
+  if (re) re.textContent = '-' + formatTime(Math.max(0, dur - cur));
+});
 document.addEventListener('DOMContentLoaded', () => AudioViz.init());
 
 let _currentAudioURL = null;
@@ -3571,8 +3632,9 @@ function _writePodcastCache(obj) {
 function startPodcast(ep) {
   appState._currentPodcast = ep;
   appState.currentTrack = null; // not a music track — keep music-related state quiet
-  audioEl.src = ep.audio;
-  audioEl.play().catch(() => {});
+  audioEl.pause();
+  podAudio.src = ep.audio;
+  podAudio.play().catch(() => {});
 }
 
 async function fetchPodcastEpisodes(feedKey) {
@@ -4407,7 +4469,7 @@ const ScreenRenderer = (() => {
   }
 
   function updatePlayIndicators() {
-    const playing = !audioEl.paused;
+    const playing = !audioEl.paused || !podAudio.paused;
     ['mm','sub','np','set'].forEach(p => {
       const ind = document.getElementById(p + '-play-indicator');
       if (ind) ind.classList.toggle('playing', playing);
