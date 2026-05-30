@@ -14,7 +14,8 @@ html, body {
   width: 100%; height: 100%;
   overflow: hidden;
   background: #FFFFFF;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  padding-bottom: 6px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -913,14 +914,14 @@ html, body {
    12. RESPONSIVE SCALING
    ============================================================ */
 #ipod-wrapper {
-  transform-origin: center center;
+  transform-origin: bottom center;
 }
 /* The wrapper scales the whole device via JS-set transform */
 
 @media (max-width: 480px) {
-  /* Embedded in a ~360px iframe: keep the device centered (not top-anchored)
-     so the full body — including the bottom edge — stays visible. */
-  #ipod-wrapper { transform-origin: center center; }
+  /* Embedded in a ~360px iframe: anchor the device to the bottom so it sits
+     near the lower edge while the full body stays visible. */
+  #ipod-wrapper { transform-origin: bottom center; }
 }
 
 /* Audio visualizer canvas — fixed at top of page, centered above the iPod.
