@@ -10,17 +10,12 @@ const el = (cls, tag = 'div') => {
 };
 
 const FAVORITES = [
-  { name: 'Example',   url: 'https://example.com',                 glyph: '🌐', bg: '#5b8def' },
-  { name: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/macOS', glyph: '📖', bg: '#3a3a3c' },
-  { name: 'MDN',       url: 'https://developer.mozilla.org',       glyph: '📘', bg: '#1b1b1b' },
-  { name: 'Hacker News', url: 'https://news.ycombinator.com',      glyph: '🟧', bg: '#ff6600' },
-  { name: 'OpenStreetMap', url: 'https://www.openstreetmap.org',   glyph: '🗺️', bg: '#7ebc6f' },
-  { name: 'DuckDuckGo', url: 'https://duckduckgo.com',             glyph: '🦆', bg: '#de5833' },
-  { name: 'Wikipedia ◎', url: 'https://www.wikipedia.org',         glyph: '🌍', bg: '#0a64e6' },
-  { name: 'CodePen',   url: 'https://codepen.io',                  glyph: '✏️', bg: '#111' },
+  { name: 'macOS — Wikipedia', url: 'https://en.wikipedia.org/wiki/macOS', glyph: '📖', bg: '#3a3a3c' },
 ];
 
 const START = 'about:start';
+// Safari's default/home page — opens here on launch and on every new tab.
+const HOME = 'https://en.wikipedia.org/wiki/macOS';
 
 // Web search → DuckDuckGo's no-JS HTML results, which render cleanly inside the
 // proxied iframe. (Google rewrites its embedded page to a "trouble accessing"
@@ -115,7 +110,7 @@ export function createSafari() {
   let active = -1;
   let loadTimer = null;
 
-  function makeTab(url = START) {
+  function makeTab(url = HOME) {
     return { id: ++uid, url, history: [url], idx: 0, titleEl: null, el: null };
   }
   function current() { return tabs[active]; }
