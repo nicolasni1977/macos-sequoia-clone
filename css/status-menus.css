@@ -88,3 +88,29 @@
 .sp-bars i:nth-child(3) { height: 8px; }
 .sp-bars i:nth-child(4) { height: 11px; }
 .sp-bars i.on { opacity: 0.95; }
+
+/* ── Phone: the narrow dropdown runs off the left edge and its rows are too
+      small to tap. Make it a near-full-width sheet with finger-sized targets. ── */
+@media (max-width: 640px) {
+  .status-panel {
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+    max-height: calc(100dvh - var(--menubar-h) - 20px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 14px 16px;
+    border-radius: 16px;
+  }
+  .status-panel .sp-title { font-size: 17px; }
+  .status-panel .sp-sub, .status-panel .sp-muted { font-size: 13px; }
+  .status-panel .sp-label { font-size: 12px; }
+  .status-panel .sp-link { font-size: 15px; padding: 9px 0; }
+  .status-panel .sp-net { padding: 12px 8px; margin: 0 -8px; font-size: 15px; }
+  .status-panel .sp-net-meta { font-size: 12px; }
+  .status-panel .sp-bars { height: 13px; }
+  .status-panel .sp-switch { width: 48px; height: 28px; }
+  .status-panel .sp-switch::after { width: 24px; height: 24px; }
+  .status-panel .sp-switch.on::after { transform: translateX(20px); }
+  .status-panel .sp-batt-bar { height: 16px; }
+}
