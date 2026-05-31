@@ -112,6 +112,30 @@
 .mb-status:hover, .mb-status.active { background: rgba(255,255,255,0.22); }
 .mb-clock { font-size: 13px; font-variant-numeric: tabular-nums; padding: 0 8px; }
 
+/* ---- Animated Wi-Fi signal: macOS blue, pulsing between strong (deep blue,
+        full bars) and weak (faded blue, outer bars drop). ---- */
+.mb-wifi svg { animation: wifiSignal 2.8s ease-in-out infinite; }
+.mb-wifi .wifi-arc-2 { animation: wifiArcOuter 2.8s ease-in-out infinite; transform-origin: 9px 14px; }
+.mb-wifi .wifi-arc-1 { animation: wifiArcInner 2.8s ease-in-out infinite; transform-origin: 9px 14px; }
+@keyframes wifiSignal {
+  0%, 14%, 100% { color: #0a84ff; }   /* strong: deep mac blue */
+  50%           { color: #a8ccff; }   /* weak: colour fades */
+}
+@keyframes wifiArcOuter {              /* outer bar drops first */
+  0%, 16%, 100% { opacity: 1; }
+  46%           { opacity: 0.1; }
+  74%           { opacity: 1; }
+}
+@keyframes wifiArcInner {              /* inner bar dims as signal weakens further */
+  0%, 28%, 100% { opacity: 1; }
+  52%           { opacity: 0.38; }
+  72%           { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mb-wifi svg, .mb-wifi .wifi-arc-1, .mb-wifi .wifi-arc-2 { animation: none; }
+  .mb-wifi svg { color: #0a84ff; }
+}
+
 /* ---- Menu dropdown ---- */
 .menu-dropdown {
   position: absolute;
